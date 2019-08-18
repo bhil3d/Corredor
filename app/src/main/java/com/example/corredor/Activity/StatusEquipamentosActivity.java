@@ -70,7 +70,8 @@ public class StatusEquipamentosActivity extends AppCompatActivity {
                             @Override
                             public void onItemClick(View view, int position) {
                                 Cadastro_Status_De_Ativos anuncioSelecionado = listarelatorios.get( position );
-                                Intent i = new Intent(StatusEquipamentosActivity.this, AtualisarStatusEquipamentosActivity.class);
+                                Intent i = new Intent(StatusEquipamentosActivity.this,
+                                        AtualisarStatusEquipamentosActivity.class);
                                 i.putExtra("anuncioSelecionado", anuncioSelecionado );
                                 startActivity( i );
                                 finish();
