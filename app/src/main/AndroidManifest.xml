@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.corredor">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".Activity.AtualisarStatusEquipamentosActivity"></activity>
+        <activity android:name=".Activity.StatusEquipamento_Cadastro_AtivosActivity" />
+        <activity android:name=".Activity.StatusEquipamentosActivity" />
+        <activity android:name=".Activity.Tela_para_teste" />
+        <activity android:name=".Activity.Tela_detalhe_meus_Relatorios" />
+        <activity android:name=".Activity.Tela_lista_meus_Relatorios" />
+        <activity
+            android:name=".Activity.Tela_de_RegistroActivity"
+            android:theme="@style/AppTheme.FullScreen" />
+        <activity
+            android:name=".Activity.Tela_Menu_Principal"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Activity.Tela_Detalhes_Relatorios_Publicos" />
+        <activity android:name=".Activity.Tela_Lista_dos_Relatorio_Publicos" />
+        <activity android:name=".Activity.Tela_de_Cadastra_Relatorios_Publicos" />
+        <activity
+            android:name=".Activity.Tela_de_LougarActivity"
+            android:theme="@style/AppTheme.FullScreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

@@ -1,0 +1,60 @@
+<resources>
+    <string name="app_name">Corredor</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Sair</string>
+
+    <string name="menu_relatorios">Relatorio_turno</string>
+    <string name="menu_meusrelatorios">Meus relatorios</string>
+    <string name="menu_telateste">Tela de teste</string>
+    <string name="menu_statusequipamentos">Status de equipamentos</string>
+    <string name="menu_transporte">Transportes</string>
+    <string name="menu_contracheque">Contracheques</string>
+    <string name="menu_telefones">Telefones </string>
+    <string name="menu_passagens">Passagens ferroviarias</string>
+    <string name="menu_dss">Dss</string>
+    <string name="menu_paratestes">ParaTeste</string>
+    <string name="menu_parateste">Novo</string>
+    <string name="menu_Df">Df</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <string-array name="Ativo">
+        <item>TE</item>
+        <item>RE</item>
+        <item>PT</item>
+    </string-array>
+
+
+    <string-array name="Turma">
+        <item>06as15</item>
+        <item>15as00</item>
+        <item>00as06</item>
+    </string-array>
+
+
+    <string-array name="Manuteçao">
+        <item>Preventiva-D11</item>
+        <item>Preventiva-PT</item>
+        <item>Preventiva-RE</item>
+        <item>Corretiva</item>
+    </string-array>
+
+    <string-array name="Status">
+        <item>Parado</item>
+        <item>Liberado</item>
+
+    </string-array>
+
+    <string-array name="Status_Manutencao">
+        <item>Preventiva</item>
+        <item>Corretiva</item>
+    </string-array>
+
+
+</resources>

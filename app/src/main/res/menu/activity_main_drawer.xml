@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/relatorios"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="@string/menu_relatorios" />
+        <item
+            android:id="@+id/meus_relatorios"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="@string/menu_meusrelatorios" />
+        <item
+            android:id="@+id/statusequipamentos"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="@string/menu_statusequipamentos" />
+        <item
+            android:id="@+id/contracheques"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="@string/menu_contracheque" />
+        <item
+            android:id="@+id/telefones"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="@string/menu_telefones" />
+        <item
+            android:id="@+id/dss"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="@string/menu_dss" />
+        <item
+            android:id="@+id/passagensferroviarias"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="@string/menu_passagens" />
+        <item
+            android:id="@+id/Df"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="@string/menu_Df" />
+    </group>
+
+    <item android:title="Communicate">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_menu_share"
+                android:title="@string/menu_paratestes" />
+            <item
+                android:id="@+id/nav_send"
+                android:icon="@drawable/ic_menu_send"
+                android:title="@string/menu_parateste" />
+        </menu>
+    </item>
+
+</menu>
