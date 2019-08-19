@@ -105,11 +105,15 @@ public class Tela_Menu_Principal extends AppCompatActivity
             Intent intent = new Intent(Tela_Menu_Principal.this, StatusEquipamentosActivity.class);
             startActivity(intent);
 
-        } else if (id == R.id.contracheques) {
+        } else if (id == R.id.telefones) {
 
-        } else if (id == R.id.nav_share) {
+        } else if (id == R.id.dss) {
 
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.passagensferroviarias) {
+
+        } else if (id == R.id.Df) {
+            Intent intent = new Intent(Tela_Menu_Principal.this, Tela_df_resultados.class);
+            startActivity(intent);
 
         }
 
