@@ -36,6 +36,8 @@ public class Tela_df_resultados extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_df_resultados);
 
+        inicializarComponentes();
+
         FloatingActionButton fab = findViewById(R.id.FBdf);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,13 +51,7 @@ getSupportActionBar().setTitle("DF");
 
         //Configurações iniciais
         relatoriosPublicosRef = ConfiguraçaosFirebase.getFirebase()
-                .child("DF").child("id-pasta")
-                .child(ConfiguraçaosFirebase.getIdUsuario() );
-
-
-        inicializarComponentes();
-        clasDf = getIntent().getParcelableExtra("usuarios");
-
+                .child("DF");
 
         //Configurar RecyclerView
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -78,7 +74,7 @@ getSupportActionBar().setTitle("DF");
 
                                 ClassDF anuncioSelecionado = listaDf.get( position );
                                 // CadastroDeUsuarios usuarioSelecionado = listausuarios.get( position );
-                                Intent i = new Intent(Tela_df_resultados.this, Tela_detalhe_meus_Relatorios.class);
+                                Intent i = new Intent(Tela_df_resultados.this, AtualizardadosDF.class);
                                 i.putExtra("anuncioSelecionado", anuncioSelecionado ) ;
                                 startActivity( i );
 

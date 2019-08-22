@@ -45,6 +45,16 @@ private Context context;
         myViewHolder.Pvmes.setText( StatusEquipamentos.getSppatrolmes() );
         myViewHolder.Pvano.setText( StatusEquipamentos.getSppatrolano() );
 
+        myViewHolder.Pfvdia.setText( StatusEquipamentos.getSpperfuratrizdia() );
+        myViewHolder.Pfvsemana.setText( StatusEquipamentos.getSpperfuratrizsemana() );
+        myViewHolder.Pfvmes.setText( StatusEquipamentos.getSpperfuratrizmes() );
+        myViewHolder.Pfvano.setText( StatusEquipamentos.getSpperfuratrizano() );
+
+        myViewHolder.Rvdia.setText( StatusEquipamentos.getSpretrodia() );
+        myViewHolder.Rvsemana.setText( StatusEquipamentos.getSpretrosemana() );
+        myViewHolder.Rvmes.setText( StatusEquipamentos.getSpretromes() );
+        myViewHolder.Rvano.setText( StatusEquipamentos.getSpretroano() );
+
     }
 
     @Override
@@ -63,6 +73,16 @@ private Context context;
         TextView Pvmes;
         TextView Pvano;
 
+        TextView Rvdia;
+        TextView Rvsemana;
+        TextView Rvmes;
+        TextView Rvano;
+
+        TextView Pfvdia;
+        TextView Pfvsemana;
+        TextView Pfvmes;
+        TextView Pfvano;
+
 
 
         public MyViewHolder(@NonNull View itemView) {
@@ -76,6 +96,14 @@ private Context context;
             Pvsemana = itemView.findViewById(R.id.Pvsemana);
             Pvmes = itemView.findViewById(R.id.Pvmes);
             Pvano = itemView.findViewById(R.id.Pvano);
+            Rvdia = itemView.findViewById(R.id.Rvdia);
+            Rvsemana = itemView.findViewById(R.id.Rvsemana);
+            Rvmes = itemView.findViewById(R.id.Rvmes);
+            Rvano = itemView.findViewById(R.id.Rvano);
+            Pfvdia = itemView.findViewById(R.id.Pfvdia);
+            Pfvsemana = itemView.findViewById(R.id.Pfvsemana);
+            Pfvmes = itemView.findViewById(R.id.pfvmes);
+            Pfvano = itemView.findViewById(R.id.Pfvano);
         }
     }
 }

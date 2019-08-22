@@ -12,6 +12,9 @@ import com.example.corredor.R;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class AtualizardadosDF extends AppCompatActivity implements View.OnClickListener {
 
     private EditText Ddia,Dsemana,Dmes,Dano,D1ia,D1semana,D1mes,D1ano,
@@ -30,8 +33,49 @@ public class AtualizardadosDF extends AppCompatActivity implements View.OnClickL
         inicializarComponentes();
         database = FirebaseDatabase.getInstance();
 
+        classDFselecionada = getIntent().getParcelableExtra("anuncioSelecionado");
+        recuperadados();
+
     }
 
+
+    public void recuperadados(){
+
+        //Recupera Df para exibicao
+
+        classDFselecionada = (ClassDF) getIntent().getSerializableExtra("anuncioSelecionado");
+
+        if (classDFselecionada!= null){
+
+            Ddia.setText(classDFselecionada.getSpd11dia());
+            Dsemana.setText(classDFselecionada.getSpd11semana());
+            Dmes.setText(classDFselecionada.getSd11mes());
+            Dano.setText(classDFselecionada.getSpd11ano());
+
+            D1ia.setText(classDFselecionada.getSppatroldia());
+            D1semana.setText(classDFselecionada.getSppatrolsemana());
+            D1mes.setText(classDFselecionada.getSppatrolmes());
+            D1ano.setText(classDFselecionada.getSppatrolano());
+
+            D2dia.setText(classDFselecionada.getSpretrodia());
+            D2semana.setText(classDFselecionada.getSpretrosemana());
+            D2mes.setText(classDFselecionada.getSpretromes());
+            D2ano.setText(classDFselecionada.getSpretroano());
+
+            D3dia.setText(classDFselecionada.getSpperfuratrizdia());
+            D3semana.setText(classDFselecionada.getSpperfuratrizsemana());
+            D3mes.setText(classDFselecionada.getSpperfuratrizmes());
+            D3ano.setText(classDFselecionada.getSpperfuratrizano());
+
+
+
+
+
+        }
+
+
+
+    }
 
     @Override
     public void onClick(View v) {
@@ -41,6 +85,7 @@ public class AtualizardadosDF extends AppCompatActivity implements View.OnClickL
             case R.id.D4atualizar:
 
                 Toast.makeText(getBaseContext(),"sucesso",Toast.LENGTH_LONG).show();
+                btnalterar();
                 break;
 
 
@@ -79,8 +124,12 @@ private  void AlterarDados(String ddia,String dsemana,
 
     DatabaseReference reference = database.getReference().child("DF");
 
+ClassDF Df = new ClassDF(ddia,dsemana,dmes,dano,d1dia,d1semana,d1mes,d1ano,d2dia,d2semana,d2mes,d2ano,d3dia,d3semana,d3mes,d3ano);
 
+    Map<String,Object> atualizacao = new HashMap<>();
 
+    atualizacao.put("id-pasta",Df);
+    reference.updateChildren(atualizacao);
 
 }
 

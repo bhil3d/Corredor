@@ -30,7 +30,6 @@ public class Tela_lista_meus_Relatorios extends AppCompatActivity {
     private RecyclerView recyclerView;
     private List<CadastraRelatoriosTurno> listarelatorios = new ArrayList<>();
     private DatabaseReference relatoriosPublicosRef;
-private CadastraRelatoriosTurno relatoriosTurno;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

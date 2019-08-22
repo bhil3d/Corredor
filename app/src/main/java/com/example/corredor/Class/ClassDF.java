@@ -27,6 +27,30 @@ public class ClassDF implements Serializable {
 
     }
 
+    public ClassDF(String ddia, String dsemana, String dmes, String dano,
+                   String d1dia, String d1semana, String d1mes, String d1ano,
+                   String d2dia, String d2semana, String d2mes, String d2ano,
+                   String d3dia, String d3semana, String d3mes, String d3ano) {
+
+        this.spd11dia = ddia;
+        this.spd11semana = dsemana;
+        this.sd11mes = dmes;
+        this.spd11ano = dano;
+        this.spretrodia = d1dia;
+        this.spretrosemana = d1semana;
+        this.spretromes = d1mes;
+        this.spretroano = d1ano;
+        this.sppatroldia = d2dia;
+        this.sppatrolsemana = d2semana;
+        this.sppatrolmes = d2mes;
+        this.sppatrolano = d2ano;
+        this.spperfuratrizdia = d3dia;
+        this.spperfuratrizsemana = d3semana;
+        this.spperfuratrizmes = d3mes;
+        this.spperfuratrizano = d3ano;
+
+    }
+
 
     public String getIdDf() {
         return IdDf;

@@ -107,6 +107,10 @@ public class Tela_Menu_Principal extends AppCompatActivity
 
         } else if (id == R.id.telefones) {
 
+            Intent intent = new Intent(Tela_Menu_Principal.this,Tela_df_resultados.class);
+            startActivity(intent);
+
+
         } else if (id == R.id.dss) {
 
         } else if (id == R.id.passagensferroviarias) {
