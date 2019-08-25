@@ -147,7 +147,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:text="50,50"
+        android:text="02"
         app:layout_constraintStart_toEndOf="@+id/Dvdia"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -181,7 +181,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
-        android:text="Df:Dia"
+        android:text="01"
         app:layout_constraintStart_toEndOf="@+id/textView13"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
@@ -202,7 +202,7 @@
         android:layout_height="20dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:text="50,50"
+        android:text="03"
         app:layout_constraintStart_toEndOf="@+id/Dvsemana"
         app:layout_constraintTop_toTopOf="parent" />
 

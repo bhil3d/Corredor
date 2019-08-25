@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.corredor.Class.ClassDF;
@@ -19,6 +20,7 @@ public class AtualizardadosDF extends AppCompatActivity implements View.OnClickL
 
     private EditText Ddia,Dsemana,Dmes,Dano,D1ia,D1semana,D1mes,D1ano,
     D2dia,D2semana,D2mes,D2ano,D3dia,D3semana,D3mes,D3ano;
+    private TextView textoid;
     private Button D4atualizar;
     private ClassDF classDFselecionada;
     private FirebaseDatabase database;
@@ -66,6 +68,7 @@ public class AtualizardadosDF extends AppCompatActivity implements View.OnClickL
             D3semana.setText(classDFselecionada.getSpperfuratrizsemana());
             D3mes.setText(classDFselecionada.getSpperfuratrizmes());
             D3ano.setText(classDFselecionada.getSpperfuratrizano());
+            textoid.setText(classDFselecionada.getIdDf());
 
 
 
@@ -96,9 +99,9 @@ public class AtualizardadosDF extends AppCompatActivity implements View.OnClickL
 
     private void btnalterar(){
 
-        String ddia = Ddia.getText().toString();
+        String dmes = Ddia.getText().toString();
         String dsemana = Dsemana.getText().toString();
-        String dmes = Dmes.getText().toString();
+        String ddia = Dmes.getText().toString();
         String dano = Dano.getText().toString();
         String d1dia = D1ia.getText().toString();
         String d1semana= D1semana.getText().toString();
@@ -112,23 +115,24 @@ public class AtualizardadosDF extends AppCompatActivity implements View.OnClickL
         String d3semana = D3semana.getText().toString();
         String d3mes = D3mes.getText().toString();
         String d3ano = D3ano.getText().toString();
+        String D5id = textoid.getText().toString();
 
-        AlterarDados(ddia,dsemana,dmes,dano,d1dia,d1semana,d1mes,d1ano,d2dia,d2semana,d2mes,d2ano,d3dia,d3semana,d3mes,d3ano);
+        AlterarDados( D5id,ddia,dsemana,dmes,dano,d1dia,d1semana,d1mes,d1ano,d2dia,d2semana,d2mes,d2ano,d3dia,d3semana,d3mes,d3ano);
 
     }
 
 private  void AlterarDados(String ddia,String dsemana,
                            String dmes,String dano, String d1dia, String d1semana, String d1mes,
                            String d1ano,String d2dia, String d2semana,String d2mes,String d2ano,
-                           String d3dia,String d3semana,String d3mes,String d3ano){
+                           String d3dia,String d3semana,String d3mes,String d3ano,String D5id){
 
     DatabaseReference reference = database.getReference().child("DF");
 
-ClassDF Df = new ClassDF(ddia,dsemana,dmes,dano,d1dia,d1semana,d1mes,d1ano,d2dia,d2semana,d2mes,d2ano,d3dia,d3semana,d3mes,d3ano);
+ClassDF Df = new ClassDF(D5id,ddia,dsemana,dmes,dano,d1dia,d1semana,d1mes,d1ano,d2dia,d2semana,d2mes,d2ano,d3dia,d3semana,d3mes,d3ano);
 
     Map<String,Object> atualizacao = new HashMap<>();
 
-    atualizacao.put("id-pasta",Df);
+    atualizacao.put("pastaDF",Df);
     reference.updateChildren(atualizacao);
 
 }
@@ -152,6 +156,7 @@ ClassDF Df = new ClassDF(ddia,dsemana,dmes,dano,d1dia,d1semana,d1mes,d1ano,d2dia
         D3semana = findViewById(R.id.D3semana);
         D3mes = findViewById(R.id.d3mes);
         D3ano = findViewById(R.id.D3ano);
+        textoid = findViewById(R.id.D5id);
         D4atualizar = findViewById(R.id.D4atualizar);
 
         D4atualizar.setOnClickListener(this);

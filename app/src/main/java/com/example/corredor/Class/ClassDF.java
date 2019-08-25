@@ -27,29 +27,32 @@ public class ClassDF implements Serializable {
 
     }
 
-    public ClassDF(String ddia, String dsemana, String dmes, String dano,
-                   String d1dia, String d1semana, String d1mes, String d1ano,
-                   String d2dia, String d2semana, String d2mes, String d2ano,
-                   String d3dia, String d3semana, String d3mes, String d3ano) {
+    public ClassDF(String ddia16, String Idtexto, String Dmes03, String Dsemana02,
+                   String Ddia01, String Dano04, String d1mes05, String d1ano06,
+                   String d2dia07, String d2semana08, String d2mes09, String d2ano10,
+                   String d3dia11, String d3semana12, String d3mes13, String d3ano14,String D5id) {
 
-        this.spd11dia = ddia;
-        this.spd11semana = dsemana;
-        this.sd11mes = dmes;
-        this.spd11ano = dano;
-        this.spretrodia = d1dia;
-        this.spretrosemana = d1semana;
-        this.spretromes = d1mes;
-        this.spretroano = d1ano;
-        this.sppatroldia = d2dia;
-        this.sppatrolsemana = d2semana;
-        this.sppatrolmes = d2mes;
-        this.sppatrolano = d2ano;
-        this.spperfuratrizdia = d3dia;
-        this.spperfuratrizsemana = d3semana;
-        this.spperfuratrizmes = d3mes;
-        this.spperfuratrizano = d3ano;
+        this.spd11dia = Ddia01;
+        this.spd11semana = Dsemana02;
+        this.sd11mes = Dmes03;
+        this.spd11ano = Dano04;
+        this.spretrodia = d2mes09;
+        this.spretrosemana = d2ano10;
+        this.spretromes = d3dia11;
+        this.spretroano = d3semana12;
+        this.sppatroldia = d1mes05;
+        this.sppatrolsemana = d1ano06;
+        this.sppatrolmes = d2dia07;
+        this.sppatrolano = d2semana08;
+        this.spperfuratrizdia = d3mes13;
+        this.spperfuratrizsemana = d3ano14;
+        this.spperfuratrizmes = D5id;
+        this.spperfuratrizano = ddia16;
+        this.IdDf = Idtexto;
+
 
     }
+
 
 
     public String getIdDf() {
