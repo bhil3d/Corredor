@@ -1,8 +1,10 @@
 package com.example.corredor.Activity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.GravityCompat;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -17,6 +19,8 @@ import android.view.Menu;
 import com.example.corredor.Adaptadores.adpitadorFraguimentos;
 import com.example.corredor.Configuraçoes.ConfiguraçaosFirebase;
 import com.example.corredor.R;
+import com.example.corredor.contrachequeFragment;
+import com.example.corredor.passagensFragment;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class Tela_Menu_Principal extends AppCompatActivity
@@ -110,12 +114,21 @@ public class Tela_Menu_Principal extends AppCompatActivity
           /*  Intent intent = new Intent(Tela_Menu_Principal.this,Tela_df_resultados.class);
             startActivity(intent);*/
 
+        } else if (id == R.id.contracheques) {
+
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://zapp.capriza.com/8jgjryxg8wlvte2zh8yzjg?run_anyway=true")));
 
         } else if (id == R.id.dss) {
 
         } else if (id == R.id.passagensferroviarias) {
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://tremdepassageiros.vale.com/sgpweb/portal/index.html#/home")));
+
+
+
 
         } else if (id == R.id.Df) {
+
+
             Intent intent = new Intent(Tela_Menu_Principal.this,Tela_df_resultados.class);
             startActivity(intent);
 

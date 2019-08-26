@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activity.AtualizardadosDF"></activity>
+        <activity android:name=".Activity.Editar_perfil_Activity"></activity>
+        <activity android:name=".Activity.AtualizardadosDF" />
         <activity android:name=".Activity.Tela_df_resultados" />
         <activity android:name=".Activity.AtualisarStatusEquipamentosActivity" />
         <activity android:name=".Activity.StatusEquipamento_Cadastro_AtivosActivity" />
@@ -37,5 +38,7 @@
             </intent-filter>
         </activity>
     </application>
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>

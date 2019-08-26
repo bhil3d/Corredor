@@ -6,17 +6,30 @@
     android:layout_height="match_parent"
     tools:context=".Activity.Tela_detalhe_meus_Relatorios">
 
-    <android.support.design.widget.TextInputEditText
 
-        android:id="@+id/LiderA"
-        android:layout_width="250dp"
+    <Button
+        android:id="@+id/butaoalterar"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Lider"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/EquipamentoA"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="8dp" />
+        android:layout_marginStart="84dp"
+        android:layout_marginTop="8dp"
+        android:text="Altera"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/PendenciaA" />
 
+    <Button
+        android:id="@+id/butaoremover"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="Remolver"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.447"
+        app:layout_constraintStart_toEndOf="@+id/butaoalterar"
+        app:layout_constraintTop_toBottomOf="@+id/PendenciaA" />
 
     <EditText
 
@@ -25,35 +38,40 @@
         android:layout_height="wrap_content"
         android:text="Manutençao"
         android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/IdrelatorioA"
-        app:layout_constraintTop_toBottomOf="@+id/PendenciaA"
-        tools:layout_editor_absoluteX="8dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <EditText
 
         android:id="@+id/EquipamentoA"
-        android:layout_width="100dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
         android:text="Equipamento"
         android:textAlignment="center"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/TurmaA"
-        app:layout_constraintTop_toBottomOf="@+id/LiderA"
-        tools:layout_editor_absoluteX="303dp" />
-
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/AtivoA"
+        app:layout_constraintTop_toBottomOf="@+id/ManutecaoA" />
 
     <EditText
 
         android:id="@+id/TurmaA"
-        android:layout_width="100dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
         android:text="Turma"
         android:textAlignment="center"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/AtivoA"
-        app:layout_constraintTop_toBottomOf="@+id/EquipamentoA"
-        tools:layout_editor_absoluteX="303dp" />
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/LiderA"
+        app:layout_constraintTop_toBottomOf="@+id/EquipamentoA" />
 
 
     <EditText
@@ -61,94 +79,106 @@
         android:id="@+id/AtivoA"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:text="Ativo"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/DataA"
-        app:layout_constraintTop_toBottomOf="@+id/TurmaA"
-        tools:layout_editor_absoluteX="8dp" />
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ManutecaoA" />
 
     <EditText
 
         android:id="@+id/DataA"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
         android:text="Data"
         android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/AtivoA"
-        tools:layout_editor_absoluteX="8dp" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:text="Relatorio"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/textView7"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/DataA" />
-
+        app:layout_constraintTop_toBottomOf="@+id/LiderA" />
 
     <EditText
         android:id="@+id/RelatorioA"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
         android:paddingTop="8dp"
         android:paddingBottom="10dp"
         android:text="Descricao"
-        app:layout_constraintBottom_toTopOf="@+id/PendenciaA"
-        app:layout_constraintTop_toBottomOf="@+id/butaoremover"
-        tools:layout_editor_absoluteX="8dp" />
-
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:text="Pendencias"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/butaoalterar"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        tools:layout_editor_absoluteX="8dp" />
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <EditText
         android:id="@+id/PendenciaA"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
         android:paddingTop="8dp"
         android:paddingBottom="10dp"
         android:text="Descricao"
-        app:layout_constraintBottom_toTopOf="@+id/ManutecaoA"
-        app:layout_constraintTop_toBottomOf="@+id/RelatorioA"
-        tools:layout_editor_absoluteX="8dp" />
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
-    <Button
-        android:id="@+id/butaoalterar"
-        android:layout_width="wrap_content"
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Altera"
-        app:layout_constraintBottom_toTopOf="@+id/butaoremover"
-        app:layout_constraintTop_toBottomOf="@+id/textView7"
-        tools:layout_editor_absoluteX="8dp" />
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="Relatorio"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/DataA" />
 
-    <Button
-        android:id="@+id/butaoremover"
-        android:layout_width="wrap_content"
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Remolver"
-        app:layout_constraintBottom_toTopOf="@+id/RelatorioA"
-        app:layout_constraintTop_toBottomOf="@+id/butaoalterar"
-        tools:layout_editor_absoluteX="307dp" />
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="Pendencias"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/RelatorioA" />
 
     <TextView
         android:id="@+id/IdrelatorioA"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
         android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ManutecaoA"
-        tools:layout_editor_absoluteX="345dp" />
+        app:layout_constraintTop_toBottomOf="@+id/butaoremover"
+        tools:layout_editor_absoluteX="200dp" />
+
+    <android.support.design.widget.TextInputEditText
+
+        android:id="@+id/LiderA"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Lider"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/AtivoA" />
 
 </android.support.constraint.ConstraintLayout>

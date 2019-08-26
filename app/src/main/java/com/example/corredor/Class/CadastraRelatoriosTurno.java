@@ -49,17 +49,17 @@ public class CadastraRelatoriosTurno implements Serializable {
     }
 
     public CadastraRelatoriosTurno
-            (String manute, String ativo,
-             String data, String lider, String turma, String relatorio,
-             String pendencia, String id_relatorio, String equipamento) {
-        this.idRelatorio = id_relatorio;
-        this.manutecao = manute;
-        this.ativo = ativo;
-        this.lider = lider;
-        this.equipamento=equipamento;
-        this.data = data;
-        this.turma = turma;
-        this.relatorio = relatorio;
+            (String manuteA, String ativoD,
+             String dataE, String liderId, String turmaL, String relatorioM,
+             String pendencia, String id_relatorioRL, String equipamentoT) {
+        this.idRelatorio = liderId;
+        this.manutecao = relatorioM;
+        this.ativo = manuteA;
+        this.lider = turmaL;
+        this.equipamento=dataE;
+        this.data = ativoD;
+        this.turma = equipamentoT;
+        this.relatorio = id_relatorioRL;
         this.pendencia = pendencia;
     }
 
