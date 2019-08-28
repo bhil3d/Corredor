@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 import com.example.corredor.Class.CadastroDeUsuarios;
 import com.example.corredor.Class.UsuarioFirebase;
-import com.example.corredor.Configuraçoes.ConfiguraçaosFirebase;
+import com.example.corredor.Configuraçoes.ConfiguracaoFirebase2;
 import com.example.corredor.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -102,7 +102,7 @@ public class Tela_de_RegistroActivity extends AppCompatActivity {
     public void cadastrar(final CadastroDeUsuarios usuario){
 
       //  progressBar.setVisibility(View.VISIBLE);
-        autenticacao = ConfiguraçaosFirebase.getFirebaseAutenticacao();
+        autenticacao = ConfiguracaoFirebase2.getFirebaseAutenticacao();
         autenticacao.createUserWithEmailAndPassword(
                 usuario.getEmail(),
                 usuario.getSenha()

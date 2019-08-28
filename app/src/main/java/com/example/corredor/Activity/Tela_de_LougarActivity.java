@@ -10,7 +10,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.corredor.Class.CadastroDeUsuarios;
-import com.example.corredor.Configuraçoes.ConfiguraçaosFirebase;
+import com.example.corredor.Configuraçoes.ConfiguracaoFirebase2;
 import com.example.corredor.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -30,7 +30,7 @@ public class Tela_de_LougarActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tela_de__lougaractivity_);
 
-        autenticacao = ConfiguraçaosFirebase.getFirebaseAutenticacao();
+        autenticacao = ConfiguracaoFirebase2.getFirebaseAutenticacao();
 
         verificarUsuarioLogado();
 
@@ -76,7 +76,7 @@ public class Tela_de_LougarActivity extends AppCompatActivity {
     }
 
     public void verificarUsuarioLogado(){
-        autenticacao = ConfiguraçaosFirebase.getFirebaseAutenticacao();
+        autenticacao = ConfiguracaoFirebase2.getFirebaseAutenticacao();
         if( autenticacao.getCurrentUser() != null ){
             startActivity(new Intent(getApplicationContext(), Tela_Menu_Principal.class));
             finish();
@@ -86,7 +86,7 @@ public class Tela_de_LougarActivity extends AppCompatActivity {
     public void validarLogin( CadastroDeUsuarios usuario ){
 
      //   progressBar.setVisibility( View.VISIBLE );
-        autenticacao = ConfiguraçaosFirebase.getFirebaseAutenticacao();
+        autenticacao = ConfiguracaoFirebase2.getFirebaseAutenticacao();
 
         autenticacao.signInWithEmailAndPassword(
                 usuario.getEmail(),

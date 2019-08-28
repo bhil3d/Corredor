@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.GravityCompat;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -15,18 +14,29 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.corredor.Adaptadores.adpitadorFraguimentos;
-import com.example.corredor.Configuraçoes.ConfiguraçaosFirebase;
+import com.example.corredor.Class.CadastroDeUsuarios;
+import com.example.corredor.Class.UsuarioFirebase;
 import com.example.corredor.R;
-import com.example.corredor.contrachequeFragment;
-import com.example.corredor.passagensFragment;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
+
+import de.hdodenhof.circleimageview.CircleImageView;
+
 
 public class Tela_Menu_Principal extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private FirebaseAuth autenticacao;
+    FirebaseUser currentUser ;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +45,10 @@ public class Tela_Menu_Principal extends AppCompatActivity
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        autenticacao = ConfiguraçaosFirebase.getFirebaseAutenticacao();
+        //Configurações iniciais
+        autenticacao = FirebaseAuth.getInstance();
+        currentUser = autenticacao.getCurrentUser();
+
 
         TabLayout tabLayout =(TabLayout) findViewById(R.id.tab);
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
@@ -46,12 +59,19 @@ public class Tela_Menu_Principal extends AppCompatActivity
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
+
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
+
+        updateNavHeader();
+
+
     }
+
+
 
     @Override
     public void onBackPressed() {
@@ -120,6 +140,9 @@ public class Tela_Menu_Principal extends AppCompatActivity
 
         } else if (id == R.id.dss) {
 
+            Intent intent = new Intent(Tela_Menu_Principal.this,Editar_perfil_Activity.class);
+            startActivity(intent);
+
         } else if (id == R.id.passagensferroviarias) {
             startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://tremdepassageiros.vale.com/sgpweb/portal/index.html#/home")));
 
@@ -128,15 +151,50 @@ public class Tela_Menu_Principal extends AppCompatActivity
 
         } else if (id == R.id.Df) {
 
-
             Intent intent = new Intent(Tela_Menu_Principal.this,Tela_df_resultados.class);
             startActivity(intent);
-
-
         }
+
+
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+    public void editarperfil (View view){
+
+        Intent intent = new Intent(Tela_Menu_Principal.this,Perfil_foto_Activity.class);
+        startActivity(intent);
+
+
+    }
+
+
+    public void updateNavHeader() {
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        View headerView = navigationView.getHeaderView(0);
+        ImageView navUserPhot = headerView.findViewById(R.id.IdimgMenuteste);
+        TextView navUsername = headerView.findViewById(R.id.nomePerfilMp);
+        TextView navUserMail = headerView.findViewById(R.id.emailPerfilMp);
+
+        navUserMail.setText(currentUser.getEmail());
+        navUsername.setText(currentUser.getDisplayName());
+
+        // now we will use Glide to load user image
+        // first we need to import the library
+
+        FirebaseUser usuarioPerfil = UsuarioFirebase.getUsuarioAtual();
+
+        //Recuperar foto do usuário
+        Uri url = usuarioPerfil.getPhotoUrl();
+        if( url != null ){
+            Glide.with(Tela_Menu_Principal.this)
+                    .load( url )
+                    .into( navUserPhot );
+        }
+
+    }
+
 }

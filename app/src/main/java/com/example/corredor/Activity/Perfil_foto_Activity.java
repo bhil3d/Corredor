@@ -1,44 +1,37 @@
 package com.example.corredor.Activity;
+
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
+import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.example.corredor.Class.CadastroDeUsuarios;
 import com.example.corredor.Class.UsuarioFirebase;
 import com.example.corredor.R;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
 
-import de.hdodenhof.circleimageview.CircleImageView;
+public class Perfil_foto_Activity extends AppCompatActivity {
 
-
-public class Tela_para_teste extends AppCompatActivity implements View.OnClickListener {
-
-private CircleImageView imgperfil;
+    private ImageView imgperfil;
+    private CadastroDeUsuarios usuarioselecionado;
+    private DatabaseReference usuarioLogadoRef;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.tela_para_teste);
+        setContentView(R.layout.activity_perfil_foto_);
+        usuarioselecionado = UsuarioFirebase.getDadosUsuarioLogado();
+        getSupportActionBar().setTitle( usuarioselecionado.getNome() );
 
-        imgperfil = findViewById(R.id.IdimgMenuteste);
+
+        imgperfil = findViewById(R.id.imgFoto_perfil);
+
         recuperarFotoUsuario();
 
-
     }
-
-    @Override
-    public void onClick(View v) {
-
-        switch (v.getId()){
-
-
-        }
-
-    }
-
 
     private void recuperarFotoUsuario(){
 
@@ -47,7 +40,7 @@ private CircleImageView imgperfil;
         //Recuperar foto do usuário
         Uri url = usuarioPerfil.getPhotoUrl();
         if( url != null ){
-            Glide.with(Tela_para_teste.this)
+            Glide.with(Perfil_foto_Activity.this)
                     .load( url )
                     .into( imgperfil );
         }
@@ -55,7 +48,5 @@ private CircleImageView imgperfil;
 
 
     }
-
-
 
 }

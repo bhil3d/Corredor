@@ -17,7 +17,7 @@ import android.widget.Toast;
 import com.example.corredor.Adaptadores.Adapter_lista_Relatorios_Publicos;
 import com.example.corredor.Class.CadastraRelatoriosTurno;
 import com.example.corredor.Class.RecyclerItemClickListener;
-import com.example.corredor.Configuraçoes.ConfiguraçaosFirebase;
+import com.example.corredor.Configuraçoes.ConfiguracaoFirebase2;
 import com.example.corredor.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -47,7 +47,7 @@ private  boolean filtroPorManutençao = false;
 
         //Configurações iniciais
 
-        relatoriosPublicosRef = ConfiguraçaosFirebase.getFirebase()
+        relatoriosPublicosRef = ConfiguracaoFirebase2.getFirebase()
                 .child("relatorios");
 
 
@@ -185,7 +185,7 @@ recuperaRelatoriosPublicos();
     private void recuperaRelatoriosPorManutençao() {
 
         //Configura nó por categoria
-        relatoriosPublicosRef = ConfiguraçaosFirebase.getFirebase()
+        relatoriosPublicosRef = ConfiguracaoFirebase2.getFirebase()
                 .child("relatorios")
                 .child(filtraManutençao)
                 .child( filtraAtivo );
@@ -219,7 +219,7 @@ recuperaRelatoriosPublicos();
     private void recuperaRelatoriosPorAtivo() {
 
         //Configura nó por estado
-        relatoriosPublicosRef = ConfiguraçaosFirebase.getFirebase()
+        relatoriosPublicosRef = ConfiguracaoFirebase2.getFirebase()
                 .child("anuncios")
                 .child(filtraManutençao);
 

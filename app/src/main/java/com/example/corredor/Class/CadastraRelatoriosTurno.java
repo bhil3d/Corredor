@@ -2,13 +2,12 @@ package com.example.corredor.Class;
 
 
 
-import com.example.corredor.Configuraçoes.ConfiguraçaosFirebase;
-
+import com.example.corredor.Configuraçoes.ConfiguracaoFirebase;
 import com.google.firebase.database.DatabaseReference;
 
 import java.io.Serializable;
 
-import static com.example.corredor.Configuraçoes.ConfiguraçaosFirebase.getIdUsuario;
+import static com.example.corredor.Configuraçoes.ConfiguracaoFirebase2.getIdUsuario;
 
 public class CadastraRelatoriosTurno implements Serializable {
     private String idUsuarios;
@@ -25,7 +24,7 @@ public class CadastraRelatoriosTurno implements Serializable {
 
 
     public CadastraRelatoriosTurno() {
-        DatabaseReference relatorioRef = ConfiguraçaosFirebase.getFirebase()
+        DatabaseReference relatorioRef = ConfiguracaoFirebase.getFirebase()
         .child("meus relatorios");
         setIdRelatorio(relatorioRef.push().getKey());
 
@@ -65,7 +64,7 @@ public class CadastraRelatoriosTurno implements Serializable {
 
 
     public void salvar(){
-    DatabaseReference firebaseRef = ConfiguraçaosFirebase.getFirebase();
+    DatabaseReference firebaseRef = ConfiguracaoFirebase.getFirebase();
     DatabaseReference produtoRef = firebaseRef
             .child("meus relatorios")
 
@@ -76,7 +75,7 @@ public class CadastraRelatoriosTurno implements Serializable {
 }
 
 public void salvarRelatoriosPublicos(){
-        DatabaseReference relatorioRef = ConfiguraçaosFirebase.getFirebase()
+        DatabaseReference relatorioRef = ConfiguracaoFirebase.getFirebase()
                 .child("relatorios");
 
         relatorioRef.child(getManuteçao())
@@ -93,7 +92,7 @@ public void salvarRelatoriosPublicos(){
     public void remover(){
 
         String idUsuario = getIdUsuario();
-        DatabaseReference anuncioRef = ConfiguraçaosFirebase.getFirebase()
+        DatabaseReference anuncioRef = ConfiguracaoFirebase.getFirebase()
                 .child("meus relatorios")
                 .child( idUsuario )
                 .child( getIdRelatorio() );

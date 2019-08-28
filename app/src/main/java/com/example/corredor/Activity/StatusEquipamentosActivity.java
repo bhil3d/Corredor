@@ -18,7 +18,7 @@ import android.widget.Toast;
 import com.example.corredor.Adaptadores.Adapter_lista_Status_equipamentos;
 import com.example.corredor.Class.Cadastro_Status_De_Ativos;
 import com.example.corredor.Class.RecyclerItemClickListener;
-import com.example.corredor.Configuraçoes.ConfiguraçaosFirebase;
+import com.example.corredor.Configuraçoes.ConfiguracaoFirebase2;
 import com.example.corredor.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -49,7 +49,7 @@ public class StatusEquipamentosActivity extends AppCompatActivity {
 
         //Configurações iniciais
 
-        relatoriosPublicosRef = ConfiguraçaosFirebase.getFirebase()
+        relatoriosPublicosRef = ConfiguracaoFirebase2.getFirebase()
                 .child("StatusEquipamentos");
 
 
@@ -133,7 +133,7 @@ public class StatusEquipamentosActivity extends AppCompatActivity {
     private void recuperaRelatoriosPorManutençao() {
 
         //Configura nó por categoria
-        relatoriosPublicosRef = ConfiguraçaosFirebase.getFirebase()
+        relatoriosPublicosRef = ConfiguracaoFirebase2.getFirebase()
                 .child("StatusEquipamentos")
                 .child(filtraManutençao)
                 .child( filtraAtivo );
@@ -261,7 +261,7 @@ public class StatusEquipamentosActivity extends AppCompatActivity {
     private void recuperaRelatoriosPorAtivo() {
 
         //Configura nó por estado
-        relatoriosPublicosRef = ConfiguraçaosFirebase.getFirebase()
+        relatoriosPublicosRef = ConfiguracaoFirebase2.getFirebase()
                 .child("StatusEquipamentos")
                 .child(filtraManutençao);
 

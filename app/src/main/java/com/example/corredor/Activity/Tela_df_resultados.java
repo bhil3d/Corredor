@@ -12,7 +12,7 @@ import android.widget.AdapterView;
 import com.example.corredor.Adaptadores.Adapter_lista_DF;
 import com.example.corredor.Class.ClassDF;
 import com.example.corredor.Class.RecyclerItemClickListener;
-import com.example.corredor.Configuraçoes.ConfiguraçaosFirebase;
+import com.example.corredor.Configuraçoes.ConfiguracaoFirebase2;
 import com.example.corredor.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -50,7 +50,7 @@ public class Tela_df_resultados extends AppCompatActivity {
 getSupportActionBar().setTitle("DF");
 
         //Configurações iniciais
-        relatoriosPublicosRef = ConfiguraçaosFirebase.getFirebase()
+        relatoriosPublicosRef = ConfiguracaoFirebase2.getFirebase()
                 .child("DF");
 
         //Configurar RecyclerView

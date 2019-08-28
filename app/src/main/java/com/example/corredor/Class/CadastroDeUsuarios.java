@@ -1,9 +1,11 @@
 package com.example.corredor.Class;
 
-import com.example.corredor.Configuraçoes.ConfiguraçaosFirebase;
+import com.example.corredor.Configuraçoes.ConfiguracaoFirebase2;
 import com.google.firebase.database.DatabaseReference;
 
 import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
 
 public class CadastroDeUsuarios implements Serializable {
 
@@ -13,17 +15,40 @@ public class CadastroDeUsuarios implements Serializable {
     private String senha;
     private String matricula;
     private String gerencia;
+    private String caminhoFoto;
 
     public CadastroDeUsuarios() {
 
     }
 
     public void salvar(){
-        DatabaseReference firebaseRef = ConfiguraçaosFirebase.getFirebase();
+        DatabaseReference firebaseRef = ConfiguracaoFirebase2.getFirebase();
         DatabaseReference usuariosRef = firebaseRef.child("usuarios").child( getIdUsuario() );
         usuariosRef.setValue( this );
     }
 
+    public void atualizar(){
+
+        DatabaseReference firebaseRef = ConfiguracaoFirebase2.getFirebase();
+
+        Map objeto = new HashMap();
+        objeto.put("/usuarios/" + getIdUsuario() + "/nome", getNome() );
+        objeto.put("/usuarios/" + getIdUsuario() + "/caminhoFoto", getCaminhoFoto() );
+
+        firebaseRef.updateChildren( objeto );
+
+    }
+
+
+
+
+    public String getCaminhoFoto() {
+        return caminhoFoto;
+    }
+
+    public void setCaminhoFoto(String caminhoFoto) {
+        this.caminhoFoto = caminhoFoto;
+    }
 
     public String getIdUsuario() {
         return idUsuario;

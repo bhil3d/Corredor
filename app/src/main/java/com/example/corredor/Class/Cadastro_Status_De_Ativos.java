@@ -1,6 +1,6 @@
 package com.example.corredor.Class;
 
-import com.example.corredor.Configuraçoes.ConfiguraçaosFirebase;
+import com.example.corredor.Configuraçoes.ConfiguracaoFirebase2;
 import com.google.firebase.database.DatabaseReference;
 
 import java.io.Serializable;
@@ -15,7 +15,7 @@ public class Cadastro_Status_De_Ativos implements Serializable {
 
 
     public Cadastro_Status_De_Ativos() {
-        DatabaseReference relatorioRef = ConfiguraçaosFirebase.getFirebase()
+        DatabaseReference relatorioRef = ConfiguracaoFirebase2.getFirebase()
                 .child("meus relatorios");
         setIdStatus(relatorioRef.push().getKey());
 
@@ -33,7 +33,7 @@ this.StatusAtivo=spinermanutecao;
 
 
     public void salvar(){
-        DatabaseReference relatorioRef = ConfiguraçaosFirebase.getFirebase()
+        DatabaseReference relatorioRef = ConfiguracaoFirebase2.getFirebase()
                 .child("StatusEquipamentos");
 
         relatorioRef.child(getAtivo())

@@ -4,7 +4,7 @@ import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
-import com.example.corredor.Configuraçoes.ConfiguraçaosFirebase;
+import com.example.corredor.Configuraçoes.ConfiguracaoFirebase2;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -20,7 +20,7 @@ public class UsuarioFirebase {
 
     public static FirebaseUser getUsuarioAtual(){
 
-        FirebaseAuth usuario = ConfiguraçaosFirebase.getFirebaseAutenticacao();
+        FirebaseAuth usuario = ConfiguracaoFirebase2.getFirebaseAutenticacao();
         return usuario.getCurrentUser();
 
     }

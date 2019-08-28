@@ -13,7 +13,7 @@ import com.example.corredor.Adaptadores.Adapter_lista_Relatorios_Publicos;
 import com.example.corredor.Class.CadastraRelatoriosTurno;
 import com.example.corredor.Class.CadastroDeUsuarios;
 import com.example.corredor.Class.RecyclerItemClickListener;
-import com.example.corredor.Configuraçoes.ConfiguraçaosFirebase;
+import com.example.corredor.Configuraçoes.ConfiguracaoFirebase2;
 import com.example.corredor.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -36,9 +36,9 @@ public class Tela_lista_meus_Relatorios extends AppCompatActivity {
         setContentView(R.layout.tela_lista_meus__relatoriosactivity_);
 
         //Configurações iniciais
-        relatoriosPublicosRef = ConfiguraçaosFirebase.getFirebase()
+        relatoriosPublicosRef = ConfiguracaoFirebase2.getFirebase()
                 .child("meus relatorios")
-               .child(ConfiguraçaosFirebase .getIdUsuario() );
+               .child(ConfiguracaoFirebase2 .getIdUsuario() );
 
 
         inicializarComponentes();
