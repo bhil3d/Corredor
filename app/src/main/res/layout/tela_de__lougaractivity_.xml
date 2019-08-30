@@ -40,11 +40,11 @@
 
     <ImageView
         android:id="@+id/circle1"
-        android:layout_width="134dp"
-        android:layout_height="134dp"
+        android:layout_width="141dp"
+        android:layout_height="172dp"
         android:layout_below="@+id/bgHeader"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="-80dp"
+        android:layout_marginTop="-117dp"
         android:layout_marginRight="-100dp"
         android:src="@drawable/circletransparant" />
 
@@ -188,6 +188,7 @@
                 android:textSize="14sp" />
 
             <Button
+                android:id="@+id/btnFacebookLoug"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tvForgot"
