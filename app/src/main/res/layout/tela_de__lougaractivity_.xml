@@ -81,61 +81,13 @@
         android:id="@+id/sv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/bgHeader">
+        android:layout_below="@+id/bgHeader"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="0dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
-            <android.support.v7.widget.CardView
-                android:id="@+id/cv"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="20dp"
-                app:cardCornerRadius="10dp"
-                app:cardElevation="4dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:paddingBottom="50dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:text="Username"
-                        android:textColor="@color/colorPurple"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
-
-                    <EditText
-                        android:id="@+id/editetnome"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:inputType="text" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:text="Password"
-                        android:textColor="@color/colorPurple"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
-
-                    <EditText
-                        android:id="@+id/editeSenha"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:inputType="textPassword" />
-                </LinearLayout>
-            </android.support.v7.widget.CardView>
 
             <RelativeLayout
                 android:layout_width="wrap_content"
@@ -187,23 +139,94 @@
                 android:text="Forgot your password?"
                 android:textSize="14sp" />
 
-            <Button
-                android:id="@+id/btnFacebookLoug"
+            <android.support.v7.widget.CardView
+                android:id="@+id/cv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="20dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="4dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingBottom="50dp">
+
+                    <EditText
+                        android:id="@+id/editetnome"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:inputType="text" />
+
+                    <EditText
+                        android:id="@+id/editeSenha"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:inputType="textPassword" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:text="Password"
+                        android:textColor="@color/colorPurple"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:text="Username"
+                        android:textColor="@color/colorPurple"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+
+
+
+            <com.facebook.login.widget.LoginButton
+                android:id="@+id/login_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tvForgot"
                 android:layout_alignLeft="@+id/cv"
                 android:layout_alignRight="@+id/cv"
                 android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginRight="20dp"
-                android:background="@drawable/bt_uifb"
-                android:drawableLeft="@drawable/logofacebook"
+                android:background="@drawable/bg_ui"
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp"
-                android:text="LOGIN WITH FACEBOOK"
-                android:textColor="@color/colorPurple" />
+                android:text="LOGIN WITH FACEBOOK" />
+
+            <Button
+                android:id="@+id/login_google"
+                android:layout_width="match_parent"
+                android:layout_height="27dp"
+                android:layout_below="@+id/tvForgot"
+                android:layout_alignLeft="@+id/cv"
+                android:layout_alignRight="@+id/cv"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/bg_ui"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+
+                android:text="Continuar com Google"
+                android:textColor="#FFFFFF"
+                android:textSize="12sp"
+                android:textStyle="bold" />
         </RelativeLayout>
+
     </ScrollView>
 
 </RelativeLayout>

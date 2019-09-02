@@ -41,5 +41,9 @@ dependencies {
 
     //autenticaçao facebook
 
-    implementation 'com.facebook.android:facebook-android-sdk:[4,5)'
+    implementation 'com.facebook.android:facebook-android-sdk:4.42.0'
+
+   // implementation 'com.google.android.gms:play-services-auth:15.0.1'
 }
+
+//implementation 'com.google.android.gms:play-services-auth:15.0.1'
