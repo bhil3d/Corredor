@@ -172,7 +172,7 @@ public class Tela_de_RegistroActivity extends AppCompatActivity {
 
     public void inicializarComponentes(){
 
-        componome       = findViewById(R.id.editetnome);
+      //  componome       = findViewById(R.id.editetnome);
         campoEmail      = findViewById(R.id.editeEmail);
         campoSenha      = findViewById(R.id.editenome);
         botaoCadastrar  = findViewById(R.id.butaocadastro);

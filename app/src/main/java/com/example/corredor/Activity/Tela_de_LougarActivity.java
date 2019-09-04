@@ -19,15 +19,12 @@ import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
-import com.facebook.FacebookSdk;
-import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
@@ -39,7 +36,7 @@ import com.google.firebase.auth.GoogleAuthProvider;
 
 import java.util.Arrays;
 
-public class Tela_de_LougarActivity extends AppCompatActivity implements View.OnClickListener {
+public class Tela_de_LougarActivity extends AppCompatActivity  {
 
     private LoginButton facebookLoginButton;
     private Button logGoogle;
@@ -118,20 +115,6 @@ public class Tela_de_LougarActivity extends AppCompatActivity implements View.On
     }
 
     /////////////metodo de click////////////////////////////////////////////////////////////////////
-
-    @Override
-    public void onClick(View v) {
-
-        switch (v.getId()){
-
-            case R.id.login_google:
-
-                signInGoogle();
-
-                break;
-        }
-
-    }
 
 
 /////////////////////////...Google.....////////////////////////////////////////////////////////////////
@@ -395,7 +378,6 @@ if(accont ==null){
         senha = findViewById(R.id.editeSenha);
         lougar = findViewById(R.id.butaolougar);
         logGoogle = (Button) findViewById(R.id.login_google);
-        logGoogle.setOnClickListener(this);
 
 
 
