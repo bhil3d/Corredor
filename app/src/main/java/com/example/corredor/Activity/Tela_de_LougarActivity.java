@@ -2,9 +2,9 @@ package com.example.corredor.Activity;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.CardView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -25,6 +25,8 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.SignInButton;
+import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
@@ -34,12 +36,10 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
-import java.util.Arrays;
-
-public class Tela_de_LougarActivity extends AppCompatActivity  {
+public class Tela_de_LougarActivity extends AppCompatActivity implements View.OnClickListener {
 
     private LoginButton facebookLoginButton;
-    private Button logGoogle;
+    private SignInButton logGoogle;
     private EditText email;
     private EditText senha;
     private Button lougar;
@@ -55,9 +55,18 @@ public class Tela_de_LougarActivity extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tela_de__lougaractivity_);
 
-        autenticacao = ConfiguracaoFirebase.getFirebaseAutenticacao();
+        logGoogle = (SignInButton) findViewById(R.id.cardView_LoginGoogle);
+        logGoogle.setOnClickListener(this);
+        logGoogle.setSize(SignInButton.SIZE_WIDE);
+
+        logGoogle.setColorScheme(SignInButton.COLOR_DARK);
+
         autenticacao = FirebaseAuth.getInstance();
+
+    //    autenticacao = ConfiguracaoFirebase.getFirebaseAutenticacao();
+
         callbackManager = CallbackManager.Factory.create();
+
 
         ////facebook/////
         inicializarComponentes();
@@ -103,16 +112,28 @@ public class Tela_de_LougarActivity extends AppCompatActivity  {
                             "Preencha o e-mail!",
                             Toast.LENGTH_SHORT).show();
                 }
-
             }
         });
 
+    }
 
+    /////////////////////////Click..google..////////////////////////////////////////////////////////////
 
+    @Override
+    public void onClick(View v) {
 
+        switch (v.getId()){
 
+            case R.id.cardView_LoginGoogle:
+                signInGoogle();
+
+                break;
+
+        }
 
     }
+
+/////////////////////////Click..google..////////////////////////////////////////////////////////////
 
     /////////////metodo de click////////////////////////////////////////////////////////////////////
 
@@ -150,36 +171,8 @@ if(accont ==null){
 
     }
 
-    private void adicionarContaGoogleaoFirebase(GoogleSignInAccount acct) {
 
-
-        AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
-
-        autenticacao.signInWithCredential(credential)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-
-                        if (task.isSuccessful()) {
-
-                            finish();
-                            startActivity(new Intent(getBaseContext(),Tela_Menu_Principal.class));
-
-                        } else {
-
-                            String resultado = task.getException().toString();
-
-                            Util2.opcoesErro(getBaseContext(),resultado);
-
-                        }
-
-                        // ...
-                    }
-                });
-    }
-
-
-/* @Override
+    @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
         callbackManager.onActivityResult(requestCode, resultCode, data);
@@ -211,7 +204,38 @@ if(accont ==null){
 
     }
 
-*/
+    private void adicionarContaGoogleaoFirebase(GoogleSignInAccount acct) {
+
+
+        AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
+
+        autenticacao.signInWithCredential(credential)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+
+                        if (task.isSuccessful()) {
+
+                            finish();
+                            startActivity(new Intent(getBaseContext(),Tela_Menu_Principal.class));
+
+                        } else {
+
+                            String resultado = task.getException().toString();
+
+                            Util2.opcoesErro(getBaseContext(),resultado);
+
+                        }
+
+                        // ...
+                    }
+                });
+    }
+
+
+
+
+
     ///////////////////////////////////FACEBOOK/////////////////////////////////////////////////////////////
 
 
@@ -283,12 +307,7 @@ if(accont ==null){
 
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        callbackManager.onActivityResult(requestCode,resultCode,data);
 
-    }
 
 
 
@@ -377,7 +396,7 @@ if(accont ==null){
         email = findViewById(R.id.editetnome);
         senha = findViewById(R.id.editeSenha);
         lougar = findViewById(R.id.butaolougar);
-        logGoogle = (Button) findViewById(R.id.login_google);
+
 
 
 
@@ -413,7 +432,6 @@ if(accont ==null){
         }
 
     }
-
 
 
 }

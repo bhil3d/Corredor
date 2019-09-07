@@ -20,14 +20,14 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.corredor.Adaptadores.adpitadorFraguimentos;
-import com.example.corredor.Class.CadastroDeUsuarios;
 import com.example.corredor.Class.UsuarioFirebase;
 import com.example.corredor.R;
+import com.facebook.login.LoginManager;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-
-
-import de.hdodenhof.circleimageview.CircleImageView;
 
 
 public class Tela_Menu_Principal extends AppCompatActivity
@@ -35,6 +35,7 @@ public class Tela_Menu_Principal extends AppCompatActivity
 
     private FirebaseAuth autenticacao;
     FirebaseUser currentUser ;
+    private GoogleSignInClient googleSignInClient;
 
 
 
@@ -100,10 +101,8 @@ public class Tela_Menu_Principal extends AppCompatActivity
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
 
-            autenticacao.signOut();
-            startActivity(new Intent(getApplicationContext(), Tela_de_LougarActivity.class));
-            finish();
-            return true;
+            deslougarUsuarios();
+
         }
 
         return super.onOptionsItemSelected(item);
@@ -196,5 +195,30 @@ public class Tela_Menu_Principal extends AppCompatActivity
         }
 
     }
+
+
+public boolean deslougarUsuarios(){
+
+    /////////////////////////sair............Google..///////////////////////////////////////////////////
+    FirebaseAuth.getInstance().signOut();
+
+    LoginManager.getInstance().logOut();
+
+    GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestIdToken(getString(R.string.default_web_client_id))
+            .requestEmail()
+            .build();
+
+    googleSignInClient = GoogleSignIn.getClient(this, gso);
+    googleSignInClient.signOut();
+
+    /////////////sair///////////////////email///////////////////////////////////////
+    autenticacao.signOut();
+    startActivity(new Intent(getApplicationContext(), Tela_de_LougarActivity.class));
+    finish();
+    return true;
+
+
+}
 
 }

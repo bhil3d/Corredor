@@ -202,29 +202,20 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="20dp"
-                android:background="@drawable/bg_ui"
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp"
                 android:text="LOGIN WITH FACEBOOK" />
 
-            <Button
-                android:id="@+id/login_google"
-                android:layout_width="match_parent"
-                android:layout_height="27dp"
+            <com.google.android.gms.common.SignInButton
+                android:id="@+id/cardView_LoginGoogle"
+                android:layout_width="350dp"
+                android:layout_height="35dp"
                 android:layout_below="@+id/tvForgot"
-                android:layout_alignLeft="@+id/cv"
-                android:layout_alignRight="@+id/cv"
-                android:layout_marginLeft="20dp"
+                android:layout_marginLeft="30dp"
                 android:layout_marginTop="50dp"
-                android:layout_marginRight="20dp"
-                android:background="@drawable/bg_ui"
-                android:paddingLeft="20dp"
-                android:paddingRight="20dp"
+                android:layout_marginRight="10dp"
+               />
 
-                android:text="Continuar com Google"
-                android:textColor="#FFFFFF"
-                android:textSize="12sp"
-                android:textStyle="bold" />
         </RelativeLayout>
 
     </ScrollView>
