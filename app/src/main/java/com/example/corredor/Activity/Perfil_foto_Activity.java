@@ -16,7 +16,6 @@ public class Perfil_foto_Activity extends AppCompatActivity {
 
     private ImageView imgperfil;
     private CadastroDeUsuarios usuarioselecionado;
-    private DatabaseReference usuarioLogadoRef;
 
 
     @Override

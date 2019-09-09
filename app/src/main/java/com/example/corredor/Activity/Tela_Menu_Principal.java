@@ -130,8 +130,8 @@ public class Tela_Menu_Principal extends AppCompatActivity
 
         } else if (id == R.id.telefones) {
 
-          /*  Intent intent = new Intent(Tela_Menu_Principal.this,Tela_df_resultados.class);
-            startActivity(intent);*/
+            Intent intent = new Intent(Tela_Menu_Principal.this,Perfil_Usuario_Detalhes_Activity.class);
+            startActivity(intent);
 
         } else if (id == R.id.contracheques) {
 
@@ -163,7 +163,7 @@ public class Tela_Menu_Principal extends AppCompatActivity
 
     public void editarperfil (View view){
 
-        Intent intent = new Intent(Tela_Menu_Principal.this,Perfil_foto_Activity.class);
+        Intent intent = new Intent(Tela_Menu_Principal.this,Perfil_Usuario_Detalhes_Activity.class);
         startActivity(intent);
 
 
