@@ -150,7 +150,7 @@ public class Tela_Menu_Principal extends AppCompatActivity
 
         } else if (id == R.id.Df) {
 
-            Intent intent = new Intent(Tela_Menu_Principal.this,Tela_df_resultados.class);
+            Intent intent = new Intent(Tela_Menu_Principal.this,Perfil_foto_Activity.class);
             startActivity(intent);
         }
 

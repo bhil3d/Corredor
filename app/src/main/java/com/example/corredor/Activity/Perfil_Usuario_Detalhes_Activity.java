@@ -1,6 +1,7 @@
 package com.example.corredor.Activity;
 
 import android.net.Uri;
+import android.os.Handler;
 import android.support.constraint.ConstraintLayout;
 import android.support.constraint.ConstraintSet;
 import android.support.v7.app.AppCompatActivity;
@@ -38,12 +39,20 @@ public class Perfil_Usuario_Detalhes_Activity extends AppCompatActivity {
         layout1 = new ConstraintSet();
         layout2 = new ConstraintSet();
         imageViewPhoto = findViewById(R.id.photo);
-        imagemfoto2 = findViewById(R.id.cover);
+       imagemfoto2 = findViewById(R.id.cover);
         constraintLayout = findViewById(R.id.constraint_layout);
-        layout2.clone(this,R.layout.profile_expanded);
-        layout1.clone(constraintLayout);
+        layout1.clone(this,R.layout.profile_expanded);
+        layout2.clone(constraintLayout);
 
         recuperarFotoUsuario();
+
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mudarposicaoDolayouty();
+            }
+        }, 2000);
 
         imageViewPhoto.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,14 +61,14 @@ public class Perfil_Usuario_Detalhes_Activity extends AppCompatActivity {
 
                 if (!isOpen) {
                     TransitionManager.beginDelayedTransition(constraintLayout);
-                    layout2.applyTo(constraintLayout);
+                    layout1.applyTo(constraintLayout);
                     isOpen = !isOpen ;
                 }
 
                 else {
 
                     TransitionManager.beginDelayedTransition(constraintLayout);
-                    layout1.applyTo(constraintLayout);
+                    layout2.applyTo(constraintLayout);
                     isOpen = !isOpen ;
 
                 }
@@ -74,6 +83,13 @@ public class Perfil_Usuario_Detalhes_Activity extends AppCompatActivity {
 
     }
 
+    private void mudarposicaoDolayouty() {
+        TransitionManager.beginDelayedTransition(constraintLayout);
+        layout1.applyTo(constraintLayout);
+        isOpen = !isOpen ;
+
+    }
+
     private void recuperarFotoUsuario() {
         FirebaseUser usuarioPerfil = UsuarioFirebase.getUsuarioAtual();
 
@@ -82,12 +98,19 @@ public class Perfil_Usuario_Detalhes_Activity extends AppCompatActivity {
         if( url != null ){
             Glide.with(Perfil_Usuario_Detalhes_Activity.this)
                     .load( url )
-                    .into( imagemfoto2 );
+                    .into( imageViewPhoto );
         }
+
         if( url != null ){
             Glide.with(Perfil_Usuario_Detalhes_Activity.this)
                     .load( url )
-                    .into( imageViewPhoto );
+                    .into( imagemfoto2 );
         }
+
+
+
+
     }
+
+
 }
