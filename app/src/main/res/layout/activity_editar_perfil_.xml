@@ -37,7 +37,7 @@
                 android:id="@+id/editNomePerfil"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawableLeft="@drawable/ic_perfil_preto_24dp"
+                android:drawableLeft="@drawable/ic_perfil"
                 android:drawableTint="@android:color/darker_gray"
                 android:hint="Nome usuário" />
         </android.support.design.widget.TextInputLayout>
@@ -50,7 +50,7 @@
                 android:id="@+id/editEmailPerfil"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawableLeft="@drawable/ic_email_black_24dp"
+                android:drawableLeft="@drawable/ic_email"
                 android:drawableTint="@android:color/darker_gray"
                 android:hint="Email" />
         </android.support.design.widget.TextInputLayout>
