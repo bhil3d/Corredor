@@ -40,6 +40,7 @@ public class Editar_perfil_Activity extends AppCompatActivity {
     private static final int SELECAO_GALERIA = 200;
     private StorageReference storageRef;
     private String identificadorUsuario;
+    private TextView nomeUsuario,gerenciaUsuario,matriculaUsuario,emailUsuario;
 
     private String[] permissoesNecessarias = new String[]{
             Manifest.permission.READ_EXTERNAL_STORAGE

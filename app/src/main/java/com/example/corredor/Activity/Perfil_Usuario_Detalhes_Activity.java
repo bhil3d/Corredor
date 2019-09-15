@@ -11,20 +11,30 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.corredor.Class.CadastroDeUsuarios;
 import com.example.corredor.Class.UsuarioFirebase;
+import com.example.corredor.Configuraçoes.ConfiguracaoFirebase;
+import com.example.corredor.Configuraçoes.ConfiguracaoFirebase2;
 import com.example.corredor.R;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.ValueEventListener;
 
 public class Perfil_Usuario_Detalhes_Activity extends AppCompatActivity {
 
     private boolean isOpen = false ;
+    private String idUsuarioLogado;
     private CadastroDeUsuarios usuarioselecionado;
     private ConstraintSet layout1,layout2;
+    private DatabaseReference relatoriosPublicosRef;
     private ConstraintLayout constraintLayout ;
     private ImageView imageViewPhoto,imagemfoto2;
+    private TextView nomeUsuario,gerenciaUsuario,matriculaUsuario,emailUsuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +55,17 @@ public class Perfil_Usuario_Detalhes_Activity extends AppCompatActivity {
         layout2.clone(constraintLayout);
 
         recuperarFotoUsuario();
+        Recuperardadosdousuário();
+        inicializarComponentes();
+
+    //    idUsuarioLogado = ConfiguracaoFirebase2.getIdUsuario();
+       // relatoriosPublicosRef = ConfiguracaoFirebase.getFirebase();
+
+        //Configurações iniciais
+        relatoriosPublicosRef = ConfiguracaoFirebase2.getFirebase()
+                .child("usuarios")
+                .child(ConfiguracaoFirebase2 .getIdUsuario() );
+
 
 
         new Handler().postDelayed(new Runnable() {
@@ -83,6 +104,16 @@ public class Perfil_Usuario_Detalhes_Activity extends AppCompatActivity {
 
     }
 
+    private void inicializarComponentes() {
+
+        nomeUsuario      = findViewById(R.id.nameperfiluser);
+        gerenciaUsuario        = findViewById(R.id.emailperfiluser);
+        matriculaUsuario         = findViewById(R.id.gerenciaperfiluser);
+        emailUsuario        = findViewById(R.id.matriculaperfiluser);
+
+
+    }
+
     private void mudarposicaoDolayouty() {
         TransitionManager.beginDelayedTransition(constraintLayout);
         layout1.applyTo(constraintLayout);
@@ -109,6 +140,39 @@ public class Perfil_Usuario_Detalhes_Activity extends AppCompatActivity {
 
 
 
+
+    }
+
+    private void Recuperardadosdousuário(){
+
+        //Configurações iniciais
+        relatoriosPublicosRef = ConfiguracaoFirebase2.getFirebase()
+                .child("usuarios")
+                .child(ConfiguracaoFirebase2 .getIdUsuario() );
+
+        relatoriosPublicosRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                if( dataSnapshot.getValue() != null ){
+                    CadastroDeUsuarios empresa = dataSnapshot.getValue(CadastroDeUsuarios.class);
+                    nomeUsuario.setText(empresa.getNome());
+                    gerenciaUsuario.setText(empresa.getGerencia());
+                    matriculaUsuario.setText(empresa.getMatricula());
+                    emailUsuario.setText(empresa.getEmail());
+
+
+
+
+                }
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
 
     }
 

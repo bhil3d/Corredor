@@ -4,6 +4,7 @@ apply plugin: 'com.google.gms.google-services'
 android {
     compileSdkVersion 28
     defaultConfig {
+        applicationId "com.mikhaellopez.circularimageviewsample"
         applicationId "com.example.corredor"
         minSdkVersion 24
         targetSdkVersion 28
@@ -38,6 +39,7 @@ dependencies {
 
     //Dependências circle image view
     implementation 'de.hdodenhof:circleimageview:2.2.0'
+   // implementation "com.mikhaellopez:circularimageview"
 
     //autenticaçao facebook
 

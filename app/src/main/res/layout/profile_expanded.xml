@@ -7,20 +7,26 @@
     tools:context=".Activity.Perfil_Usuario_Detalhes_Activity">
 
 
-    <ImageView
-        android:id="@+id/cover"
-        android:layout_width="0dp"
-        android:layout_height="230dp"
-        android:scaleType="centerCrop"
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/photo"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="60dp"
+        android:elevation="@dimen/cardview_default_radius"
+        app:civ_border_color="@color/endblue"
+        app:civ_border_width="3dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/avatar" />
-
 
     <android.support.v7.widget.CardView
 
         android:id="@+id/textView4"
         android:layout_width="300dp"
 
-        android:layout_height="400dp"
+        android:layout_height="match_parent"
         android:layout_marginTop="130dp"
         android:foregroundGravity="center_vertical"
         android:orientation="vertical"
@@ -32,53 +38,81 @@
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent">
 
 
             <LinearLayout
-                android:id="@+id/linearLayout2"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                android:id="@+id/linearLayout3"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
-                android:gravity="center"
-                android:orientation="vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="25dp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout5">
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
 
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_gerencia">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
+                </ImageView>
+
+                <TextView
+                    android:id="@+id/gerenciaperfiluser"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:paddingLeft="25dp">
-
-                    <ImageView
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:src="@drawable/ic_perfil">
-
-                    </ImageView>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:paddingLeft="20dp"
-                        android:text="Weberson Costa"
-                        android:textSize="14sp"
-                        android:textStyle="bold">
+                    android:layout_gravity="center_vertical"
+                    android:paddingLeft="20dp"
+                    android:text="Gerencia"
+                    android:textSize="15sp"
+                    android:textStyle="normal">
 
 
-                    </TextView>
-
-                </LinearLayout>
-
+                </TextView>
 
             </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="100dp"
+                android:layout_marginEnd="8dp"
+                android:orientation="horizontal"
+                android:paddingLeft="25dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_perfil">
+
+                </ImageView>
+
+                <TextView
+                    android:id="@+id/nameperfiluser"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:fontFamily="sans-serif"
+                    android:paddingLeft="15dp"
+                    android:text=" Nome"
+                    android:textSize="15sp"
+                    android:textStyle="normal">
+
+
+                </TextView>
+
+            </LinearLayout>
+
 
             <LinearLayout
                 android:id="@+id/linearLayout5"
@@ -93,31 +127,35 @@
 
 
             <LinearLayout
-                android:id="@+id/linearLayout3"
+                android:id="@+id/linearLaout3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 android:orientation="horizontal"
                 android:paddingLeft="25dp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
 
                 <ImageView
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
-                    android:src="@drawable/ic_menu_camera"></ImageView>
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_gerencia">
+
+                </ImageView>
 
                 <TextView
+                    android:id="@+id/matriculaperfiluser"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:paddingLeft="20dp"
-                    android:text="Favorita"
-                    android:textSize="17sp"
-                    android:textStyle="bold">
+                    android:text="matricula"
+                    android:textSize="15sp"
+                    android:textStyle="normal">
 
 
                 </TextView>
@@ -129,51 +167,67 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 android:orientation="horizontal"
                 android:paddingLeft="25dp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout7">
 
                 <ImageView
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
-                    android:src="@drawable/ic_menu_camera"></ImageView>
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_email">
+
+                </ImageView>
 
                 <TextView
+                    android:id="@+id/emailperfiluser"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:paddingLeft="20dp"
-                    android:text="Fotos"
-                    android:textSize="17sp"
-                    android:textStyle="bold">
+                    android:text="Email"
+                    android:textSize="15sp"
+                    android:textStyle="normal">
 
 
                 </TextView>
 
             </LinearLayout>
 
-
         </android.support.constraint.ConstraintLayout>
 
     </android.support.v7.widget.CardView>
 
-
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/photo"
-        android:layout_width="90dp"
-        android:layout_height="90dp"
-        android:layout_marginEnd="50dp"
-        android:elevation="@dimen/cardview_default_radius"
-        app:layout_constraintBottom_toTopOf="@+id/textView4"
+    <Button
+        android:id="@+id/butompf"
+        android:layout_width="1dp"
+        android:layout_height="1dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="172dp"
+        android:layout_marginEnd="60dp"
+        android:background="@drawable/stylobtnpfil"
+        android:text="sair da sua conta"
+        android:textColor="@color/startblue"
+        android:textSize="15sp"
+        android:textStyle="normal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView4"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cover">
+
+
+    </Button>
+
+    <ImageView
+        android:id="@+id/cover"
+        android:layout_width="0dp"
+        android:layout_height="230dp"
+        android:scaleType="centerCrop"
         app:srcCompat="@drawable/avatar" />
-
-
 
 
 </android.support.constraint.ConstraintLayout>
