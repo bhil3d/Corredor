@@ -33,7 +33,10 @@ public class CadastroDeUsuarios implements Serializable {
 
         Map objeto = new HashMap();
         objeto.put("/usuarios/" + getIdUsuario() + "/nome", getNome() );
+        objeto.put("/usuarios/" + getIdUsuario() + "/gerencia", getGerencia() );
+        objeto.put("/usuarios/" + getIdUsuario() + "/matricula", getMatricula() );
         objeto.put("/usuarios/" + getIdUsuario() + "/caminhoFoto", getCaminhoFoto() );
+        objeto.put("/usuarios/" + getIdUsuario() + "/email", getEmail() );
 
         firebaseRef.updateChildren( objeto );
 

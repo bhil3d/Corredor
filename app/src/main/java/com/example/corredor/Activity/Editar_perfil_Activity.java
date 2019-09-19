@@ -11,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,11 +19,16 @@ import com.bumptech.glide.Glide;
 import com.example.corredor.Class.CadastroDeUsuarios;
 import com.example.corredor.Class.UsuarioFirebase;
 import com.example.corredor.Configuraçoes.ConfiguracaoFirebase;
+import com.example.corredor.Configuraçoes.ConfiguracaoFirebase2;
 import com.example.corredor.Configuraçoes.Permissao;
 import com.example.corredor.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
@@ -33,14 +39,16 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class Editar_perfil_Activity extends AppCompatActivity {
 
     private CircleImageView imageEditarPerfil;
-    private TextView textAlterarFoto;
-    private TextInputEditText editNomePerfil, editEmailPerfil;
+    private ImageView textAlterarFoto;
+    private TextInputEditText editNomePerfil, editEmailPerfil,editgerenciaPerfil,matriculalPerfil;
     private Button buttonSalvarAlteracoes;
+    private TextView idfotoperfil;
     private CadastroDeUsuarios usuarioLogado;
     private static final int SELECAO_GALERIA = 200;
     private StorageReference storageRef;
     private String identificadorUsuario;
-    private TextView nomeUsuario,gerenciaUsuario,matriculaUsuario,emailUsuario;
+    private DatabaseReference reference;
+
 
     private String[] permissoesNecessarias = new String[]{
             Manifest.permission.READ_EXTERNAL_STORAGE
@@ -62,11 +70,12 @@ public class Editar_perfil_Activity extends AppCompatActivity {
 
         //inicializar componentes
         inicializarComponentes();
-
+        Recuperardadosdousuário();
         //Recuperar dados do usuário
         FirebaseUser usuarioPerfil = UsuarioFirebase.getUsuarioAtual();
         editNomePerfil.setText( usuarioPerfil.getDisplayName().toUpperCase() );
         editEmailPerfil.setText( usuarioPerfil.getEmail() );
+
 
        Uri url = usuarioPerfil.getPhotoUrl();
         if( url != null ){
@@ -75,7 +84,7 @@ public class Editar_perfil_Activity extends AppCompatActivity {
                     .into( imageEditarPerfil );
         }
         else {
-          //  imageEditarPerfil.setImageResource(R.drawable.avatar);
+           imageEditarPerfil.setImageResource(R.drawable.avatar);
         }
 
 
@@ -89,13 +98,22 @@ public class Editar_perfil_Activity extends AppCompatActivity {
 
                 String emailAtualizado = editEmailPerfil.getText().toString();
 
+                String matriculaAtualizado = matriculalPerfil.getText().toString();
+
+                String gerenciaAtualizado = editgerenciaPerfil.getText().toString();
+
+                String caminhoFoto        = idfotoperfil.getText().toString();
+
 
                 //atualizar nome no perfil
                 UsuarioFirebase.atualizarNomeUsuario( nomeAtualizado );
 
                 //Atualizar nome no banco de dados
+                usuarioLogado.setCaminhoFoto(caminhoFoto);
                 usuarioLogado.setNome( nomeAtualizado );
                 usuarioLogado.setEmail(emailAtualizado);
+                usuarioLogado.setMatricula( matriculaAtualizado );
+                usuarioLogado.setGerencia(gerenciaAtualizado);
                 usuarioLogado.atualizar();
 
                 Toast.makeText(Editar_perfil_Activity.this,
@@ -118,6 +136,40 @@ public class Editar_perfil_Activity extends AppCompatActivity {
 
     }
 
+    private void Recuperardadosdousuário(){
+
+        //Configurações iniciais
+        reference = ConfiguracaoFirebase2.getFirebase()
+                .child("usuarios")
+                .child(ConfiguracaoFirebase2 .getIdUsuario() );
+
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                if( dataSnapshot.getValue() != null ){
+                    CadastroDeUsuarios empresa = dataSnapshot.getValue(CadastroDeUsuarios.class);
+                    editNomePerfil.setText(empresa.getNome());
+                    editgerenciaPerfil.setText(empresa.getGerencia());
+                    matriculalPerfil.setText(empresa.getMatricula());
+                    editEmailPerfil.setText(empresa.getEmail());
+                    idfotoperfil.setText(empresa.getCaminhoFoto());
+
+
+
+
+
+                }
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -208,6 +260,10 @@ public class Editar_perfil_Activity extends AppCompatActivity {
         textAlterarFoto        = findViewById(R.id.textAlterarFoto);
         editNomePerfil         = findViewById(R.id.editNomePerfil);
         editEmailPerfil        = findViewById(R.id.editEmailPerfil);
+        editgerenciaPerfil         = findViewById(R.id.editTextoGerencia);
+        matriculalPerfil        = findViewById(R.id.editTextoMatricula);
+        idfotoperfil           = (TextView)findViewById(R.id.idfotoPF);
+
         buttonSalvarAlteracoes = findViewById(R.id.buttonSalvarAlteracoes);
         editEmailPerfil.setFocusable(false);
 

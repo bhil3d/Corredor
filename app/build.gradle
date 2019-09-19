@@ -39,7 +39,7 @@ dependencies {
 
     //Dependências circle image view
     implementation 'de.hdodenhof:circleimageview:2.2.0'
-   // implementation "com.mikhaellopez:circularimageview"
+    // implementation "com.mikhaellopez:circularimageview"
 
     //autenticaçao facebook
 

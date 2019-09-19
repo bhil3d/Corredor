@@ -24,7 +24,7 @@ import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 
 public class Tela_de_RegistroActivity extends AppCompatActivity {
 
-    private EditText campoEmail, campoSenha,componome,compomatricula;
+    private EditText campoEmail, campoSenha,componome,compomatricula,campogerencia;
     private Button botaoCadastrar;
     private ProgressBar progressBar;
 
@@ -45,11 +45,11 @@ public class Tela_de_RegistroActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-              //  String textoNome  = campoNome.getText().toString();
                 String textoEmail = campoEmail.getText().toString();
                 String textosenha = campoSenha.getText().toString();
-                String textoNome = campoEmail.getText().toString();
-                String textoMatricula = campoSenha.getText().toString();
+                String textoNome = componome.getText().toString();
+                String textoMatricula = compomatricula.getText().toString();
+                String textoGerencia = campogerencia.getText().toString();
 
                // if( !textoNome.isEmpty() ){
                     if( !textoEmail.isEmpty() ) {
@@ -60,15 +60,20 @@ public class Tela_de_RegistroActivity extends AppCompatActivity {
 
                             if (!textosenha.isEmpty()) {
 
+                                if (!textoGerencia.isEmpty()) {
+
                                 cadastro = new CadastroDeUsuarios();
                                 // usuario.setNome( textoNome );
                                 cadastro.setEmail(textoEmail);
                                 cadastro.setSenha(textosenha);
                                 cadastro.setNome(textoNome);
+                                cadastro.setGerencia(textoGerencia);
                                 cadastro.setMatricula(textoMatricula);
                                 cadastrar(cadastro);
 
-
+                                } else {
+                                    Toast.makeText(Tela_de_RegistroActivity.this,
+                                            "Preencha a senha!", Toast.LENGTH_SHORT).show(); }
 
                             } else {
                                 Toast.makeText(Tela_de_RegistroActivity.this,
@@ -172,11 +177,13 @@ public class Tela_de_RegistroActivity extends AppCompatActivity {
 
     public void inicializarComponentes(){
 
-      //  componome       = findViewById(R.id.editetnome);
+        componome       = findViewById(R.id.editeNome);
         campoEmail      = findViewById(R.id.editeEmail);
-        campoSenha      = findViewById(R.id.editenome);
-        botaoCadastrar  = findViewById(R.id.butaocadastro);
+        campoSenha      = findViewById(R.id.ediTsenha);
         compomatricula =findViewById(R.id.editematricula);
+        campogerencia =findViewById(R.id.editegerencia);
+        botaoCadastrar  = findViewById(R.id.butaocadastro);
+
        // progressBar     = findViewById(R.id.progressCadastro);
 
      //   campoNome.requestFocus();

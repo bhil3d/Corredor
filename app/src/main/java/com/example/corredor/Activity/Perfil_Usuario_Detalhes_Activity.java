@@ -1,5 +1,6 @@
 package com.example.corredor.Activity;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Handler;
 import android.support.constraint.ConstraintLayout;
@@ -19,6 +20,11 @@ import com.example.corredor.Class.UsuarioFirebase;
 import com.example.corredor.Configuraçoes.ConfiguracaoFirebase;
 import com.example.corredor.Configuraçoes.ConfiguracaoFirebase2;
 import com.example.corredor.R;
+import com.facebook.login.LoginManager;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -28,13 +34,13 @@ import com.google.firebase.database.ValueEventListener;
 public class Perfil_Usuario_Detalhes_Activity extends AppCompatActivity {
 
     private boolean isOpen = false ;
-    private String idUsuarioLogado;
-    private CadastroDeUsuarios usuarioselecionado;
+    private GoogleSignInClient googleSignInClient;
+    private FirebaseAuth autenticacao;
     private ConstraintSet layout1,layout2;
     private DatabaseReference relatoriosPublicosRef;
     private ConstraintLayout constraintLayout ;
     private ImageView imageViewPhoto,imagemfoto2;
-    private TextView nomeUsuario,gerenciaUsuario,matriculaUsuario,emailUsuario;
+    private TextView nomeUsuario,gerenciaUsuario,matriculaUsuario,emailUsuario,nomeUsuariofoto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +48,8 @@ public class Perfil_Usuario_Detalhes_Activity extends AppCompatActivity {
         setContentView(R.layout.activity_perfil__usuario__detalhes_);
 
         // changing the status bar color to transparent
+        //Configurações iniciais
+        autenticacao = FirebaseAuth.getInstance();
 
         Window w = getWindow();
         w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
@@ -107,9 +115,11 @@ public class Perfil_Usuario_Detalhes_Activity extends AppCompatActivity {
     private void inicializarComponentes() {
 
         nomeUsuario      = findViewById(R.id.nameperfiluser);
-        gerenciaUsuario        = findViewById(R.id.emailperfiluser);
-        matriculaUsuario         = findViewById(R.id.gerenciaperfiluser);
-        emailUsuario        = findViewById(R.id.matriculaperfiluser);
+        nomeUsuariofoto = findViewById(R.id.nomeperfilfoto);
+        gerenciaUsuario        = findViewById(R.id.gerenciaperfiluser);
+        matriculaUsuario         = findViewById(R.id.matriculaperfiluser);
+        emailUsuario        = findViewById(R.id.emailperfiluser);
+
 
 
     }
@@ -160,6 +170,7 @@ public class Perfil_Usuario_Detalhes_Activity extends AppCompatActivity {
                     gerenciaUsuario.setText(empresa.getGerencia());
                     matriculaUsuario.setText(empresa.getMatricula());
                     emailUsuario.setText(empresa.getEmail());
+                    nomeUsuariofoto.setText(empresa.getNome());
 
 
 
@@ -173,6 +184,29 @@ public class Perfil_Usuario_Detalhes_Activity extends AppCompatActivity {
 
             }
         });
+
+    }
+
+    public void sairdaconta(View view){
+
+        /////////////////////////sair............Google..///////////////////////////////////////////////////
+        FirebaseAuth.getInstance().signOut();
+
+        LoginManager.getInstance().logOut();
+
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestEmail()
+                .build();
+
+        googleSignInClient = GoogleSignIn.getClient(this, gso);
+        googleSignInClient.signOut();
+
+        /////////////sair///////////////////email///////////////////////////////////////
+        autenticacao.signOut();
+        startActivity(new Intent(getApplicationContext(), Tela_de_LougarActivity.class));
+        finish();
+
 
     }
 

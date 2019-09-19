@@ -12,7 +12,7 @@
 
         android:id="@+id/textView4"
         android:layout_width="1dp"
-
+android:background="@color/colorPrimary"
         android:layout_height="1dp"
         android:layout_marginTop="130dp"
         android:foregroundGravity="center_vertical"
@@ -24,6 +24,7 @@
         tools:ignore="MissingConstraints">
 
         <android.support.constraint.ConstraintLayout
+            android:background="@color/colorPrimary"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -216,9 +217,9 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/photo"
-        android:layout_width="130dp"
+        android:layout_width="110dp"
         android:elevation="@dimen/cardview_default_radius"
-        android:layout_height="130dp"
+        android:layout_height="110dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
@@ -226,7 +227,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cover"
         app:srcCompat="@drawable/avatar"
-        app:civ_border_width="5dp"
+        app:civ_border_width="2dp"
         app:civ_border_color="@color/endblue"/>
 
 
@@ -238,10 +239,12 @@
         android:layout_marginTop="172dp"
         android:layout_marginEnd="32dp"
         android:background="@drawable/stylobtnpfil"
-        android:text="sair da sua conta"
+        android:text="Sair da sua conta"
         android:textColor="@color/startblue"
         android:textSize="15sp"
+        android:onClick="sairdaconta"
         android:textStyle="normal"
+        android:textAllCaps="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
