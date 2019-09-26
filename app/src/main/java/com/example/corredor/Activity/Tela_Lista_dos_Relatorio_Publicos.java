@@ -11,14 +11,17 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.corredor.Adaptadores.Adapter_lista_Relatorios_Publicos;
 import com.example.corredor.Class.CadastraRelatoriosTurno;
 import com.example.corredor.Class.RecyclerItemClickListener;
+import com.example.corredor.Configuraçoes.ConfiguracaoFirebase;
 import com.example.corredor.Configuraçoes.ConfiguracaoFirebase2;
 import com.example.corredor.R;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -31,6 +34,7 @@ import java.util.List;
 public class Tela_Lista_dos_Relatorio_Publicos extends AppCompatActivity {
 
     private Button butaomanutençao, butaoativo;
+    private FirebaseAuth autenticacao;
     private Adapter_lista_Relatorios_Publicos adapter_lista_relatorios_publicos;
     private RecyclerView recyclerView;
 private List<CadastraRelatoriosTurno>listarelatorios = new ArrayList<>();
@@ -38,6 +42,7 @@ private DatabaseReference relatoriosPublicosRef;
 private String filtraManutençao = "";
 private String filtraAtivo = "";
 private  boolean filtroPorManutençao = false;
+private ProgressBar progressBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,8 +50,9 @@ private  boolean filtroPorManutençao = false;
 
         inicializarComponentes();
 
-        //Configurações iniciais
 
+        //Configurações iniciais
+        autenticacao = ConfiguracaoFirebase.getFirebaseAutenticacao();
         relatoriosPublicosRef = ConfiguracaoFirebase2.getFirebase()
                 .child("relatorios");
 
@@ -67,6 +73,8 @@ recuperaRelatoriosPublicos();
                         new RecyclerItemClickListener.OnItemClickListener() {
                             @Override
                             public void onItemClick(View view, int position) {
+
+
                                 CadastraRelatoriosTurno anuncioSelecionado = listarelatorios.get( position );
                                 Intent i = new Intent(Tela_Lista_dos_Relatorio_Publicos.this, Tela_Detalhes_Relatorios_Publicos.class);
                                 i.putExtra("anuncioSelecionado", anuncioSelecionado );
@@ -88,7 +96,7 @@ recuperaRelatoriosPublicos();
 
     }
 
-    public void filtrarPorManutençao(View view){
+       public void filtrarPorManutençao(View view){
 
         AlertDialog.Builder dialogEstado = new AlertDialog.Builder(this);
         dialogEstado.setTitle("Selecione o estado desejado");
@@ -98,10 +106,10 @@ recuperaRelatoriosPublicos();
 
         //Configura spinner de estados
         final Spinner spinnerEstado = viewSpinner.findViewById(R.id.spinnerFiltro);
-        String[] manutençao = getResources().getStringArray(R.array.Manuteçao);
+        String[] estados = getResources().getStringArray(R.array.Manuteçao);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(
                 this, android.R.layout.simple_spinner_item,
-                manutençao
+                estados
         );
         adapter.setDropDownViewResource( android.R.layout.simple_spinner_dropdown_item );
         spinnerEstado.setAdapter( adapter );
@@ -112,11 +120,9 @@ recuperaRelatoriosPublicos();
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 filtraManutençao = spinnerEstado.getSelectedItem().toString();
-                recuperaRelatoriosPorManutençao();
+                recuperarAnunciosPorEstado();
                 filtroPorManutençao = true;
             }
-
-
         });
 
         dialogEstado.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
@@ -128,8 +134,6 @@ recuperaRelatoriosPublicos();
 
         AlertDialog dialog = dialogEstado.create();
         dialog.show();
-
-
 
     }
 
@@ -159,10 +163,8 @@ recuperaRelatoriosPublicos();
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     filtraAtivo = spinnerCategoria.getSelectedItem().toString();
-                    recuperaRelatoriosPorAtivo();
+                    recuperarAnunciosPorCategoria();
                 }
-
-
             });
 
             dialogEstado.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
@@ -176,16 +178,18 @@ recuperaRelatoriosPublicos();
             dialog.show();
 
         }else {
-            Toast.makeText(this, "Escolha primeiro o tipo e Manuteçao!",
+            Toast.makeText(this, "Escolha primeiro uma região!",
                     Toast.LENGTH_SHORT).show();
         }
 
     }
 
-    private void recuperaRelatoriosPorManutençao() {
+    public void recuperarAnunciosPorCategoria(){
+
+        progressBar.setVisibility(View.VISIBLE);
 
         //Configura nó por categoria
-        relatoriosPublicosRef = ConfiguracaoFirebase2.getFirebase()
+        relatoriosPublicosRef = ConfiguracaoFirebase.getFirebase()
                 .child("relatorios")
                 .child(filtraManutençao)
                 .child( filtraAtivo );
@@ -196,14 +200,15 @@ recuperaRelatoriosPublicos();
                 listarelatorios.clear();
                 for(DataSnapshot anuncios: dataSnapshot.getChildren() ){
 
-                    CadastraRelatoriosTurno relatorio = anuncios.getValue(CadastraRelatoriosTurno.class);
-                    listarelatorios.add( relatorio );
+                    CadastraRelatoriosTurno anuncio = anuncios.getValue(CadastraRelatoriosTurno.class);
+                    listarelatorios.add( anuncio );
 
                 }
 
                 Collections.reverse( listarelatorios );
                 adapter_lista_relatorios_publicos.notifyDataSetChanged();
 
+                progressBar.setVisibility(View.GONE);
             }
 
             @Override
@@ -212,15 +217,15 @@ recuperaRelatoriosPublicos();
             }
         });
 
-
     }
 
+    public void recuperarAnunciosPorEstado(){
 
-    private void recuperaRelatoriosPorAtivo() {
+        progressBar.setVisibility(View.VISIBLE);
 
         //Configura nó por estado
-        relatoriosPublicosRef = ConfiguracaoFirebase2.getFirebase()
-                .child("anuncios")
+        relatoriosPublicosRef = ConfiguracaoFirebase.getFirebase()
+                .child("relatorios")
                 .child(filtraManutençao);
 
         relatoriosPublicosRef.addValueEventListener(new ValueEventListener() {
@@ -230,15 +235,15 @@ recuperaRelatoriosPublicos();
                 for (DataSnapshot categorias: dataSnapshot.getChildren() ){
                     for(DataSnapshot anuncios: categorias.getChildren() ){
 
-                        CadastraRelatoriosTurno relatorio = anuncios.getValue(CadastraRelatoriosTurno.class);
-                        listarelatorios.add( relatorio );
+                        CadastraRelatoriosTurno anuncio = anuncios.getValue(CadastraRelatoriosTurno.class);
+                        listarelatorios.add( anuncio );
 
                     }
                 }
 
                 Collections.reverse( listarelatorios );
                 adapter_lista_relatorios_publicos.notifyDataSetChanged();
-
+                progressBar.setVisibility(View.GONE);
             }
 
             @Override
@@ -246,7 +251,10 @@ recuperaRelatoriosPublicos();
 
             }
         });
+
     }
+
+
 
     private void recuperaRelatoriosPublicos() {
 
@@ -256,19 +264,25 @@ recuperaRelatoriosPublicos();
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                for(DataSnapshot estados: dataSnapshot.getChildren()){
-                    for (DataSnapshot categorias: estados.getChildren() ){
+
+
+
+                for(DataSnapshot manutecao: dataSnapshot.getChildren()){
+                    for (DataSnapshot categorias: manutecao.getChildren() ){
                         for(DataSnapshot anuncios: categorias.getChildren() ){
 
                             CadastraRelatoriosTurno anuncio = anuncios.getValue(CadastraRelatoriosTurno.class);
                             listarelatorios.add( anuncio );
 
+
+
                         }
                     }
                 }
-
                 Collections.reverse( listarelatorios );
                 adapter_lista_relatorios_publicos.notifyDataSetChanged();
+                progressBar.setVisibility(View.GONE);
+
 
 
             }
@@ -295,6 +309,7 @@ recuperaRelatoriosPublicos();
 
 
         recyclerView = findViewById(R.id.recyclerRelatorios_Meusrelatorios);
+        progressBar = findViewById(R.id.progressBar_Relatorios);
 
     }
 

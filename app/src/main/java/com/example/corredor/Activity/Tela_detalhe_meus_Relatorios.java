@@ -3,6 +3,8 @@ package com.example.corredor.Activity;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -26,8 +28,6 @@ public class Tela_detalhe_meus_Relatorios extends AppCompatActivity implements V
     private EditText manutençao,ativo,equipamento,lider,data,turma,relatorio,pendencia;
     private TextView idRelatorios;
     private CadastraRelatoriosTurno relatorioSelecionado;
-    private Button button_Alterar;
-    private Button button_Remover;
     private FirebaseDatabase database;
     private String Idusuariolougado;
 
@@ -36,6 +36,20 @@ public class Tela_detalhe_meus_Relatorios extends AppCompatActivity implements V
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tela_detalhe_meus__relatoriosactivity_);
         getSupportActionBar().setTitle("Detalhes");
+
+
+        Idusuariolougado = UsuarioFirebase.getIdentificadorUsuario();
+        database = FirebaseDatabase.getInstance();
+        relatorioSelecionado = getIntent().getParcelableExtra("anuncioSelecionado");
+
+        InicializarComponentes();
+        recuperadados();
+
+
+
+    }
+
+    private void InicializarComponentes() {
 
         idRelatorios = (TextView) findViewById(R.id.IdrelatorioA);
         manutençao = (EditText)findViewById(R.id.ManutecaoA);
@@ -47,19 +61,18 @@ public class Tela_detalhe_meus_Relatorios extends AppCompatActivity implements V
         relatorio = (EditText)findViewById(R.id.RelatorioA);
         pendencia = (EditText)findViewById(R.id.PendenciaA);
 
-        button_Alterar = (Button)findViewById(R.id.butaoalterar);
-        button_Remover = (Button)findViewById(R.id.butaoremover);
-        button_Alterar.setOnClickListener(this);
-        button_Remover.setOnClickListener(this);
-        Idusuariolougado = UsuarioFirebase.getIdentificadorUsuario();
-        database = FirebaseDatabase.getInstance();
-        relatorioSelecionado = getIntent().getParcelableExtra("anuncioSelecionado");
-        recuperadados();
 
+        ///valoresFalso..Editar..................................
+        manutençao.setFocusable(false);
+        ativo.setFocusable(false);
+        equipamento.setFocusable(false);
+        lider.setFocusable(false);
+        data.setFocusable(false);
+        turma.setFocusable(false)
+        ;
 
 
     }
-
 
 
     @Override
@@ -67,20 +80,6 @@ public class Tela_detalhe_meus_Relatorios extends AppCompatActivity implements V
 
         switch (v.getId()){
 
-            case R.id.butaoalterar:
-
-
-                buttonAlterar();
-
-
-                break;
-
-            case R.id.butaoremover:
-
-
-                buttonRemover();
-
-                break;
 
 
 
@@ -285,6 +284,43 @@ public class Tela_detalhe_meus_Relatorios extends AppCompatActivity implements V
 
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.menu_atualizar,menu);
+
+        return super.onCreateOptionsMenu(menu);
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+
+
+        switch (item.getItemId()){
+
+
+            case R.id.atualizar2:
+
+                buttonAlterar();
+
+                return true;
+
+
+            case R.id.excluir:
+
+
+
+                buttonRemover();
+
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 
 
 }

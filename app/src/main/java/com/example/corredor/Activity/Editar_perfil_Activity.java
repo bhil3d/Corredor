@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -48,6 +49,7 @@ public class Editar_perfil_Activity extends AppCompatActivity {
     private StorageReference storageRef;
     private String identificadorUsuario;
     private DatabaseReference reference;
+    private ProgressBar progrebar;
 
 
     private String[] permissoesNecessarias = new String[]{
@@ -67,6 +69,8 @@ public class Editar_perfil_Activity extends AppCompatActivity {
         usuarioLogado = UsuarioFirebase.getDadosUsuarioLogado();
         storageRef = ConfiguracaoFirebase.getFirebaseStorage();
         identificadorUsuario = UsuarioFirebase.getIdentificadorUsuario();
+
+      //  progrebar.setVisibility(View.GONE);
 
         //inicializar componentes
         inicializarComponentes();
@@ -125,8 +129,10 @@ public class Editar_perfil_Activity extends AppCompatActivity {
 
         //Alterar foto do usuário
         textAlterarFoto.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
+                progrebar.setVisibility(View.VISIBLE);
                 Intent i = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                 if( i.resolveActivity(getPackageManager()) != null ){
                     startActivityForResult(i, SELECAO_GALERIA );
@@ -241,6 +247,8 @@ public class Editar_perfil_Activity extends AppCompatActivity {
 
     private void atualizarFotoUsuario(Uri url){
 
+        progrebar.setVisibility(View.VISIBLE);
+
         //Atualizar foto no perfil
         UsuarioFirebase.atualizarFotoUsuario( url );
 
@@ -252,6 +260,8 @@ public class Editar_perfil_Activity extends AppCompatActivity {
                 "Sua foto foi atualizada!",
                 Toast.LENGTH_SHORT).show();
 
+        progrebar.setVisibility(View.GONE);
+
     }
 
     public void inicializarComponentes(){
@@ -262,7 +272,8 @@ public class Editar_perfil_Activity extends AppCompatActivity {
         editEmailPerfil        = findViewById(R.id.editEmailPerfil);
         editgerenciaPerfil         = findViewById(R.id.editTextoGerencia);
         matriculalPerfil        = findViewById(R.id.editTextoMatricula);
-        idfotoperfil           = (TextView)findViewById(R.id.idfotoPF);
+       idfotoperfil           = (TextView)findViewById(R.id.idfotoPF);
+       progrebar            = findViewById(R.id.progressBar_edite_perfil);
 
         buttonSalvarAlteracoes = findViewById(R.id.buttonSalvarAlteracoes);
         editEmailPerfil.setFocusable(false);

@@ -210,5 +210,12 @@ public class Perfil_Usuario_Detalhes_Activity extends AppCompatActivity {
 
     }
 
+    public  void abrifoto(View view){
+
+        Intent intent = new Intent(Perfil_Usuario_Detalhes_Activity.this,Perfil_foto_Activity.class);
+        startActivity(intent);
+        finish();
+
+    }
 
 }

@@ -8,6 +8,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ProgressBar;
 
 import com.example.corredor.Adaptadores.Adapter_lista_Relatorios_Publicos;
 import com.example.corredor.Class.CadastraRelatoriosTurno;
@@ -30,6 +31,7 @@ public class Tela_lista_meus_Relatorios extends AppCompatActivity {
     private RecyclerView recyclerView;
     private List<CadastraRelatoriosTurno> listarelatorios = new ArrayList<>();
     private DatabaseReference relatoriosPublicosRef;
+    private ProgressBar progressBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,7 +77,6 @@ public class Tela_lista_meus_Relatorios extends AppCompatActivity {
 
 
                                 CadastraRelatoriosTurno anuncioSelecionado = listarelatorios.get( position );
-                               // CadastroDeUsuarios usuarioSelecionado = listausuarios.get( position );
                                 Intent i = new Intent(Tela_lista_meus_Relatorios.this, Tela_detalhe_meus_Relatorios.class);
                                 i.putExtra("anuncioSelecionado", anuncioSelecionado ) ;
                                 startActivity( i );
@@ -120,7 +121,7 @@ public class Tela_lista_meus_Relatorios extends AppCompatActivity {
                 Collections.reverse( listarelatorios );
                 adapter_lista_relatorios_publicos.notifyDataSetChanged();
 
-             //   dialog.dismiss();
+          progressBar.setVisibility(View.GONE);
 
             }
 
@@ -135,6 +136,6 @@ public class Tela_lista_meus_Relatorios extends AppCompatActivity {
     public void inicializarComponentes(){
 
         recyclerView = findViewById(R.id.recyclerRelatorios_Meusrelatorios);
-
+        progressBar = findViewById(R.id.progressBar_meusRelatorios);
     }
 }

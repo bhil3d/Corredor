@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -41,6 +43,14 @@ public class Tela_de_Cadastra_Relatorios_Publicos extends AppCompatActivity impl
     }
 
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.menu_salvar,menu);
+
+        return super.onCreateOptionsMenu(menu);
+    }
+
     private CadastraRelatoriosTurno configurarCadastro(){
 
         String manutençao = spinnerManutençao.getSelectedItem().toString();
@@ -66,7 +76,7 @@ public class Tela_de_Cadastra_Relatorios_Publicos extends AppCompatActivity impl
 
     }
 
-    public void validarDadosAnuncio(View view){
+    public void validarDadosAnuncio(){
 
         castro = configurarCadastro();
 
@@ -90,9 +100,11 @@ public class Tela_de_Cadastra_Relatorios_Publicos extends AppCompatActivity impl
 
                                         castro.salvar();
 
-                                        Intent i = new Intent(Tela_de_Cadastra_Relatorios_Publicos.this, Tela_Lista_dos_Relatorio_Publicos.class);
+                                /*        Intent i = new Intent(Tela_de_Cadastra_Relatorios_Publicos.this, Tela_Lista_dos_Relatorio_Publicos.class);
                                         startActivity( i );
                                         finish();
+
+                                 */
 
                                     }else {
                                         exibirMensagemErro("Escreva Pendencia");
@@ -148,6 +160,23 @@ public class Tela_de_Cadastra_Relatorios_Publicos extends AppCompatActivity impl
 
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+
+
+        switch (item.getItemId()){
+
+
+            case R.id.item_salvar:
+                validarDadosAnuncio();
+                return true;
+
+
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 

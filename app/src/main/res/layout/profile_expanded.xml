@@ -15,7 +15,7 @@
         android:layout_marginTop="80dp"
         android:layout_marginEnd="40dp"
         android:elevation="@dimen/cardview_default_radius"
-        app:civ_border_color="@color/endblue"
+        app:civ_border_color="@color/white"
         app:civ_border_width="1dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -26,7 +26,7 @@
         android:id="@+id/textView4"
         android:layout_width="0dp"
 
-        android:layout_height="400dp"
+        android:layout_height="match_parent"
         android:layout_marginStart="10dp"
         android:layout_marginTop="130dp"
         android:layout_marginEnd="12dp"
@@ -40,7 +40,8 @@
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="@drawable/funo_madeira">
 
 
             <LinearLayout
@@ -50,6 +51,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
+                android:background="@drawable/caixa_de_texto"
                 android:orientation="horizontal"
                 android:paddingLeft="25dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -86,6 +88,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="100dp"
                 android:layout_marginEnd="8dp"
+                android:background="@drawable/caixa_de_texto"
                 android:orientation="horizontal"
                 android:paddingLeft="25dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -135,6 +138,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
+                android:background="@drawable/caixa_de_texto"
                 android:orientation="horizontal"
                 android:paddingLeft="25dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -171,6 +175,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
+                android:background="@drawable/caixa_de_texto"
                 android:orientation="horizontal"
                 android:paddingLeft="25dp"
                 app:layout_constraintEnd_toEndOf="parent"
