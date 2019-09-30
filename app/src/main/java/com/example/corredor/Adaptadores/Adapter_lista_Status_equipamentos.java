@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.corredor.Class.CadastraRelatoriosTurno;
 import com.example.corredor.Class.Cadastro_Status_De_Ativos;
 import com.example.corredor.R;
 
@@ -62,7 +61,7 @@ private Context context;
             TE = itemView.findViewById(R.id.textTEstatus);
             ativo = itemView.findViewById(R.id.text250status);
             parado = itemView.findViewById(R.id.textparadostatus);
-            statusmanutencao = itemView.findViewById(R.id.textmanutencaostatus);
+            statusmanutencao = itemView.findViewById(R.id.relatorio_id);
         }
     }
 }

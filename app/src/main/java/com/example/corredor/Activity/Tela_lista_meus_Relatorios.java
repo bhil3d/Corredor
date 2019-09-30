@@ -49,7 +49,7 @@ public class Tela_lista_meus_Relatorios extends AppCompatActivity {
                 .child("meus relatorios")
                .child(ConfiguracaoFirebase2 .getIdUsuario() );
 
-        permissoesDeUsuarios ();
+      //  permissoesDeUsuarios ();
 
         inicializarComponentes();
         usuarios = getIntent().getParcelableExtra("usuarios");
@@ -147,7 +147,7 @@ public class Tela_lista_meus_Relatorios extends AppCompatActivity {
         progressBar = findViewById(R.id.progressBar_meusRelatorios);
     }
 
-
+/*
     public void permissoesDeUsuarios (){
 
 
@@ -184,5 +184,7 @@ public class Tela_lista_meus_Relatorios extends AppCompatActivity {
 
 
     }
+
+ */
 
 }
