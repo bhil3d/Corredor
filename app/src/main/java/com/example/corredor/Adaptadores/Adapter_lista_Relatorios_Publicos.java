@@ -74,10 +74,10 @@ private Context context;
             super(itemView);
 
             te = itemView.findViewById(R.id.id_TE);
-            ativo = itemView.findViewById(R.id.ativo_id);
+            ativo = itemView.findViewById(R.id.text250status);
             relatorios = itemView.findViewById(R.id.relatorio_id);
             container = itemView.findViewById(R.id.container);
-            data = itemView.findViewById(R.id.data_id_text);
+            data = itemView.findViewById(R.id.textparadostatus);
         }
     }
 }

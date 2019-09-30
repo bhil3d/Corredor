@@ -15,6 +15,7 @@ public class CadastroDeUsuarios implements Serializable {
     private String senha;
     private String matricula;
     private String gerencia;
+    private String tipoUsuario;
     private String caminhoFoto;
 
     public CadastroDeUsuarios() {
@@ -43,7 +44,13 @@ public class CadastroDeUsuarios implements Serializable {
     }
 
 
+    public String getTipoUsuario() {
+        return tipoUsuario;
+    }
 
+    public void setTipoUsuario(String tipoUsuario) {
+        this.tipoUsuario = tipoUsuario;
+    }
 
     public String getCaminhoFoto() {
         return caminhoFoto;

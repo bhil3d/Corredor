@@ -1,22 +1,31 @@
 package com.example.corredor.Activity;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.support.design.widget.TextInputEditText;
+import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.corredor.Class.CadastraRelatoriosTurno;
+import com.example.corredor.Class.DatePickerFragment;
 import com.example.corredor.Class.UsuarioFirebase;
 import com.example.corredor.R;
 
-public class Tela_de_Cadastra_Relatorios_Publicos extends AppCompatActivity implements View.OnClickListener {
+import java.text.DateFormat;
+import java.util.Calendar;
+
+public class Tela_de_Cadastra_Relatorios_Publicos extends AppCompatActivity  implements DatePickerDialog.OnDateSetListener {
 
 
     private Spinner spinnerManutençao,spinnerAtivo,spinnerTurma;
@@ -33,6 +42,16 @@ public class Tela_de_Cadastra_Relatorios_Publicos extends AppCompatActivity impl
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.cadastra__relatoriosctivity);
+
+
+        Button button = (Button) findViewById(R.id.buttonDate);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DialogFragment datePicker = new DatePickerFragment();
+                datePicker.show(getSupportFragmentManager(), "date picker");
+            }
+        });
 
         getSupportActionBar().setTitle("Novo relatorio");
 
@@ -153,12 +172,6 @@ public class Tela_de_Cadastra_Relatorios_Publicos extends AppCompatActivity impl
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    @Override
-    public void onClick(View v) {
-
-
-
-    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -191,6 +204,7 @@ public class Tela_de_Cadastra_Relatorios_Publicos extends AppCompatActivity impl
         Data = findViewById(R.id.textoDada);
         relatorio = findViewById(R.id.textoRelatorio);
         pendendia = findViewById(R.id.textoPendencia);
+        Data.setFocusable(false);
 
 
 
@@ -232,4 +246,22 @@ public class Tela_de_Cadastra_Relatorios_Publicos extends AppCompatActivity impl
     }
 
 
+    @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {
+
+    }
+
+    @Override
+    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+
+        Calendar c = Calendar.getInstance();
+        c.set(Calendar.YEAR, year);
+        c.set(Calendar.MONTH, month);
+        c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+        String currentDateString = DateFormat.getDateInstance(DateFormat.FULL).format(c.getTime());
+
+        TextView textView = (TextView) findViewById(R.id.textoDada);
+        textView.setText(currentDateString);
+
+    }
 }

@@ -15,7 +15,7 @@
 
         <TextView
 
-            android:id="@+id/data_id_text"
+            android:id="@+id/textparadostatus"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -23,12 +23,12 @@
             android:fontFamily="sans-serif"
             android:text="TE"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/ativo_id"
+            app:layout_constraintBottom_toTopOf="@+id/text250status"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/ativo_id"
+            android:id="@+id/text250status"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -42,7 +42,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/relatorio_id"
+            android:id="@+id/textmanutencaostatus"
             android:layout_width="153dp"
             android:layout_height="135dp"
             android:layout_marginTop="8dp"

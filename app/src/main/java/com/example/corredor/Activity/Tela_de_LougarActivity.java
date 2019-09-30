@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.corredor.Class.CadastroDeUsuarios;
+import com.example.corredor.Class.UsuarioFirebase;
 import com.example.corredor.Class.Util2;
 import com.example.corredor.Configuraçoes.ConfiguracaoFirebase;
 import com.example.corredor.Configuraçoes.ConfiguracaoFirebase2;
@@ -274,8 +275,11 @@ if(accont ==null){
 
                         if (task.isSuccessful()) {
 
-                            Intent intent = new Intent(Tela_de_LougarActivity.this,Tela_Menu_Principal.class);
+                           Intent intent = new Intent(Tela_de_LougarActivity.this,Tela_Menu_Principal.class);
                             startActivity(intent);
+
+
+                            UsuarioFirebase.redirecionaUsuarioLogado(Tela_de_LougarActivity.this);
 
                             alert("sucesso ao fazer lougin");
 
@@ -374,10 +378,15 @@ if(accont ==null){
                 if( task.isSuccessful() ){
 
                     Toast.makeText(Tela_de_LougarActivity.this,
+
+
                             "Logado com sucesso",
                             Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(getApplicationContext(), Tela_Menu_Principal.class));
+                    UsuarioFirebase.redirecionaUsuarioLogado(Tela_de_LougarActivity.this);
+                   /* startActivity(new Intent(getApplicationContext(), Tela_Menu_Principal.class));
                     finish();
+
+                    */
 
                 }else {
                     Toast.makeText(Tela_de_LougarActivity.this,

@@ -1,11 +1,13 @@
 package com.example.corredor.Activity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ProgressBar;
@@ -14,8 +16,10 @@ import com.example.corredor.Adaptadores.Adapter_lista_Relatorios_Publicos;
 import com.example.corredor.Class.CadastraRelatoriosTurno;
 import com.example.corredor.Class.CadastroDeUsuarios;
 import com.example.corredor.Class.RecyclerItemClickListener;
+import com.example.corredor.Configuraçoes.ConfiguracaoFirebase;
 import com.example.corredor.Configuraçoes.ConfiguracaoFirebase2;
 import com.example.corredor.R;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -24,6 +28,9 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import static com.example.corredor.Class.UsuarioFirebase.getIdentificadorUsuario;
+import static com.example.corredor.Class.UsuarioFirebase.getUsuarioAtual;
 
 public class Tela_lista_meus_Relatorios extends AppCompatActivity {
     private CadastroDeUsuarios usuarios;
@@ -42,6 +49,7 @@ public class Tela_lista_meus_Relatorios extends AppCompatActivity {
                 .child("meus relatorios")
                .child(ConfiguracaoFirebase2 .getIdUsuario() );
 
+        permissoesDeUsuarios ();
 
         inicializarComponentes();
         usuarios = getIntent().getParcelableExtra("usuarios");
@@ -138,4 +146,43 @@ public class Tela_lista_meus_Relatorios extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerRelatorios_Meusrelatorios);
         progressBar = findViewById(R.id.progressBar_meusRelatorios);
     }
+
+
+    public void permissoesDeUsuarios (){
+
+
+        FirebaseUser user = getUsuarioAtual();
+        if(user != null ){
+            Log.d("resultado", "onDataChange: " + getIdentificadorUsuario());
+            DatabaseReference usuariosRef = ConfiguracaoFirebase.getFirebase()
+                    .child("usuarios")
+                    .child( getIdentificadorUsuario() );
+            usuariosRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    Log.d("resultado", "onDataChange: " + dataSnapshot.toString() );
+                    CadastroDeUsuarios usuario = dataSnapshot.getValue( CadastroDeUsuarios.class );
+
+                    String tipoUsuario = usuario.getTipoUsuario();
+                    if( tipoUsuario.equals("M") ){
+
+                        getSupportActionBar().setTitle("SuperUsuarios");
+
+                    }else {
+
+                        getSupportActionBar().setTitle("Usuario normal");
+                    }
+
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+        }
+
+
+    }
+
 }

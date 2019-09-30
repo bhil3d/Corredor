@@ -6,14 +6,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 
 import com.example.corredor.Adaptadores.Adapter_lista_DF;
+import com.example.corredor.Class.CadastroDeUsuarios;
 import com.example.corredor.Class.ClassDF;
 import com.example.corredor.Class.RecyclerItemClickListener;
+import com.example.corredor.Configuraçoes.ConfiguracaoFirebase;
 import com.example.corredor.Configuraçoes.ConfiguracaoFirebase2;
 import com.example.corredor.R;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -23,9 +27,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class Tela_df_resultados extends AppCompatActivity {
+import static com.example.corredor.Class.UsuarioFirebase.getIdentificadorUsuario;
+import static com.example.corredor.Class.UsuarioFirebase.getUsuarioAtual;
 
-    private ClassDF clasDf;
+public class Tela_df_resultados extends AppCompatActivity {
+    private FloatingActionButton floatingActionButton;
     private Adapter_lista_DF adapter_lista_df;
     private RecyclerView recyclerView;
     private List<ClassDF> listaDf = new ArrayList<>();
@@ -36,7 +42,10 @@ public class Tela_df_resultados extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_df_resultados);
 
+
         inicializarComponentes();
+
+
 
         FloatingActionButton fab = findViewById(R.id.FBdf);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -44,6 +53,8 @@ public class Tela_df_resultados extends AppCompatActivity {
             public void onClick(View view) {
                 startActivity(new Intent(getApplicationContext(), AtualizardadosDF.class));
             }
+
+
         });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -73,10 +84,13 @@ getSupportActionBar().setTitle("DF");
 
 
                                 ClassDF anuncioSelecionado = listaDf.get( position );
-                                // CadastroDeUsuarios usuarioSelecionado = listausuarios.get( position );
                                 Intent i = new Intent(Tela_df_resultados.this, AtualizardadosDF.class);
                                 i.putExtra("anuncioSelecionado", anuncioSelecionado ) ;
                                 startActivity( i );
+
+
+
+
 
 
                             }
@@ -135,8 +149,12 @@ getSupportActionBar().setTitle("DF");
     public void inicializarComponentes(){
 
         recyclerView = findViewById(R.id.ReciclerDF);
+        floatingActionButton = findViewById(R.id.FBdf);
+
 
     }
+
+
 
 
 }

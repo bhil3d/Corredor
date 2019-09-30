@@ -1,15 +1,24 @@
 package com.example.corredor.Class;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
+import com.example.corredor.Activity.Tela_Lista_dos_Relatorio_Publicos;
+import com.example.corredor.Activity.Tela_Menu_Principal;
+import com.example.corredor.Configuraçoes.ConfiguracaoFirebase;
 import com.example.corredor.Configuraçoes.ConfiguracaoFirebase2;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.ValueEventListener;
 
 
 /**
@@ -100,6 +109,40 @@ public class UsuarioFirebase {
         }*/
 
         return usuario;
+
+    }
+
+    public static void redirecionaUsuarioLogado(final Activity activity){
+
+        FirebaseUser user = getUsuarioAtual();
+        if(user != null ){
+            Log.d("resultado", "onDataChange: " + getIdentificadorUsuario());
+            DatabaseReference usuariosRef = ConfiguracaoFirebase.getFirebase()
+                    .child("usuarios")
+                    .child( getIdentificadorUsuario() );
+            usuariosRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    Log.d("resultado", "onDataChange: " + dataSnapshot.toString() );
+                    CadastroDeUsuarios usuario = dataSnapshot.getValue( CadastroDeUsuarios.class );
+
+                    String tipoUsuario = usuario.getTipoUsuario();
+                    if( tipoUsuario.equals("M") ){
+                        Intent i = new Intent(activity, Tela_Menu_Principal.class);
+                        activity.startActivity(i);
+                    }else {
+                        Intent i = new Intent(activity, Tela_Lista_dos_Relatorio_Publicos.class);
+                        activity.startActivity(i);
+                    }
+
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+        }
 
     }
 

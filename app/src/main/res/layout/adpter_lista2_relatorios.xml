@@ -8,6 +8,12 @@
     android:layout_marginTop="8dp">
 
 
+    <TextView
+        android:id="@+id/textView19"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView" />
+
     <RelativeLayout
         android:id="@+id/container"
         android:layout_width="0dp"
@@ -21,7 +27,7 @@
 
         <TextView
 
-            android:id="@+id/ativo_id"
+            android:id="@+id/text250status"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
@@ -29,37 +35,41 @@
             android:layout_alignParentTop="true"
             android:layout_marginStart="40dp"
             android:layout_marginLeft="40dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="24dp"
             android:text="Simple Title Text "
             android:textColor="@color/title_text_color"
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/relatorio_id"
+            android:id="@+id/textmanutencaostatus"
             android:layout_width="match_parent"
             android:layout_height="65dp"
-            android:layout_below="@id/ativo_id"
-            android:layout_alignStart="@+id/ativo_id"
-            android:layout_alignLeft="@id/ativo_id"
-            android:layout_marginTop="8dp"
+            android:layout_below="@id/text250status"
+            android:layout_alignStart="@+id/text250status"
+            android:layout_alignLeft="@id/text250status"
+            android:layout_marginTop="12dp"
             android:layout_marginRight="16dp"
             android:lineSpacingExtra="8dp"
             android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. "
             android:textColor="@color/content_text_color" />
 
         <TextView
-            android:id="@+id/data_id_text"
+            android:id="@+id/textparadostatus"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="20dp"
+            android:layout_above="@+id/text250status"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:gravity="center"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginEnd="17dp"
             android:layout_marginRight="16dp"
+            android:layout_marginBottom="-22dp"
             android:text="Data"
-            android:textColor="@color/title_text_color"
-
-            />
+            android:textColor="@color/title_text_color" />
     </RelativeLayout>
 
     <TextView
