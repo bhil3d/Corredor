@@ -8,6 +8,8 @@ import android.support.v4.app.DialogFragment;
 
 import java.util.Calendar;
 
+import static android.os.Build.VERSION_CODES.M;
+
 public class DatePickerFragment extends DialogFragment {
 
     @NonNull

@@ -124,8 +124,10 @@ public class UsuarioFirebase {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     Log.d("resultado", "onDataChange: " + dataSnapshot.toString() );
-                    CadastroDeUsuarios usuario = dataSnapshot.getValue( CadastroDeUsuarios.class );
+                   // CadastroDeUsuarios usuario = dataSnapshot.getValue( CadastroDeUsuarios.class );
 
+
+/*
                     String tipoUsuario = usuario.getTipoUsuario();
                     if( tipoUsuario.equals("M") ){
                         Intent i = new Intent(activity, Tela_Menu_Principal.class);
@@ -135,6 +137,8 @@ public class UsuarioFirebase {
                         activity.startActivity(i);
                     }
 
+
+ */
                 }
 
                 @Override

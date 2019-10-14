@@ -100,8 +100,18 @@ public class Tela_Menu_Principal extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            Intent intent = new Intent(Tela_Menu_Principal.this, ConfiguracoesActivity.class);
+
+            Intent intent = new Intent(Tela_Menu_Principal.this, Tela_para_teste.class);
             startActivity(intent);
+
+
+        }
+
+        if (id == R.id.editarPerfil) {
+
+            Intent intent = new Intent(Tela_Menu_Principal.this,Editar_perfil_Activity.class);
+            startActivity(intent);
+
 
 
         }
@@ -131,35 +141,51 @@ public class Tela_Menu_Principal extends AppCompatActivity
 
         } else if (id == R.id.telefones) {
 
-            Intent intent = new Intent(Tela_Menu_Principal.this,Perfil_Usuario_Detalhes_Activity.class);
+            Intent intent = new Intent(Tela_Menu_Principal.this,Detalhes_telefones_Activity.class);
             startActivity(intent);
 
         } else if (id == R.id.contracheques) {
 
             startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://zapp.capriza.com/8jgjryxg8wlvte2zh8yzjg?run_anyway=true")));
 
-        } else if (id == R.id.dss) {
-
-            Intent intent = new Intent(Tela_Menu_Principal.this,Editar_perfil_Activity.class);
-            startActivity(intent);
-
         } else if (id == R.id.passagensferroviarias) {
             startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://tremdepassageiros.vale.com/sgpweb/portal/index.html#/home")));
-
-
-
 
         } else if (id == R.id.Df) {
 
             Intent intent = new Intent(Tela_Menu_Principal.this,Tela_df_resultados.class);
             startActivity(intent);
+
+
+        }else if (id == R.id.deslolgar) {
+
+            /////////////////////////sair............Google..///////////////////////////////////////////////////
+            FirebaseAuth.getInstance().signOut();
+
+            LoginManager.getInstance().logOut();
+
+            GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                    .requestIdToken(getString(R.string.default_web_client_id))
+                    .requestEmail()
+                    .build();
+
+            googleSignInClient = GoogleSignIn.getClient(this, gso);
+            googleSignInClient.signOut();
+
+            /////////////sair///////////////////email///////////////////////////////////////
+            autenticacao.signOut();
+            startActivity(new Intent(getApplicationContext(), Tela_de_LougarActivity.class));
+            finish();
         }
+
 
 
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+
+
     }
 
     public void editarperfil (View view){

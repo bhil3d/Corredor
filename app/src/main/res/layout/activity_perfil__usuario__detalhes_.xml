@@ -12,6 +12,7 @@
 
         android:id="@+id/textView4"
         android:layout_width="1dp"
+        android:background="@color/black"
         android:layout_height="1dp"
         android:layout_marginTop="130dp"
         android:foregroundGravity="center_vertical"
@@ -23,29 +24,31 @@
         tools:ignore="MissingConstraints">
 
         <android.support.constraint.ConstraintLayout
-            android:background="@drawable/funo_madeira"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:background="@drawable/cd_perfil"
+            android:layout_height="match_parent"
+           >
 
 
             <LinearLayout
                 android:id="@+id/linearLayout3"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:background="@drawable/caixa_de_texto"
+
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
+                android:background="@drawable/reg_edittext_style"
                 android:orientation="horizontal"
-                android:paddingLeft="25dp"
+                android:paddingLeft="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
 
                 <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
                     android:src="@drawable/ic_gerencia">
 
                 </ImageView>
@@ -70,18 +73,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:background="@drawable/caixa_de_texto"
-                android:layout_marginTop="100dp"
+                android:layout_marginTop="60dp"
                 android:layout_marginEnd="8dp"
+                android:background="@drawable/reg_edittext_style"
                 android:orientation="horizontal"
-                android:paddingLeft="25dp"
+                android:paddingLeft="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
                 <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
                     android:src="@drawable/ic_perfil">
 
                 </ImageView>
@@ -122,17 +125,17 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
+                android:background="@drawable/reg_edittext_style"
                 android:orientation="horizontal"
-                android:paddingLeft="25dp"
+                android:paddingLeft="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:background="@drawable/caixa_de_texto"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
 
                 <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
                     android:src="@drawable/ic_gerencia">
 
                 </ImageView>
@@ -159,17 +162,17 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
+                android:background="@drawable/reg_edittext_style"
                 android:orientation="horizontal"
-                android:paddingLeft="25dp"
-                android:background="@drawable/caixa_de_texto"
+                android:paddingLeft="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout7">
 
                 <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
                     android:src="@drawable/ic_email">
 
                 </ImageView>
@@ -233,31 +236,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cover"
         app:srcCompat="@drawable/avatar"
-        app:civ_border_width="2dp"
+        app:civ_border_width="3dp"
         app:civ_border_color="@color/white"/>
-
-
-    <Button
-        android:id="@+id/butompf"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="172dp"
-        android:layout_marginEnd="32dp"
-        android:background="@drawable/stylobtnpfil"
-        android:text="Sair da sua conta"
-        android:textColor="@color/startblue"
-        android:textSize="15sp"
-        android:onClick="sairdaconta"
-        android:textStyle="normal"
-        android:textAllCaps="false"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cover">
-
-
-    </Button>
 
 
 </android.support.constraint.ConstraintLayout>

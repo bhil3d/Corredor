@@ -14,21 +14,7 @@
         android:padding="8dp">
 
         <TextView
-
-            android:id="@+id/textparadostatus"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:fontFamily="sans-serif"
-            android:text="TE"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/text250status"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/text250status"
+            android:id="@+id/telefonesid"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -36,22 +22,10 @@
             android:layout_marginBottom="8dp"
             android:layout_weight="1"
             android:text="2940"
+            android:onClick="visualizarTelefone"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/relatorio_id"
-            android:layout_width="153dp"
-            android:layout_height="135dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
-            android:text="..."
-            android:textAlignment="textStart"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
 

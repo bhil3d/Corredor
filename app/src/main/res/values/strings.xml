@@ -6,8 +6,9 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Configuraçoes</string>
+    <string name="action_editarperfil">Editar perfil</string>
 
-    <string name="menu_relatorios">Relatorio_turno</string>
+    <string name="menu_relatorios">Relatorio turno</string>
     <string name="menu_meusrelatorios">Meus relatorios</string>
     <string name="menu_telateste">Tela de teste</string>
     <string name="menu_statusequipamentos">Status de equipamentos</string>
@@ -16,9 +17,14 @@
     <string name="menu_telefones">Telefones </string>
     <string name="menu_passagens">Passagens ferroviarias</string>
     <string name="menu_dss">Dss</string>
-    <string name="menu_paratestes">ParaTeste</string>
-    <string name="menu_parateste">Novo</string>
+    <string name="menu_termos_de_uso">Termos de uso</string>
+    <string name="menu_politicasDePrivacidades">Politicas privacidade</string>
     <string name="menu_Df">Df</string>
+    <string name="menu_sobre">Sobre</string>
+
+    <string name="menu_xx">ParaTeste</string>
+    <string name="menu_paratest">Novo</string>
+    <string name="menu_sair">Sair</string>
 
     <string name="facebook_app_id">924662031239831</string>
     <string name="fb_login_protocol_scheme">fb924662031239831</string>

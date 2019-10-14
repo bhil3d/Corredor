@@ -42,9 +42,12 @@ public class Tela_df_resultados extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_df_resultados);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         inicializarComponentes();
 
+
+       // floatingActionButton.setVisibility(View.GONE);
 
 
         FloatingActionButton fab = findViewById(R.id.FBdf);
@@ -149,7 +152,7 @@ getSupportActionBar().setTitle("DF");
     public void inicializarComponentes(){
 
         recyclerView = findViewById(R.id.ReciclerDF);
-        floatingActionButton = findViewById(R.id.FBdf);
+        floatingActionButton = (FloatingActionButton) findViewById(R.id.FBdf);
 
 
     }

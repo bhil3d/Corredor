@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorPrimary">#00b0ff</color>
+    <color name="colorPrimaryDark">#00b0ff</color>
+    <color name="colorAccent">#00b0ff</color>
     <color name="colorWhite">#ffffff</color>
     <color name="colorPurple">#983CFF</color>
     <color name="colorPurpleT">#64983cff</color>
@@ -12,7 +12,7 @@
     <color name="grayligh">#fafafa</color>
     <color name="startblue">#09c6df</color>
     <color name="endblue">#0bcce6</color>
-    <color name="corAccent">#FF4081</color>
+    <color name="verde">#2E7D32</color>
 
     <color name="card_bg_color">#f6f6f6</color>
     <color name="card_bg_dark_color">#0e0e0e</color>

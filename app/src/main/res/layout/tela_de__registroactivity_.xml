@@ -4,47 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     tools:context=".Activity.Tela_de_RegistroActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/bgHeader"
-        android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:background="@drawable/header_register"
-        android:theme="@style/ToolbarTheme"
-        android:elevation="5dp" />
-
-    <TextView
-        android:id="@+id/tvSignUp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"
-        android:elevation="10dp"
-        android:transitionName="tvLogin"
-        android:text="Sign up"
-        android:textColor="@color/colorWhite"
-        android:textSize="20sp"
-        android:textStyle="bold" />
-
-    <ImageView
-        android:id="@+id/circle1"
-        android:layout_width="134dp"
-        android:layout_height="134dp"
-        android:layout_below="@+id/bgHeader"
-        android:layout_marginLeft="-25dp"
-        android:layout_marginTop="-5dp"
-        android:src="@drawable/circletransparant" />
-
-    <ImageView
-        android:id="@+id/circle3"
-        android:layout_width="182dp"
-        android:layout_height="182dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginLeft="-80dp"
-        android:layout_marginBottom="-30dp"
-        android:src="@drawable/circle" />
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/userphoto"
+        android:elevation="5dp"
+        android:theme="@style/ToolbarTheme" />
 
 
     <ScrollView
@@ -75,7 +47,7 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
                         android:text="Email"
-                        android:textColor="@color/colorPurple"
+                        android:textColor="@color/colorBlue"
                         android:textSize="14sp"
                         android:textStyle="bold" />
 
@@ -85,6 +57,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
+                        android:background="@drawable/reg_edittext_style"
                         android:inputType="textEmailAddress" />
 
                     <TextView
@@ -92,7 +65,7 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
                         android:text="Password"
-                        android:textColor="@color/colorPurple"
+                        android:textColor="@color/colorBlue"
                         android:textSize="14sp"
                         android:textStyle="bold" />
 
@@ -101,6 +74,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
+                        android:background="@drawable/reg_edittext_style"
                         android:layout_marginRight="10dp"
                         android:inputType="textPassword" />
 
@@ -111,12 +85,13 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
                         android:text="Nome"
-                        android:textColor="@color/colorPurple"
+                        android:textColor="@color/colorBlue"
                         android:textSize="14sp"
                         android:textStyle="bold" />
 
                     <EditText
                         android:id="@+id/editeNome"
+                        android:background="@drawable/reg_edittext_style"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
@@ -128,7 +103,7 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
                         android:text="Matricula"
-                        android:textColor="@color/colorPurple"
+                        android:textColor="@color/colorBlue"
                         android:textSize="14sp"
                         android:textStyle="bold" />
 
@@ -137,6 +112,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
+                        android:background="@drawable/reg_edittext_style"
                         android:layout_marginRight="10dp"
                         android:inputType="text" />
 
@@ -145,7 +121,7 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
                         android:text="Gerencia"
-                        android:textColor="@color/colorPurple"
+                        android:textColor="@color/colorBlue"
                         android:textSize="14sp"
                         android:textStyle="bold" />
 
@@ -155,6 +131,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
+                        android:background="@drawable/reg_edittext_style"
                         android:inputType="text"
                         android:textStyle="bold" />
                     <TextView
@@ -162,7 +139,7 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
                         android:text="Tipo usuario"
-                        android:textColor="@color/colorPurple"
+                        android:textColor="@color/colorBlue"
                         android:textSize="14sp"
                         android:textStyle="bold" />
 
@@ -171,6 +148,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
+                        android:background="@drawable/reg_edittext_style"
                         android:layout_marginRight="10dp"
                         android:inputType="text"
                         android:textStyle="bold" />
@@ -192,7 +170,7 @@
                     android:id="@+id/butaocadastro"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/bg_ui"
+                    android:background="@drawable/reg_btn_style"
                     android:text="Sign up"
                     android:textAllCaps="false"
                     android:textColor="@color/colorWhite" />

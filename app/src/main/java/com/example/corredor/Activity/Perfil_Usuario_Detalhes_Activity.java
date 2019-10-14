@@ -47,6 +47,8 @@ public class Perfil_Usuario_Detalhes_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_perfil__usuario__detalhes_);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         // changing the status bar color to transparent
         //Configurações iniciais
         autenticacao = FirebaseAuth.getInstance();
@@ -187,28 +189,7 @@ public class Perfil_Usuario_Detalhes_Activity extends AppCompatActivity {
 
     }
 
-    public void sairdaconta(View view){
 
-        /////////////////////////sair............Google..///////////////////////////////////////////////////
-        FirebaseAuth.getInstance().signOut();
-
-        LoginManager.getInstance().logOut();
-
-        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(getString(R.string.default_web_client_id))
-                .requestEmail()
-                .build();
-
-        googleSignInClient = GoogleSignIn.getClient(this, gso);
-        googleSignInClient.signOut();
-
-        /////////////sair///////////////////email///////////////////////////////////////
-        autenticacao.signOut();
-        startActivity(new Intent(getApplicationContext(), Tela_de_LougarActivity.class));
-        finish();
-
-
-    }
 
     public  void abrifoto(View view){
 

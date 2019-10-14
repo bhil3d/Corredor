@@ -8,11 +8,13 @@
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="373dp"
-        android:layout_height="58dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="5dp"
         android:layout_marginEnd="8dp"
+        android:background="@drawable/stylospiner"
+        android:elevation="10dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -24,36 +26,30 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:elevation="3dp"
             android:onClick="filtrarPorManutençao"
             android:text="ATIVO"
-            android:textColor="@color/colorPrimary" />
+            android:textColor="@color/title_text_color" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="|" />
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:text="                   |"
+            android:textColor="@color/azulEscuro"
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/BtnfiltrastParado"
             style="?attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="2"
+            android:layout_weight="1"
             android:onClick="filtrarPorAtivo"
             android:text="STATUS"
-            android:textColor="@color/colorPrimary" />
+            android:textColor="@color/title_text_color" />
     </LinearLayout>
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/atualizarFLB"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_marginStart="8dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/ic_adicionar_branco_24dp" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/FlutB"
@@ -75,6 +71,16 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+    <ProgressBar
+        android:id="@+id/progressBarstatus"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="95dp"
+        android:layout_height="75dp"
+        app:layout_constraintBottom_toBottomOf="@+id/reciclerStatus"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout" />

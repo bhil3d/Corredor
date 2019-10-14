@@ -12,7 +12,7 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:orientation="vertical"
-        android:background="@drawable/funo_madeira"
+        android:background="#fff"
         android:padding="15dp">
 
 
@@ -26,12 +26,14 @@
                 android:layout_width="180dp"
                 android:layout_height="180dp"
                 android:src="@drawable/avatar"
-                app:civ_border_color="@color/black"
+                android:layout_marginTop="10dp"
+                app:civ_border_color="@color/colorPrimary"
                 app:civ_border_width="2dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
 
 
             <ImageView
@@ -74,12 +76,10 @@
 
         <android.support.design.widget.TextInputEditText
             android:id="@+id/editNomePerfil"
-            android:hint="Nome"
-            android:drawableLeft="@drawable/ic_perfil"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-        </android.support.design.widget.TextInputEditText>
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_perfil"
+            android:hint="Nome" />
 
 
         <android.support.design.widget.TextInputLayout
@@ -104,23 +104,25 @@
 
      </android.support.design.widget.TextInputEditText>
 
+
+
         <android.support.design.widget.TextInputEditText
             android:id="@+id/editTextoGerencia"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:hint="Gerencia"
             android:drawableLeft="@drawable/ic_perfil"
-            android:hint="Gerencia" />
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-
+        </android.support.design.widget.TextInputEditText>
 
 
         <Button
             android:id="@+id/buttonSalvarAlteracoes"
-            android:layout_width="250dp"
+            android:layout_width="136dp"
             android:layout_height="wrap_content"
-            android:background="@drawable/stylobtnpfil"
-            android:text="Salvar alterações"
-            android:textColor="@color/startblue" />
+            android:background="@drawable/reg_btn_style"
+            android:text="Salvar"
+            android:textColor="#fff"/>
 
     </LinearLayout>
 

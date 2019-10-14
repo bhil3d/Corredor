@@ -6,49 +6,57 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/relatorios"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/relatorios24dp"
             android:title="@string/menu_relatorios" />
         <item
             android:id="@+id/meus_relatorios"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@drawable/meus_relatoriosblack_24dp"
             android:title="@string/menu_meusrelatorios" />
         <item
             android:id="@+id/statusequipamentos"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/status24dp"
             android:title="@string/menu_statusequipamentos" />
         <item
             android:id="@+id/contracheques"
-            android:icon="@drawable/ic_menu_manage"
+            android:icon="@drawable/contracheque_24dp"
             android:title="@string/menu_contracheque" />
         <item
             android:id="@+id/telefones"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@drawable/telefones24dp"
             android:title="@string/menu_telefones" />
-        <item
-            android:id="@+id/dss"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/menu_dss" />
+
         <item
             android:id="@+id/passagensferroviarias"
-            android:icon="@drawable/ic_menu_manage"
+            android:icon="@drawable/passagens_ferroviarias_24dp"
             android:title="@string/menu_passagens" />
         <item
             android:id="@+id/Df"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/df_24dp"
             android:title="@string/menu_Df" />
     </group>
 
-    <item android:title="Communicate">
+    <item android:title="Corredor norte">
         <menu>
             <item
                 android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="@string/menu_paratestes" />
+                android:icon="@drawable/politicas_privacidadesdp"
+                android:title="@string/menu_politicasDePrivacidades" />
             <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="@string/menu_parateste" />
+                android:id="@+id/nav_sed"
+                android:icon="@drawable/termos_uso_dp"
+                android:title="@string/menu_termos_de_uso"/>
+            <item
+                android:id="@+id/nav_sen"
+                android:icon="@drawable/sobre24dp"
+                android:title="@string/menu_sobre" />
+            <item
+            android:id="@+id/deslolgar"
+            android:icon="@drawable/sair_24dp"
+            android:title="@string/menu_sair" />
+
         </menu>
+
+
     </item>
 
 </menu>

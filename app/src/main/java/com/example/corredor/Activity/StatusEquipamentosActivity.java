@@ -12,12 +12,15 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.corredor.Adaptadores.Adapter_lista_Status_equipamentos;
+import com.example.corredor.Class.CadastraRelatoriosTurno;
 import com.example.corredor.Class.Cadastro_Status_De_Ativos;
 import com.example.corredor.Class.RecyclerItemClickListener;
+import com.example.corredor.Configuraçoes.ConfiguracaoFirebase;
 import com.example.corredor.Configuraçoes.ConfiguracaoFirebase2;
 import com.example.corredor.R;
 import com.google.firebase.database.DataSnapshot;
@@ -36,6 +39,7 @@ public class StatusEquipamentosActivity extends AppCompatActivity {
     private List<Cadastro_Status_De_Ativos> listarelatorios = new ArrayList<>();
     private DatabaseReference relatoriosPublicosRef;
     private String filtraManutençao = "";
+    private ProgressBar progressBar;
     private String filtraAtivo = "";
     private  boolean filtroPorManutençao = false;
 
@@ -43,6 +47,8 @@ public class StatusEquipamentosActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.status_equipamentosactivity_);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         botoesflutuantes();
         inicializarComponentes();
@@ -93,77 +99,6 @@ public class StatusEquipamentosActivity extends AppCompatActivity {
     }
 
 
-    private void recuperaRelatoriosPublicos() {
-
-
-        listarelatorios.clear();
-        relatoriosPublicosRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-
-                for(DataSnapshot estados: dataSnapshot.getChildren()){
-                    for (DataSnapshot categorias: estados.getChildren() ){
-                        for(DataSnapshot anuncios: categorias.getChildren() ){
-
-                            Cadastro_Status_De_Ativos anuncio = anuncios.getValue(Cadastro_Status_De_Ativos.class);
-                            listarelatorios.add( anuncio );
-
-                        }
-                    }
-                }
-
-                Collections.reverse( listarelatorios );
-                adapter_lista_relatorios_publicos.notifyDataSetChanged();
-
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-
-
-
-    }
-
-
-
-    private void recuperaRelatoriosPorManutençao() {
-
-        //Configura nó por categoria
-        relatoriosPublicosRef = ConfiguracaoFirebase2.getFirebase()
-                .child("StatusEquipamentos")
-                .child(filtraManutençao)
-                .child( filtraAtivo );
-
-        relatoriosPublicosRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                listarelatorios.clear();
-                for(DataSnapshot anuncios: dataSnapshot.getChildren() ){
-
-                    Cadastro_Status_De_Ativos relatorio = anuncios.getValue(Cadastro_Status_De_Ativos.class);
-                    listarelatorios.add( relatorio );
-
-                }
-
-                Collections.reverse( listarelatorios );
-                adapter_lista_relatorios_publicos.notifyDataSetChanged();
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-
-
-    }
-
-
     public void filtrarPorManutençao(View view){
 
         AlertDialog.Builder dialogEstado = new AlertDialog.Builder(this);
@@ -174,10 +109,10 @@ public class StatusEquipamentosActivity extends AppCompatActivity {
 
         //Configura spinner de estados
         final Spinner spinnerEstado = viewSpinner.findViewById(R.id.spinnerFiltro);
-        String[] manutençao = getResources().getStringArray(R.array.Ativo);
+        String[] estados = getResources().getStringArray(R.array.Ativo);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(
                 this, android.R.layout.simple_spinner_item,
-                manutençao
+                estados
         );
         adapter.setDropDownViewResource( android.R.layout.simple_spinner_dropdown_item );
         spinnerEstado.setAdapter( adapter );
@@ -188,11 +123,9 @@ public class StatusEquipamentosActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 filtraManutençao = spinnerEstado.getSelectedItem().toString();
-                recuperaRelatoriosPorManutençao();
+                recuperarAnunciosPorEstado();
                 filtroPorManutençao = true;
             }
-
-
         });
 
         dialogEstado.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
@@ -204,8 +137,6 @@ public class StatusEquipamentosActivity extends AppCompatActivity {
 
         AlertDialog dialog = dialogEstado.create();
         dialog.show();
-
-
 
     }
 
@@ -235,10 +166,8 @@ public class StatusEquipamentosActivity extends AppCompatActivity {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     filtraAtivo = spinnerCategoria.getSelectedItem().toString();
-                    recuperaRelatoriosPorAtivo();
+                    recuperarAnunciosPorCategoria();
                 }
-
-
             });
 
             dialogEstado.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
@@ -252,16 +181,53 @@ public class StatusEquipamentosActivity extends AppCompatActivity {
             dialog.show();
 
         }else {
-            Toast.makeText(this, "Escolha primeiro o tipo e Manuteçao!",
+            Toast.makeText(this, "Escolha primeiro uma região!",
                     Toast.LENGTH_SHORT).show();
         }
 
     }
 
-    private void recuperaRelatoriosPorAtivo() {
+    public void recuperarAnunciosPorCategoria(){
+
+        progressBar.setVisibility(View.VISIBLE);
+
+        //Configura nó por categoria
+        relatoriosPublicosRef = ConfiguracaoFirebase.getFirebase()
+                .child("StatusEquipamentos")
+                .child(filtraManutençao)
+                .child( filtraAtivo );
+
+        relatoriosPublicosRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                listarelatorios.clear();
+                for(DataSnapshot anuncios: dataSnapshot.getChildren() ){
+
+                    Cadastro_Status_De_Ativos anuncio = anuncios.getValue(Cadastro_Status_De_Ativos.class);
+                    listarelatorios.add( anuncio );
+
+                }
+
+                Collections.reverse( listarelatorios );
+                adapter_lista_relatorios_publicos.notifyDataSetChanged();
+
+                progressBar.setVisibility(View.GONE);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+    }
+
+    public void recuperarAnunciosPorEstado(){
+
+        progressBar.setVisibility(View.VISIBLE);
 
         //Configura nó por estado
-        relatoriosPublicosRef = ConfiguracaoFirebase2.getFirebase()
+        relatoriosPublicosRef = ConfiguracaoFirebase.getFirebase()
                 .child("StatusEquipamentos")
                 .child(filtraManutençao);
 
@@ -272,14 +238,53 @@ public class StatusEquipamentosActivity extends AppCompatActivity {
                 for (DataSnapshot categorias: dataSnapshot.getChildren() ){
                     for(DataSnapshot anuncios: categorias.getChildren() ){
 
-                        Cadastro_Status_De_Ativos relatorio = anuncios.getValue(Cadastro_Status_De_Ativos.class);
-                        listarelatorios.add( relatorio );
+                        Cadastro_Status_De_Ativos anuncio = anuncios.getValue(Cadastro_Status_De_Ativos.class);
+                        listarelatorios.add( anuncio );
 
                     }
                 }
 
                 Collections.reverse( listarelatorios );
                 adapter_lista_relatorios_publicos.notifyDataSetChanged();
+                progressBar.setVisibility(View.GONE);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+    }
+
+    private void recuperaRelatoriosPublicos() {
+
+
+        listarelatorios.clear();
+        relatoriosPublicosRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+
+
+
+                for(DataSnapshot manutecao: dataSnapshot.getChildren()){
+                    for (DataSnapshot categorias: manutecao.getChildren() ){
+                        for(DataSnapshot anuncios: categorias.getChildren() ){
+
+                            Cadastro_Status_De_Ativos anuncio = anuncios.getValue(Cadastro_Status_De_Ativos.class);
+                            listarelatorios.add( anuncio );
+
+
+
+                        }
+                    }
+                }
+                Collections.reverse( listarelatorios );
+                adapter_lista_relatorios_publicos.notifyDataSetChanged();
+                progressBar.setVisibility(View.GONE);
+
+
 
             }
 
@@ -288,12 +293,17 @@ public class StatusEquipamentosActivity extends AppCompatActivity {
 
             }
         });
+
+
+
     }
+
 
     public void inicializarComponentes(){
 
 
         recyclerView = findViewById(R.id.reciclerStatus);
+        progressBar= findViewById(R.id.progressBarstatus);
 
     }
 
@@ -307,13 +317,7 @@ public class StatusEquipamentosActivity extends AppCompatActivity {
                 finish(); }
         });
         //------------------------------------------------------------------------------------------
-        FloatingActionButton aFloatatualizar = findViewById(R.id.atualizarFLB);
-        aFloatatualizar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), AtualisarStatusEquipamentosActivity.class));
-                finish(); }
-        });
+
     }
 
 

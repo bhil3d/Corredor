@@ -48,6 +48,8 @@ private ProgressBar progressBar;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.listade_relatoriosactivity_);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         inicializarComponentes();
 
 

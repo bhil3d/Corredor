@@ -4,6 +4,8 @@ import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.corredor.Class.CadastroDeUsuarios;
@@ -21,7 +23,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class Tela_para_teste extends AppCompatActivity implements View.OnClickListener {
 
-private CircleImageView imgperfil;
+private Button Start, Stop,Sumir;
 
 
     @Override
@@ -29,7 +31,6 @@ private CircleImageView imgperfil;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tela_para_teste);
 
-        imgperfil = findViewById(R.id.IdimgMenuteste);
 
 
 

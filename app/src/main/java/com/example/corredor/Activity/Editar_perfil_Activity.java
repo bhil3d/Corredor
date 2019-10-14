@@ -62,6 +62,8 @@ public class Editar_perfil_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editar_perfil_);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         //Validar permissões
         Permissao.validarPermissoes(permissoesNecessarias, this, 1 );
 
@@ -133,7 +135,10 @@ public class Editar_perfil_Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 progrebar.setVisibility(View.VISIBLE);
+
                 Intent i = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+
+
                 if( i.resolveActivity(getPackageManager()) != null ){
                     startActivityForResult(i, SELECAO_GALERIA );
                 }
@@ -254,7 +259,7 @@ public class Editar_perfil_Activity extends AppCompatActivity {
 
         //Atualizar foto no Firebase
         usuarioLogado.setCaminhoFoto( url.toString() );
-        usuarioLogado.atualizar();
+       // usuarioLogado.atualizar();
 
         Toast.makeText(Editar_perfil_Activity.this,
                 "Sua foto foi atualizada!",

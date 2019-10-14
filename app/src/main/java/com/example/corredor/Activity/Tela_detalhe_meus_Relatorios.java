@@ -35,6 +35,8 @@ public class Tela_detalhe_meus_Relatorios extends AppCompatActivity implements V
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tela_detalhe_meus__relatoriosactivity_);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("Detalhes");
 
 

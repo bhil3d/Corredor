@@ -43,6 +43,8 @@ public class Tela_de_Cadastra_Relatorios_Publicos extends AppCompatActivity  imp
         super.onCreate(savedInstanceState);
         setContentView(R.layout.cadastra__relatoriosctivity);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
 
         Button button = (Button) findViewById(R.id.buttonDate);
         button.setOnClickListener(new View.OnClickListener() {

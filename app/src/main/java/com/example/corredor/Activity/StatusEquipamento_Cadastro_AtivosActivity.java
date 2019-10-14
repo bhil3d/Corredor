@@ -28,6 +28,8 @@ public class StatusEquipamento_Cadastro_AtivosActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.status_equipamento__cadastro__ativosactivity_);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ////////////////////////////////////////////////////////////////////////////////////////////
 
         InicializarComponestes();

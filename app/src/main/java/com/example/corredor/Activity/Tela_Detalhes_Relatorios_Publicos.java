@@ -17,6 +17,7 @@ public class Tela_Detalhes_Relatorios_Publicos extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tela_detalhes_relatorios_publicosactivity_);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("Detalhes");
 
         inicializarComponentes();

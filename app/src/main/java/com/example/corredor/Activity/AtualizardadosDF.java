@@ -31,6 +31,8 @@ public class AtualizardadosDF extends AppCompatActivity implements View.OnClickL
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_atualizardados_df);
 
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("Atualizar DF");
         inicializarComponentes();
         database = FirebaseDatabase.getInstance();

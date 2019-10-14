@@ -44,6 +44,8 @@ public class Tela_lista_meus_Relatorios extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tela_lista_meus__relatoriosactivity_);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         //Configurações iniciais
         relatoriosPublicosRef = ConfiguracaoFirebase2.getFirebase()
                 .child("meus relatorios")

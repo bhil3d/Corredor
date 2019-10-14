@@ -38,7 +38,7 @@ public class AtualisarStatusEquipamentosActivity extends AppCompatActivity imple
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.atualisar_status_equipamentosactivity_);
-
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         InicializarComponestes();
         carregarDadosSpinner();
@@ -105,7 +105,7 @@ atualizardados1(te,edit29,parado,statusmanutecao,idstatus);
 
 
                     Toast.makeText(getBaseContext(),"Sucesso ao Alterar Dados",Toast.LENGTH_LONG).show();
-                    //removerFuncionario();
+
 
 
                 }else{
@@ -171,13 +171,13 @@ atualizardados1(te,edit29,parado,statusmanutecao,idstatus);
                 if(task.isSuccessful()){
 
 
-                    Toast.makeText(getBaseContext(),"Sucesso ao Remover Funcionario",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getBaseContext(),"Sucesso ao Remover Equipamento",Toast.LENGTH_LONG).show();
                     validarDadosAnunci();
 
 
                 }else{
 
-                    Toast.makeText(getBaseContext(),"Erro ao Remover Funcionario",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getBaseContext(),"Erro ao Remover Equipamento",Toast.LENGTH_LONG).show();
 
                 }
 
@@ -215,7 +215,7 @@ atualizardados1(te,edit29,parado,statusmanutecao,idstatus);
 
     public void recuperadados(){
 
-        //Recupera anúncio para exibicao
+        //Recupera equipamentos para exibicao
         statusSelecionado = (Cadastro_Status_De_Ativos) getIntent().getSerializableExtra("anuncioSelecionado");
 
         if (statusSelecionado != null) {

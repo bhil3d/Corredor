@@ -24,6 +24,7 @@ public class Perfil_foto_Activity extends AppCompatActivity {
         setContentView(R.layout.activity_perfil_foto_);
         usuarioselecionado = UsuarioFirebase.getDadosUsuarioLogado();
         getSupportActionBar().setTitle( usuarioselecionado.getNome() );
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
         imgperfil = findViewById(R.id.imgFoto_perfil);

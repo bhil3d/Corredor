@@ -8,6 +8,7 @@ import android.support.v7.widget.CardView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.corredor.Class.CadastroDeUsuarios;
@@ -43,6 +44,7 @@ public class Tela_de_LougarActivity extends AppCompatActivity implements View.On
     private SignInButton logGoogle;
     private EditText email;
     private EditText senha;
+    private ProgressBar loginProgress;
     private Button lougar;
     private FirebaseAuth autenticacao;
     private CadastroDeUsuarios usuario;
@@ -86,12 +88,13 @@ public class Tela_de_LougarActivity extends AppCompatActivity implements View.On
 
 
 
-
+        loginProgress.setVisibility(View.INVISIBLE);
         lougar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-
+                loginProgress.setVisibility(View.VISIBLE);
+                lougar.setVisibility(View.INVISIBLE);
                 String textoEmail = email.getText().toString();
                 String textosenha = senha.getText().toString();
 
@@ -107,11 +110,15 @@ public class Tela_de_LougarActivity extends AppCompatActivity implements View.On
                         Toast.makeText(Tela_de_LougarActivity.this,
                                 "Preencha a senha!",
                                 Toast.LENGTH_SHORT).show();
+                        lougar.setVisibility(View.VISIBLE);
+                        loginProgress.setVisibility(View.INVISIBLE);
                     }
                 } else {
                     Toast.makeText(Tela_de_LougarActivity.this,
                             "Preencha o e-mail!",
                             Toast.LENGTH_SHORT).show();
+                    lougar.setVisibility(View.VISIBLE);
+                    loginProgress.setVisibility(View.INVISIBLE);
                 }
             }
         });
@@ -405,6 +412,7 @@ if(accont ==null){
         email = findViewById(R.id.editetnome);
         senha = findViewById(R.id.editeSenha);
         lougar = findViewById(R.id.butaolougar);
+        loginProgress = findViewById(R.id.login_progress);
 
 
 
