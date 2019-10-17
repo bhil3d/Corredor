@@ -8,43 +8,6 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:183099507380:android:6ea281c42bf020e4",
-        "android_client_info": {
-          "package_name": "com.example.apploug"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "183099507380-6hfbnk729gpvk7slngcap871a28jdjg3.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.apploug",
-            "certificate_hash": "fb883b205b7841b64de3438016de5d732614efb1"
-          }
-        },
-        {
-          "client_id": "183099507380-v8701lvmultc0muiv5aditpnrri0iqtb.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyB5Yu7YXpcRUARnL2XYTCy4hNUOasMnnzI"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "183099507380-v8701lvmultc0muiv5aditpnrri0iqtb.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
         "mobilesdk_app_id": "1:183099507380:android:c850cdba9f95d3f6",
         "android_client_info": {
           "package_name": "com.example.corredor"
@@ -93,6 +56,154 @@
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.mac.firebaseautenticacao",
+            "certificate_hash": "fb883b205b7841b64de3438016de5d732614efb1"
+          }
+        },
+        {
+          "client_id": "183099507380-v8701lvmultc0muiv5aditpnrri0iqtb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB5Yu7YXpcRUARnL2XYTCy4hNUOasMnnzI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "183099507380-v8701lvmultc0muiv5aditpnrri0iqtb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:183099507380:android:8dfe9dc120ebc022874de1",
+        "android_client_info": {
+          "package_name": "com.example.myautenticacao"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "183099507380-8ii87kggcnpd6nh39k7isnsuke845m9b.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.myautenticacao",
+            "certificate_hash": "fb883b205b7841b64de3438016de5d732614efb1"
+          }
+        },
+        {
+          "client_id": "183099507380-v8701lvmultc0muiv5aditpnrri0iqtb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB5Yu7YXpcRUARnL2XYTCy4hNUOasMnnzI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "183099507380-v8701lvmultc0muiv5aditpnrri0iqtb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:183099507380:android:0154ee5f86151ec5874de1",
+        "android_client_info": {
+          "package_name": "com.uber.cursoandroid.jamiltondamasceno.uber"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "183099507380-ji090gob51metonmbjbp6vj8etpfgke1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.uber.cursoandroid.jamiltondamasceno.uber",
+            "certificate_hash": "fb883b205b7841b64de3438016de5d732614efb1"
+          }
+        },
+        {
+          "client_id": "183099507380-v8701lvmultc0muiv5aditpnrri0iqtb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB5Yu7YXpcRUARnL2XYTCy4hNUOasMnnzI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "183099507380-v8701lvmultc0muiv5aditpnrri0iqtb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:183099507380:android:26f5aa51745f4f98874de1",
+        "android_client_info": {
+          "package_name": "com.whatsapp.cursoandroid.jamiltondamasceno.whatsapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "183099507380-3icceilmg1ca7tv8d42obm1rb24ncj32.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.whatsapp.cursoandroid.jamiltondamasceno.whatsapp",
+            "certificate_hash": "fb883b205b7841b64de3438016de5d732614efb1"
+          }
+        },
+        {
+          "client_id": "183099507380-v8701lvmultc0muiv5aditpnrri0iqtb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB5Yu7YXpcRUARnL2XYTCy4hNUOasMnnzI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "183099507380-v8701lvmultc0muiv5aditpnrri0iqtb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:183099507380:android:d2f5d393b9dccf3c874de1",
+        "android_client_info": {
+          "package_name": "tech.alvarez.today"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "183099507380-n7ur9798bm65eqjltmvec2jgu163jbgc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "tech.alvarez.today",
             "certificate_hash": "fb883b205b7841b64de3438016de5d732614efb1"
           }
         },

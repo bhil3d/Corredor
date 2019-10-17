@@ -146,7 +146,7 @@ public class Tela_Menu_Principal extends AppCompatActivity
 
         } else if (id == R.id.contracheques) {
 
-            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://zapp.capriza.com/8jgjryxg8wlvte2zh8yzjg?run_anyway=true")));
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://192.168.0.12/dashboard/")));
 
         } else if (id == R.id.passagensferroviarias) {
             startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://tremdepassageiros.vale.com/sgpweb/portal/index.html#/home")));

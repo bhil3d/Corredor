@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.corredor.Class.CadastroDeUsuarios;
@@ -44,12 +45,14 @@ public class Tela_de_LougarActivity extends AppCompatActivity implements View.On
     private SignInButton logGoogle;
     private EditText email;
     private EditText senha;
+    private TextView criarConta;
     private ProgressBar loginProgress;
     private Button lougar;
     private FirebaseAuth autenticacao;
     private CadastroDeUsuarios usuario;
     private CallbackManager callbackManager;
     private GoogleSignInClient googleSignInClient;
+
 
     private FirebaseAuth.AuthStateListener authStateListener;
 
@@ -137,7 +140,19 @@ public class Tela_de_LougarActivity extends AppCompatActivity implements View.On
 
                 break;
 
+            case R.id.criarcontaID:
+               abritelaCriarconta();
+
+                break;
+
         }
+
+    }
+
+    private void abritelaCriarconta() {
+        Intent abrir = new Intent(Tela_de_LougarActivity.this,Tela_de_RegistroActivity.class);
+        startActivity(abrir);
+        finish();
 
     }
 
@@ -413,7 +428,8 @@ if(accont ==null){
         senha = findViewById(R.id.editeSenha);
         lougar = findViewById(R.id.butaolougar);
         loginProgress = findViewById(R.id.login_progress);
-
+                criarConta = findViewById(R.id.criarcontaID);
+                criarConta.setOnClickListener(this);
 
 
 

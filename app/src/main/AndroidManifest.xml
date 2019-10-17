@@ -57,6 +57,7 @@
             android:name=".Activity.StatusEquipamento_Cadastro_AtivosActivity" />
 
         <activity
+            android:screenOrientation="portrait"
             android:parentActivityName=".Activity.Tela_Menu_Principal"
             android:name=".Activity.StatusEquipamentosActivity" />
 
@@ -87,6 +88,7 @@
             android:parentActivityName=".Activity.Tela_Menu_Principal"
             android:name=".Activity.Tela_de_Cadastra_Relatorios_Publicos" />
         <activity
+            android:screenOrientation="portrait"
             android:name=".Activity.Tela_de_LougarActivity"
             android:theme="@style/AppTheme.FullScreen">
             <intent-filter>
