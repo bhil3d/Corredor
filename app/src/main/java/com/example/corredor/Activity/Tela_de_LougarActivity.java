@@ -1,6 +1,7 @@
 package com.example.corredor.Activity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -371,8 +372,21 @@ if(accont ==null){
 
     }
 
+    //......................termos  & serviços......................................................
 
-    //-------------------------------------------------SERVICOS LOGIN--------------------------------------------------
+
+
+    public void termosEservicos(View view){
+
+
+        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://192.168.0.12/dashboard/")));
+
+
+
+    }
+
+
+    //-------------------------------------------------SERVICOS LOGIN-------------------------------
 
 
 
