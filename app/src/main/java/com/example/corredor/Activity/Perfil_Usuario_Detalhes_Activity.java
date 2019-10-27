@@ -47,7 +47,6 @@ public class Perfil_Usuario_Detalhes_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_perfil__usuario__detalhes_);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         // changing the status bar color to transparent
         //Configurações iniciais
