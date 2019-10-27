@@ -1,4 +1,4 @@
-package com.example.corredor;
+package com.example.corredor.Fragmento;
 
 
 import android.os.Bundle;
@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+
+import com.example.corredor.R;
 
 
 /**

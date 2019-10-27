@@ -1,4 +1,4 @@
-package com.example.corredor;
+package com.example.corredor.Fragmento;
 
 
 import android.os.Bundle;
@@ -6,18 +6,19 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+
+import com.example.corredor.R;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class passagensFragment extends Fragment {
+public class politicas_de_privacidadesFragment extends Fragment {
 
 
-    public passagensFragment() {
+    public politicas_de_privacidadesFragment() {
         // Required empty public constructor
     }
 
@@ -26,12 +27,12 @@ public class passagensFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View v = inflater.inflate(R.layout.fragment_passagens, container, false);
-        WebView webView = (WebView)v.findViewById(R.id.idWebferrovia);
+        View v = inflater.inflate(R.layout.fragment_politicas_privacidades, container, false);
+
+        WebView webView = (WebView)v.findViewById(R.id.idWebpoliticasP);
         webView.getSettings().setJavaScriptEnabled(false);
         webView.setWebViewClient(new WebViewClient());
-         //webView.loadUrl("https://tremdepassageiros.vale.com/sgpweb/portal/index.html#/home");
-        webView.loadUrl("http://www.vale.com/brasil/PT/business/logistics/railways/trem-passageiros/Paginas/default.aspx");
+        webView.loadUrl("https://corredor.web.app/politicas_de_privacidades.html");
         return v;
     }
 

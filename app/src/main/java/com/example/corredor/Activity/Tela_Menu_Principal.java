@@ -21,6 +21,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.example.corredor.Adaptadores.adpitadorFraguimentos;
 import com.example.corredor.Class.UsuarioFirebase;
+import com.example.corredor.Fragmento.politicas_de_privacidadesFragment;
 import com.example.corredor.R;
 import com.facebook.login.LoginManager;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -146,7 +147,7 @@ public class Tela_Menu_Principal extends AppCompatActivity
 
         } else if (id == R.id.contracheques) {
 
-            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://192.168.0.12/dashboard/")));
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://zapp.capriza.com/8jgjryxg8wlvte2zh8yzjg?run_anyway=true")));
 
         } else if (id == R.id.passagensferroviarias) {
             startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://tremdepassageiros.vale.com/sgpweb/portal/index.html#/home")));
@@ -157,7 +158,19 @@ public class Tela_Menu_Principal extends AppCompatActivity
             startActivity(intent);
 
 
-        }else if (id == R.id.deslolgar) {
+
+        }
+
+        else if (id == R.id.poiticasP) {
+
+            startActivity(new Intent(Intent.ACTION_VIEW,
+                    Uri.parse("https://corredor.web.app/politicas_de_privacidades.html")));
+        } else if (id == R.id.termosUs) {
+
+            startActivity(new Intent(Intent.ACTION_VIEW,
+                    Uri.parse("https://corredor.web.app/termos_de_servicos.html")));
+        }
+        else if (id == R.id.deslolgar) {
 
             /////////////////////////sair............Google..///////////////////////////////////////////////////
             FirebaseAuth.getInstance().signOut();

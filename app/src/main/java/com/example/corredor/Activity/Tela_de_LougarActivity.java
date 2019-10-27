@@ -379,7 +379,7 @@ if(accont ==null){
     public void termosEservicos(View view){
 
 
-        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://192.168.0.12/dashboard/")));
+        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://corredor.web.app/politicas_de_privacidades.html")));
 
 
 

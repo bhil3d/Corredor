@@ -10,6 +10,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.AdapterView;
 import android.widget.Toast;
 
@@ -38,13 +41,7 @@ import java.util.List;
  */
 public class EquerdoFragment extends Fragment {
 
-    private RecyclerView recyclerViewConversas;
-    private List<TelefonesUteis> listaConversas = new ArrayList<>();
-    private AdapterTelefones adapter;
-    private DatabaseReference database;
-    private DatabaseReference conversasRef;
-    private TelefonesUteis anuncioSelecionado;
-    private ValueEventListener valueEventListener;
+
 
     public EquerdoFragment() {
         // Required empty public constructor
@@ -56,63 +53,18 @@ public class EquerdoFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_equerdo, container, false);
-        recyclerViewConversas = view.findViewById(R.id.recyclerT);
 
-        //Configurar adapter
-        adapter = new AdapterTelefones(listaConversas, getActivity());
-
-        //Configurar recyclerview
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
-        recyclerViewConversas.setLayoutManager(layoutManager);
-        recyclerViewConversas.setHasFixedSize(true);
-        recyclerViewConversas.setAdapter(adapter);
-
-        //Configurações iniciais
-        conversasRef = ConfiguracaoFirebase2.getFirebase().child("Telefones");
-        recuperarConversas();
+        WebView webView = (WebView)view.findViewById(R.id.idWebferrovia);
+        webView.getSettings().setJavaScriptEnabled(false);
+        webView.setWebViewClient(new WebViewClient());
+        webView.loadUrl("http://corredor.web.app");
         return view;
-/*
-        Intent i = new Intent(getActivity(), ChatActivity.class);
-        i.putExtra("chatContato", usuarioSelecionado );
-        startActivity( i );
 
-        Intent i = new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", anuncioSelecionado.getTelefone(), null ));
-        startActivity( i );
-
-/*
- */
 
 
     }
-
-    private void recuperarConversas() {
-
-        valueEventListener=   conversasRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-
-                listaConversas.clear();
-                for ( DataSnapshot ds : dataSnapshot.getChildren() ){
-                    listaConversas.add( ds.getValue(TelefonesUteis.class) );
-                }
-
-                Collections.reverse( listaConversas );
-                adapter.notifyDataSetChanged();
-
-
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-
-
-    }
-
-
 
 
 }
+
+

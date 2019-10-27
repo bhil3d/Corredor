@@ -38,15 +38,15 @@
     <item android:title="Corredor norte">
         <menu>
             <item
-                android:id="@+id/nav_share"
+                android:id="@+id/poiticasP"
                 android:icon="@drawable/politicas_privacidadesdp"
                 android:title="@string/menu_politicasDePrivacidades" />
             <item
-                android:id="@+id/nav_sed"
+                android:id="@+id/termosUs"
                 android:icon="@drawable/termos_uso_dp"
                 android:title="@string/menu_termos_de_uso"/>
             <item
-                android:id="@+id/nav_sen"
+                android:id="@+id/sobre"
                 android:icon="@drawable/sobre24dp"
                 android:title="@string/menu_sobre" />
             <item

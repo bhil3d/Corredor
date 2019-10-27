@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/funo_madeira"
+    android:background="#fff"
     tools:context=".Activity.Tela_Lista_dos_Relatorio_Publicos">
 
     <LinearLayout
