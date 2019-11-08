@@ -5,7 +5,7 @@ android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.mikhaellopez.circularimageviewsample"
-        applicationId "com.example.corredor"
+        applicationId "weberson.corredor.com"
         minSdkVersion 24
         targetSdkVersion 28
         versionCode 1
