@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.corredor">
+    package="com.weberson.corredor">
 
     <uses-feature
         android:name="android.hardware.camera2"
@@ -12,8 +12,7 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.CALL_PHONE"/>
-
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
         android:allowBackup="true"
@@ -22,7 +21,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activity.Detalhes_telefones_Activity"></activity>
+        <activity android:name=".Activity.DfActivity"></activity>
+        <activity android:name=".Activity.Status_usuarios_normal_Activity" />
+        <activity android:name=".Activity.Detalhes_telefones_Activity" />
         <activity
             android:name=".Activity.Perfil_Usuario_Detalhes_Activity"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -33,42 +34,34 @@
             tools:replace="android:value" />
 
         <activity
+            android:name=".Activity.Perfil_foto_Activity"
+            android:parentActivityName=".Activity.Tela_Menu_Principal" />
+        <activity
+            android:name=".Activity.Editar_perfil_Activity"
+            android:parentActivityName=".Activity.Perfil_Usuario_Detalhes_Activity" />
+        <activity
+            android:name=".Activity.AtualizardadosDF"
+            android:parentActivityName=".Activity.Tela_df_resultados" />
+        <activity
+            android:name=".Activity.Tela_df_resultados"
+            android:parentActivityName=".Activity.Tela_Menu_Principal" />
+        <activity
+            android:name=".Activity.AtualisarStatusEquipamentosActivity"
+            android:parentActivityName=".Activity.StatusEquipamentosActivity" />
+        <activity
+            android:name=".Activity.StatusEquipamento_Cadastro_AtivosActivity"
+            android:parentActivityName=".Activity.StatusEquipamentosActivity" />
+        <activity
+            android:name=".Activity.StatusEquipamentosActivity"
             android:parentActivityName=".Activity.Tela_Menu_Principal"
-            android:name=".Activity.Perfil_foto_Activity" />
-
-        <activity
-            android:parentActivityName=".Activity.Perfil_Usuario_Detalhes_Activity"
-            android:name=".Activity.Editar_perfil_Activity" />
-
-        <activity
-            android:parentActivityName=".Activity.Tela_df_resultados"
-            android:name=".Activity.AtualizardadosDF" />
-
-        <activity
-            android:parentActivityName=".Activity.Tela_Menu_Principal"
-            android:name=".Activity.Tela_df_resultados" />
-
-        <activity
-            android:parentActivityName=".Activity.StatusEquipamentosActivity"
-            android:name=".Activity.AtualisarStatusEquipamentosActivity" />
-
-        <activity
-            android:parentActivityName=".Activity.StatusEquipamentosActivity"
-            android:name=".Activity.StatusEquipamento_Cadastro_AtivosActivity" />
-
-        <activity
-            android:screenOrientation="portrait"
-            android:parentActivityName=".Activity.Tela_Menu_Principal"
-            android:name=".Activity.StatusEquipamentosActivity" />
-
+            android:screenOrientation="portrait" />
         <activity android:name=".Activity.Tela_para_teste" />
         <activity
-            android:parentActivityName=".Activity.Tela_lista_meus_Relatorios"
-            android:name=".Activity.Tela_detalhe_meus_Relatorios" />
-
+            android:name=".Activity.Tela_detalhe_meus_Relatorios"
+            android:parentActivityName=".Activity.Tela_lista_meus_Relatorios" />
         <activity
-            android:parentActivityName=".Activity.Tela_Menu_Principal"
-            android:name=".Activity.Tela_lista_meus_Relatorios" />
+            android:name=".Activity.Tela_lista_meus_Relatorios"
+            android:parentActivityName=".Activity.Tela_Menu_Principal" />
         <activity
             android:name=".Activity.Tela_de_RegistroActivity"
             android:theme="@style/AppTheme.FullScreen" />
@@ -77,19 +70,17 @@
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:parentActivityName=".Activity.Tela_Menu_Principal"
-            android:name=".Activity.Tela_Detalhes_Relatorios_Publicos" />
-
+            android:name=".Activity.Tela_Detalhes_Relatorios_Publicos"
+            android:parentActivityName=".Activity.Tela_Menu_Principal" />
         <activity
-            android:parentActivityName=".Activity.Tela_Menu_Principal"
-            android:name=".Activity.Tela_Lista_dos_Relatorio_Publicos" />
-
+            android:name=".Activity.Tela_Lista_dos_Relatorio_Publicos"
+            android:parentActivityName=".Activity.Tela_Menu_Principal" />
         <activity
-            android:parentActivityName=".Activity.Tela_Menu_Principal"
-            android:name=".Activity.Tela_de_Cadastra_Relatorios_Publicos" />
+            android:name=".Activity.Tela_de_Cadastra_Relatorios_Publicos"
+            android:parentActivityName=".Activity.Tela_Menu_Principal" />
         <activity
-            android:screenOrientation="portrait"
             android:name=".Activity.Tela_de_LougarActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.FullScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
