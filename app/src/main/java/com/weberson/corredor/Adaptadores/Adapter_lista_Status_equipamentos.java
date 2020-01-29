@@ -52,7 +52,7 @@ private Context context;
         TextView TE;
         TextView ativo;
         TextView parado;
-        TextView statusmanutencao;
+       TextView statusmanutencao;
 
 
         public MyViewHolder(@NonNull View itemView) {

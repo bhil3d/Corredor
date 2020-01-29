@@ -65,7 +65,7 @@ private ProgressBar progressBar;
         adapter_lista_relatorios_publicos = new Adapter_lista_Relatorios_Publicos(listarelatorios, this);
         recyclerView.setAdapter( adapter_lista_relatorios_publicos );
 
-recuperaRelatoriosPublicos();
+        recuperaRelatoriosPublicos();
 
 //Aplicar evento de clique
        recyclerView.addOnItemTouchListener(

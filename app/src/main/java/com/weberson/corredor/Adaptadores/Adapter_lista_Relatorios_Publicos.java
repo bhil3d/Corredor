@@ -45,7 +45,7 @@ private Context context;
         // you ca use the previous same animation like the following
 
         // but i want to use a different one so lets create it ..
-        myViewHolder.container.setAnimation(AnimationUtils.loadAnimation(context,R.anim.fade_scale_animation));
+     //   myViewHolder.container.setAnimation(AnimationUtils.loadAnimation(context,R.anim.fade_scale_animation));
 
 
         CadastraRelatoriosTurno cadastraRelatoriosTurno = relatoriosTurnos.get(i);

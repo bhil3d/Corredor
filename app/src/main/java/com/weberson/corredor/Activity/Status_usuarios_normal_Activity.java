@@ -51,10 +51,11 @@ public class Status_usuarios_normal_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_status_usuarios_normal_);
 
-        verrificarPermissoesDeUsuarios();
+       // verrificarPermissoesDeUsuarios();
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+      //  getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         inicializarComponentes();
+
 
         relatoriosPublicosRef = ConfiguracaoFirebase2.getFirebase()
                 .child("StatusEquipamentos");
@@ -65,8 +66,8 @@ public class Status_usuarios_normal_Activity extends AppCompatActivity {
         adapter_lista_relatorios_publicos = new Adapter_lista_Status_equipamentos(listarelatorios, this);
         recyclerView.setAdapter( adapter_lista_relatorios_publicos );
 
-        recuperaRelatoriosPublicos();
 
+        recuperaRelatoriosPublicos();
 
     }
 
@@ -278,7 +279,7 @@ public class Status_usuarios_normal_Activity extends AppCompatActivity {
         progressBar= findViewById(R.id.progrebar2);
 
     }
-
+/*
     private void verrificarPermissoesDeUsuarios() {
 
         FirebaseUser user = getUsuarioAtual();
@@ -293,19 +294,6 @@ public class Status_usuarios_normal_Activity extends AppCompatActivity {
                     Log.d("resultado", "onDataChange: " + dataSnapshot.toString() );
                     CadastroDeUsuarios usuario = dataSnapshot.getValue( CadastroDeUsuarios.class );
 
-
-
-                    String tipoUsuario = usuario.getTipoUsuario();
-                    if( tipoUsuario.equals("s") ){
-
-                        Intent i = new Intent(Status_usuarios_normal_Activity.this, StatusEquipamentosActivity.class);
-                     startActivity(i);
-                     finish();
-                    }
-
-
-
-
                 }
 
                 @Override
@@ -317,6 +305,8 @@ public class Status_usuarios_normal_Activity extends AppCompatActivity {
 
     }
 
+
+ */
 
 
 
