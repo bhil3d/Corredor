@@ -8,26 +8,22 @@
     tools:context=".Activity.Perfil_Usuario_Detalhes_Activity">
 
 
-    <android.support.v7.widget.CardView
+    <android.support.constraint.ConstraintLayout
 
         android:id="@+id/textView4"
-        android:layout_width="1dp"
-        android:background="@color/black"
-        android:layout_height="1dp"
-        android:layout_marginTop="130dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:foregroundGravity="center_vertical"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/cover"
+        app:layout_constraintTop_toBottomOf="@+id/cover"
         app:layout_constraintVertical_weight="1"
         tools:ignore="MissingConstraints">
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
-            android:background="@drawable/cd_perfil"
-            android:layout_height="match_parent"
-           >
+            android:layout_height="match_parent">
 
 
             <LinearLayout
@@ -73,7 +69,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="60dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 android:background="@drawable/reg_edittext_style"
                 android:orientation="horizontal"
@@ -102,18 +98,6 @@
 
 
                 </TextView>
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:id="@+id/linearLayout5"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center_vertical"
-                android:orientation="vertical">
-
 
             </LinearLayout>
 
@@ -194,7 +178,7 @@
 
         </android.support.constraint.ConstraintLayout>
 
-    </android.support.v7.widget.CardView>
+    </android.support.constraint.ConstraintLayout>
 
     <ImageView
         android:id="@+id/cover"

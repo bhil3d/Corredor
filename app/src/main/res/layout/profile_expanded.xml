@@ -7,40 +7,24 @@
     tools:context=".Activity.Perfil_Usuario_Detalhes_Activity">
 
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/photo"
-        android:layout_width="90dp"
-        android:layout_height="90dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="80dp"
-        android:layout_marginEnd="40dp"
-        android:elevation="@dimen/cardview_default_radius"
-        app:civ_border_color="@color/white"
-        app:civ_border_width="3dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/avatar" />
+    <android.support.constraint.ConstraintLayout
 
-    <android.support.v7.widget.CardView
         android:id="@+id/textView4"
-        android:layout_width="0dp"
-        android:background="@color/black"
-        android:layout_height="350dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="130dp"
-        android:layout_marginEnd="12dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:foregroundGravity="center_vertical"
         android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/cover"
+        app:layout_constraintTop_toBottomOf="@+id/photo"
         app:layout_constraintVertical_weight="1"
         tools:ignore="MissingConstraints">
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/cd_perfil">
+            android:background="@drawable/estilocontainer"
+            android:layout_height="match_parent">
 
 
             <LinearLayout
@@ -48,6 +32,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
+
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 android:background="@drawable/reg_edittext_style"
@@ -59,8 +44,8 @@
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
 
                 <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
                     android:src="@drawable/ic_gerencia">
 
                 </ImageView>
@@ -85,7 +70,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="60dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 android:background="@drawable/reg_edittext_style"
                 android:orientation="horizontal"
@@ -95,8 +80,8 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
                     android:src="@drawable/ic_perfil">
 
                 </ImageView>
@@ -119,35 +104,25 @@
 
 
             <LinearLayout
-                android:id="@+id/linearLayout5"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center_vertical"
-                android:orientation="vertical">
-
-
-            </LinearLayout>
-
-
-            <LinearLayout
                 android:id="@+id/linearLaout3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
+                android:layout_marginBottom="16dp"
                 android:background="@drawable/reg_edittext_style"
                 android:orientation="horizontal"
                 android:paddingLeft="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
 
                 <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
                     android:src="@drawable/ic_gerencia">
 
                 </ImageView>
@@ -183,8 +158,8 @@
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout7">
 
                 <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
                     android:src="@drawable/ic_email">
 
                 </ImageView>
@@ -206,33 +181,42 @@
 
         </android.support.constraint.ConstraintLayout>
 
-    </android.support.v7.widget.CardView>
+    </android.support.constraint.ConstraintLayout>
 
-    <Button
-        android:id="@+id/butompf"
-        android:layout_width="1dp"
-        android:layout_height="1dp"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="172dp"
-        android:layout_marginEnd="60dp"
-        android:background="@drawable/stylobtnpfil"
-        android:text="sair da sua conta"
-        android:textColor="@color/startblue"
-        android:textSize="15sp"
+    <TextView
+        android:id="@+id/nomeperfilfoto2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Weberson Costa"
+        android:textColor="@color/white"
+        android:textSize="12sp"
         android:textStyle="normal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        tools:layout_editor_absoluteY="283dp"
+        tools:ignore="MissingConstraints" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/photo"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_gravity="center_horizontal"
+        android:elevation="@dimen/cardview_default_radius"
+        app:civ_border_color="@color/white"
+        app:civ_border_width="3dp"
+        app:layout_constraintBottom_toBottomOf="@+id/cover"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cover">
-
-
-    </Button>
+        app:layout_constraintTop_toBottomOf="@+id/cover"
+        app:srcCompat="@drawable/avatar" />
 
     <ImageView
         android:id="@+id/cover"
         android:layout_width="0dp"
-        android:layout_height="230dp"
+        android:layout_height="200dp"
         android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/avatar" />
 
 

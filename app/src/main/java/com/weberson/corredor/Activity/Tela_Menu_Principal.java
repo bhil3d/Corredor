@@ -153,10 +153,11 @@ public class Tela_Menu_Principal extends AppCompatActivity
 
         } else if (id == R.id.Df) {
 
-            Intent intent = new Intent(Tela_Menu_Principal.this,DfActivity.class);
+           // Intent intent = new Intent(Tela_Menu_Principal.this,DfActivity.class);
+           // startActivity(intent);
+
+            Intent intent = new Intent(Tela_Menu_Principal.this,Perfil_Usuario_Detalhes_Activity.class);
             startActivity(intent);
-
-
 
         }
 
