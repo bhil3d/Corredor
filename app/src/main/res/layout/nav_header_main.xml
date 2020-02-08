@@ -15,19 +15,22 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:layout_marginTop="6dp"
-        android:id="@+id/IdimgMenuteste"
+        android:id="@+id/idimagem_menu"
         android:layout_width="80dp"
+        android:onClick="editarperfil"
         android:layout_height="80dp"
         app:civ_border_color="@color/white"
-        android:onClick="editarperfil"
-        android:src="@drawable/avatar"></de.hdodenhof.circleimageview.CircleImageView>
+        android:src="@drawable/avatar">
 
+    </de.hdodenhof.circleimageview.CircleImageView>
 
+Tex
     <TextView
         android:id="@+id/nomePerfilMp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="3dp"
+        android:onClick="editarperfil"
         android:text="@string/nav_header_title"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 

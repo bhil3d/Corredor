@@ -7,6 +7,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.GravityCompat;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.transition.TransitionManager;
 import android.view.MenuItem;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
@@ -17,6 +18,7 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.weberson.corredor.Adaptadores.adpitadorFraguimentos;
@@ -30,13 +32,11 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 
-public class Tela_Menu_Principal extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+public class Tela_Menu_Principal extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private FirebaseAuth autenticacao;
     FirebaseUser currentUser ;
     private GoogleSignInClient googleSignInClient;
-
 
 
     @Override
@@ -68,7 +68,6 @@ public class Tela_Menu_Principal extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         updateNavHeader();
-
 
     }
 
@@ -151,7 +150,7 @@ public class Tela_Menu_Principal extends AppCompatActivity
         } else if (id == R.id.passagensferroviarias) {
             startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://tremdepassageiros.vale.com/sgpweb/portal/index.html#/home")));
 
-        } else if (id == R.id.Df) {
+        } else if (id == R.id.idimagem_menu) {
 
            // Intent intent = new Intent(Tela_Menu_Principal.this,DfActivity.class);
            // startActivity(intent);
@@ -206,6 +205,8 @@ public class Tela_Menu_Principal extends AppCompatActivity
         Intent intent = new Intent(Tela_Menu_Principal.this,Perfil_Usuario_Detalhes_Activity.class);
         startActivity(intent);
 
+        Toast.makeText(Tela_Menu_Principal.this, "foto", Toast.LENGTH_SHORT).show();
+
 
     }
 
@@ -214,7 +215,7 @@ public class Tela_Menu_Principal extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         View headerView = navigationView.getHeaderView(0);
-        ImageView navUserPhot = headerView.findViewById(R.id.IdimgMenuteste);
+        ImageView navUserPhot = headerView.findViewById(R.id.idimagem_menu);
         TextView navUsername = headerView.findViewById(R.id.nomePerfilMp);
         TextView navUserMail = headerView.findViewById(R.id.emailPerfilMp);
 

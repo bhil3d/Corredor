@@ -3,8 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.weberson.corredor">
 
-    <uses-feature android:name="android.hardware.camera2" android:required="false" />
-    <uses-feature android:name="android.hardware.camera2.autofocus" android:required="false" />
+    <uses-feature
+        android:name="android.hardware.camera2"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.camera2.autofocus"
+        android:required="false" />
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -19,7 +23,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activity.DfActivity"></activity>
+        <activity
+            android:name=".Activity.Tela_de_menu_app_liberado"
+            android:label="@string/title_activity_tela_de_menu_app_liberado"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".Activity.DfActivity" />
         <activity android:name=".Activity.Status_usuarios_normal_Activity" />
         <activity android:name=".Activity.Detalhes_telefones_Activity" />
         <activity
