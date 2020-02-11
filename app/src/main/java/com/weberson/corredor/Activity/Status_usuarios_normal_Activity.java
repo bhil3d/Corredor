@@ -156,7 +156,7 @@ public class Status_usuarios_normal_Activity extends AppCompatActivity {
             dialog.show();
 
         }else {
-            Toast.makeText(this, "Escolha primeiro uma região!",
+            Toast.makeText(this, "Escolha primeiro o ativo!",
                     Toast.LENGTH_SHORT).show();
         }
 

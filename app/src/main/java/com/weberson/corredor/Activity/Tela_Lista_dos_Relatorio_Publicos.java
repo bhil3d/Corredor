@@ -101,7 +101,7 @@ private ProgressBar progressBar;
        public void filtrarPorManutençao(View view){
 
         AlertDialog.Builder dialogEstado = new AlertDialog.Builder(this);
-        dialogEstado.setTitle("Selecione o estado desejado");
+        dialogEstado.setTitle("Selecione o tipo de manutençao");
 
         //Configurar spinner
         View viewSpinner = getLayoutInflater().inflate(R.layout.dialog_spinner, null);
@@ -144,7 +144,7 @@ private ProgressBar progressBar;
         if( filtroPorManutençao == true ){
 
             AlertDialog.Builder dialogEstado = new AlertDialog.Builder(this);
-            dialogEstado.setTitle("Selecione a categoria desejada");
+            dialogEstado.setTitle("Selecione o ativo desejada");
 
             //Configurar spinner
             View viewSpinner = getLayoutInflater().inflate(R.layout.dialog_spinner, null);
@@ -180,7 +180,7 @@ private ProgressBar progressBar;
             dialog.show();
 
         }else {
-            Toast.makeText(this, "Escolha primeiro uma região!",
+            Toast.makeText(this, "Escolha primeiro a manutençao!",
                     Toast.LENGTH_SHORT).show();
         }
 

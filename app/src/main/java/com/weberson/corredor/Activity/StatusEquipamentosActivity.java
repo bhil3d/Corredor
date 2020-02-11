@@ -144,12 +144,12 @@ public class StatusEquipamentosActivity extends AppCompatActivity {
         if( filtroPorManutençao == true ){
 
             AlertDialog.Builder dialogEstado = new AlertDialog.Builder(this);
-            dialogEstado.setTitle("Selecione a categoria desejada");
+            dialogEstado.setTitle("Selecione o status desejada");
 
             //Configurar spinner
             View viewSpinner = getLayoutInflater().inflate(R.layout.dialog_spinner, null);
 
-            //Configura spinner de categorias
+            //Configura spinner de status
             final Spinner spinnerCategoria = viewSpinner.findViewById(R.id.spinnerFiltro);
             String[] estados = getResources().getStringArray(R.array.Status);
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(
@@ -180,7 +180,7 @@ public class StatusEquipamentosActivity extends AppCompatActivity {
             dialog.show();
 
         }else {
-            Toast.makeText(this, "Escolha primeiro uma região!",
+            Toast.makeText(this, "Escolha primeiro um ativo!",
                     Toast.LENGTH_SHORT).show();
         }
 
