@@ -296,7 +296,7 @@ if(accont ==null){
 
                         if (task.isSuccessful()) {
 
-                           Intent intent = new Intent(Tela_de_LougarActivity.this,Tela_de_menu_app_liberado.class);
+                           Intent intent = new Intent(Tela_de_LougarActivity.this,Tela_Menu_Principal.class);
                             startActivity(intent);
 
 

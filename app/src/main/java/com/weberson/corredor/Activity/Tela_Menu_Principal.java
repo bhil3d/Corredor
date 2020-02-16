@@ -205,7 +205,7 @@ public class Tela_Menu_Principal extends AppCompatActivity implements Navigation
         Intent intent = new Intent(Tela_Menu_Principal.this,Perfil_Usuario_Detalhes_Activity.class);
         startActivity(intent);
 
-        Toast.makeText(Tela_Menu_Principal.this, "foto", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(Tela_Menu_Principal.this, "foto", Toast.LENGTH_SHORT).show();
 
 
     }
