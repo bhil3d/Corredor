@@ -8,7 +8,7 @@ android {
         applicationId "weberson.corredor.com"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 10
+        versionCode 12
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }

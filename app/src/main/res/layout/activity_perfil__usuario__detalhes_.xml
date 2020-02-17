@@ -54,8 +54,8 @@
     <android.support.constraint.ConstraintLayout
 
         android:id="@+id/textView4"
-        android:layout_width="407dp"
-        android:layout_height="158dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:foregroundGravity="center_vertical"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
