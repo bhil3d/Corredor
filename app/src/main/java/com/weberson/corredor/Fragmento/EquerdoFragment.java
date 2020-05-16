@@ -33,7 +33,7 @@ public class EquerdoFragment extends Fragment {
         WebView webView = (WebView)view.findViewById(R.id.idWebferrovia);
         webView.getSettings().setJavaScriptEnabled(false);
         webView.setWebViewClient(new WebViewClient());
-        webView.loadUrl("http://corredor.web.app");
+        webView.loadUrl("https://ids-prd.valeglobal.net/nidp/idff/sso?id=MyWay&sid=1&option=credential&sid=1&target=https%3A%2F%2Fmyway.geo.valeglobal.net%2F");
         return view;
 
 

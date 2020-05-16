@@ -145,7 +145,7 @@ public class Tela_Menu_Principal extends AppCompatActivity implements Navigation
 
         } else if (id == R.id.contracheques) {
 
-            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://zapp.capriza.com/8jgjryxg8wlvte2zh8yzjg?run_anyway=true")));
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://ids-prd.valeglobal.net/nidp/idff/sso?id=MyWay&sid=1&option=credential&sid=1&target=https%3A%2F%2Fmyway.geo.valeglobal.net%2F")));
 
         } else if (id == R.id.passagensferroviarias) {
             startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://tremdepassageiros.vale.com/sgpweb/portal/index.html#/home")));
