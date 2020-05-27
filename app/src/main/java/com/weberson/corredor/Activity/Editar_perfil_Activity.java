@@ -140,7 +140,10 @@ public class Editar_perfil_Activity extends AppCompatActivity {
 
 
                 if( i.resolveActivity(getPackageManager()) != null ){
+
                     startActivityForResult(i, SELECAO_GALERIA );
+
+                    startActivityForResult(Intent.createChooser(i,"Escolha uma Imagem"),0);
                 }
             }
         });

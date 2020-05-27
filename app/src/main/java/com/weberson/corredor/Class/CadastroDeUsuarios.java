@@ -22,6 +22,19 @@ public class CadastroDeUsuarios implements Serializable {
 
     }
 
+    public CadastroDeUsuarios(String nome, String idade, String url_imagem) {
+
+
+    }
+
+    public CadastroDeUsuarios(String nome, String idade, String matricula, String gerencia, String url_imagem) {
+        this.nome = nome;
+        this.caminhoFoto = url_imagem;
+        this.email = idade;
+        this.gerencia = gerencia;
+        this.matricula = matricula;
+    }
+
     public void salvar(){
         DatabaseReference firebaseRef = ConfiguracaoFirebase2.getFirebase();
         DatabaseReference usuariosRef = firebaseRef.child("usuarios").child( getIdUsuario() );

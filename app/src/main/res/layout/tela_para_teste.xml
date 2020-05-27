@@ -1,119 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".Activity.Tela_para_teste"
     android:background="#fff">
 
 
-    <ImageView
-        android:id="@+id/btRegister"
-        android:layout_width="90dp"
-        android:layout_height="90dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/editetnome"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/userphoto" />
 
-    <EditText
-        android:id="@+id/editetnome"
-        android:layout_width="265dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="4dp"
-        android:background="@drawable/reg_edittext_style"
-        android:ems="10"
-        android:hint="Mail Adress"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/guideline3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/guideline3"
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.5" />
+        android:layout_gravity="center">
+
+
+        <ImageView
+            android:id="@+id/imageView_Database_Dados_Funcionario"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:paddingTop="15dp"/>
+
+        <ProgressBar
+            android:id="@+id/progressBar_Database_Dados_Funcionario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"/>
+
+    </RelativeLayout>
 
     <EditText
-        android:id="@+id/editeSenha"
-        android:layout_width="265dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:background="@drawable/reg_edittext_style"
-        android:ems="10"
-        android:hint="Password"
-        android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline3" />
-
-    <Button
-        android:id="@+id/butaolougar"
-        android:layout_width="136dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:background="@drawable/reg_btn_style"
-        android:text="Login"
-        android:textColor="#fff"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editeSenha" />
-
-    <ProgressBar
-        android:id="@+id/login_progress"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/butaolougar"
-        app:layout_constraintEnd_toEndOf="@+id/butaolougar"
-        app:layout_constraintStart_toStartOf="@+id/butaolougar"
-        app:layout_constraintTop_toTopOf="@+id/butaolougar" />
-
-
-    <com.facebook.login.widget.LoginButton
-        android:id="@+id/login_button"
+        android:id="@+id/editText_Database_Dados_Funcionario_Nome"
         android:layout_width="match_parent"
-        android:layout_height="35dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:text="LOGIN WITH FACEBOOK"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login_progress" />
+        android:layout_height="wrap_content" />
 
-    <com.google.android.gms.common.SignInButton
-        android:id="@+id/cardView_LoginGoogle"
+    <EditText
+        android:id="@+id/editText_Database_Dados_Funcionario_Idade"
         android:layout_width="match_parent"
-        android:layout_height="35dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login_button" />
+        android:layout_height="wrap_content"
+        android:inputType="number"/>
 
-</android.support.constraint.ConstraintLayout>
+    <EditText
+        android:id="@+id/editText_Database_Dados_Funcionario_Matricula"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:id="@+id/editText_Database_Dados_Funcionario_Gerencia"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"/>
+
+    <TextView
+        android:id="@+id/caminhofoto"
+        android:layout_width="match_parent"
+        android:layout_gravity="center"
+        android:text="Alterar"
+        android:textStyle="bold"
+        android:layout_height="wrap_content">
+
+    </TextView>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/button_Database_Dados_Funconario_Alterar"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginTop="10dp"
+            android:text="Alterar"
+            android:textStyle="bold"
+            android:textAllCaps="false"
+            android:textColor="@color/colorPrimary"
+            android:textSize="16sp"
+            style = "@style/Widget.AppCompat.Button.Borderless"/>
+
+        <Button
+            android:id="@+id/button_Database_Dados_Funconario_Remover"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginTop="10dp"
+            android:text="Remover"
+            android:textStyle="bold"
+            android:textAllCaps="false"
+            android:textColor="@color/colorPrimary"
+            android:textSize="16sp"
+            style = "@style/Widget.AppCompat.Button.Borderless"/>
+
+
+
+    </LinearLayout>
+
+</LinearLayout>
 
 
 
