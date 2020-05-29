@@ -109,6 +109,7 @@ public class UsuarioFirebase {
 
     }
 
+
     public static void redirecionaUsuarioLogado(final Activity activity){
 
         FirebaseUser user = getUsuarioAtual();

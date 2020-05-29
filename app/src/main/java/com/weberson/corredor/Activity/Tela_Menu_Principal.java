@@ -100,7 +100,7 @@ public class Tela_Menu_Principal extends AppCompatActivity implements Navigation
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
 
-            Intent intent = new Intent(Tela_Menu_Principal.this, Tela_para_teste.class);
+            Intent intent = new Intent(Tela_Menu_Principal.this, MainActivityNoticias.class);
             startActivity(intent);
 
 

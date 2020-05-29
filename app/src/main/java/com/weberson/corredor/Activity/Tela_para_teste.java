@@ -226,7 +226,7 @@ public class Tela_para_teste extends AppCompatActivity implements View.OnClickLi
         String gerencia = editText_Idade.getText().toString();
 
 
-        if(Util3.verificarCampos(getBaseContext(),nome,idade,matricula,gerencia)){
+        if(Util3.verificarCampos1(getBaseContext(),nome,idade,matricula,gerencia)){
 
 
 

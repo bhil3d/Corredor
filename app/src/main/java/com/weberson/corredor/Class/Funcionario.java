@@ -5,11 +5,15 @@ import android.os.Parcelable;
 
 public class Funcionario implements Parcelable {
 
-    private String id;
     private String nome;
-    private int idade;
-    private String urlimagem;
-    private String id_empresa;
+    private String idUsuario;
+    private String email;
+    private String senha;
+    private String matricula;
+    private String gerencia;
+    private String tipoUsuario;
+    private String caminhoFoto;
+
 
 
 
@@ -20,17 +24,73 @@ public class Funcionario implements Parcelable {
 
 
 
-    public Funcionario(String id, String nome, int idade, String urlimagem) {
+    public Funcionario(String nome, String email, String caminhoFoto) {
         this.nome = nome;
-        this.id = id;
-        this.urlimagem = urlimagem;
-        this.idade = idade;
+        this.email = email;
+        this.caminhoFoto = caminhoFoto;
+
     }
 
-    public Funcionario(String nome, int idade, String urlimagem) {
+    public Funcionario(String nome, String caminhoFoto) {
         this.nome = nome;
-        this.urlimagem = urlimagem;
-        this.idade = idade;
+        this.caminhoFoto = caminhoFoto;
+
+    }
+
+    public String getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(String idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
+    public String getMatricula() {
+        return matricula;
+    }
+
+    public void setMatricula(String matricula) {
+        this.matricula = matricula;
+    }
+
+    public String getGerencia() {
+        return gerencia;
+    }
+
+    public void setGerencia(String gerencia) {
+        this.gerencia = gerencia;
+    }
+
+    public String getTipoUsuario() {
+        return tipoUsuario;
+    }
+
+    public void setTipoUsuario(String tipoUsuario) {
+        this.tipoUsuario = tipoUsuario;
+    }
+
+    public String getCaminhoFoto() {
+        return caminhoFoto;
+    }
+
+    public void setCaminhoFoto(String caminhoFoto) {
+        this.caminhoFoto = caminhoFoto;
     }
 
     public String getNome() {
@@ -41,39 +101,6 @@ public class Funcionario implements Parcelable {
         this.nome = nome;
     }
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getUrlimagem() {
-        return urlimagem;
-    }
-
-    public void setUrlimagem(String urlimagem) {
-        this.urlimagem = urlimagem;
-    }
-
-    public int getIdade() {
-        return idade;
-    }
-
-    public void setIdade(int idade) {
-        this.idade = idade;
-    }
-
-    public String getId_empresa() {
-        return id_empresa;
-    }
-
-    public void setId_empresa(String id_empresa) {
-        this.id_empresa = id_empresa;
-    }
-
-
     @Override
     public int describeContents() {
         return 0;
@@ -81,19 +108,27 @@ public class Funcionario implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(this.id);
+        dest.writeString(this.idUsuario);
         dest.writeString(this.nome);
-        dest.writeInt(this.idade);
-        dest.writeString(this.urlimagem);
-        dest.writeString(this.id_empresa);
+        dest.writeString(this.caminhoFoto);
+        dest.writeString(this.email);
+        dest.writeString(this.senha);
+        dest.writeString(this.matricula);
+        dest.writeString(this.gerencia);
+        dest.writeString(this.tipoUsuario);
+
     }
 
     protected Funcionario(Parcel in) {
-        this.id = in.readString();
+        this.idUsuario = in.readString();
         this.nome = in.readString();
-        this.idade = in.readInt();
-        this.urlimagem = in.readString();
-        this.id_empresa = in.readString();
+        this.caminhoFoto = in.readString();
+        this.email = in.readString();
+        this.senha = in.readString();
+        this.matricula = in.readString();
+        this.gerencia = in.readString();
+        this.tipoUsuario = in.readString();
+
     }
 
     public static final Creator<Funcionario> CREATOR = new Creator<Funcionario>() {

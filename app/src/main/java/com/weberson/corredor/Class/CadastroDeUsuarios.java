@@ -22,15 +22,22 @@ public class CadastroDeUsuarios implements Serializable {
 
     }
 
-    public CadastroDeUsuarios(String nome, String idade, String url_imagem) {
+   // public CadastroDeUsuarios(String nome, String idade, String url_imagem) {
 
+
+   // }
+
+    public CadastroDeUsuarios(String nome, String email, String caminhoFoto) {
+        this.nome = nome;
+        this.email = email;
+        this.caminhoFoto = caminhoFoto;
 
     }
 
-    public CadastroDeUsuarios(String nome, String idade, String matricula, String gerencia, String url_imagem) {
+    public CadastroDeUsuarios(String nome, String email, String gerencia, String matricula, String caminhoFoto) {
         this.nome = nome;
-        this.caminhoFoto = url_imagem;
-        this.email = idade;
+        this.caminhoFoto = caminhoFoto;
+        this.email = email;
         this.gerencia = gerencia;
         this.matricula = matricula;
     }

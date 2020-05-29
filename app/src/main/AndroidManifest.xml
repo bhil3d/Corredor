@@ -23,10 +23,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".Activity.MainActivityNoticias"></activity>
         <activity
             android:name=".Activity.Tela_de_menu_app_liberado"
             android:label="@string/title_activity_tela_de_menu_app_liberado"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Activity.DfActivity" />
         <activity android:name=".Activity.Status_usuarios_normal_Activity" />
         <activity android:name=".Activity.Detalhes_telefones_Activity" />
