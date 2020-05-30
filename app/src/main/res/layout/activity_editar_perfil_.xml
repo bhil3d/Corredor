@@ -35,32 +35,13 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
 
-
-            <ImageView
-                android:id="@+id/textAlterarFoto"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:layout_gravity="center"
-                android:layout_marginStart="84dp"
-                android:layout_marginEnd="84dp"
-                android:layout_marginBottom="16dp"
-                android:src="@drawable/ic_add_fotos"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.502"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageEditarPerfil"
-                app:layout_constraintVertical_bias="0.0">
-
-            </ImageView>
-
             <ProgressBar
                 android:id="@+id/progressBar_edite_perfil"
                 style="?android:attr/progressBarStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:visibility="gone"
-                app:layout_constraintBottom_toTopOf="@+id/textAlterarFoto"
+                app:layout_constraintBottom_toBottomOf="@+id/imageEditarPerfil"
                 app:layout_constraintEnd_toEndOf="@+id/imageEditarPerfil"
                 app:layout_constraintStart_toStartOf="@+id/imageEditarPerfil"
                 app:layout_constraintTop_toTopOf="@+id/imageEditarPerfil" />
@@ -99,6 +80,7 @@
          android:layout_width="match_parent"
          android:hint="Matricula"
          android:drawableLeft="@drawable/icmatricula"
+         android:inputType="number"
          android:layout_height="wrap_content">
 
 

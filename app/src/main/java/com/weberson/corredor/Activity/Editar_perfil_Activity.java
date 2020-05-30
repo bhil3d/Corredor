@@ -61,7 +61,6 @@ import static com.weberson.corredor.Class.UsuarioFirebase.atualizarFotoUsuario;
 public class Editar_perfil_Activity extends AppCompatActivity implements View.OnClickListener {
 
     private CircleImageView imageEditarPerfil;
-    private ImageView textAlterarFoto;
     private TextInputEditText editNomePerfil, editEmailPerfil,editgerenciaPerfil,matriculalPerfil;
     private Button buttonSalvarAlteracoes;
 
@@ -435,7 +434,6 @@ private void salvarDadosStorage(final String nome, final String email,final Stri
     public void inicializarComponentes(){
 
         imageEditarPerfil      = findViewById(R.id.imageEditarPerfil);
-        textAlterarFoto        = findViewById(R.id.textAlterarFoto);
         editNomePerfil         = findViewById(R.id.editNomePerfil);
         editEmailPerfil        = findViewById(R.id.editEmailPerfil);
         editgerenciaPerfil         = findViewById(R.id.editTextoGerencia);
@@ -445,8 +443,6 @@ private void salvarDadosStorage(final String nome, final String email,final Stri
 
         buttonSalvarAlteracoes.setOnClickListener(this);
         imageEditarPerfil.setOnClickListener(this);
-
-
         editEmailPerfil.setFocusable(false);
 
     }

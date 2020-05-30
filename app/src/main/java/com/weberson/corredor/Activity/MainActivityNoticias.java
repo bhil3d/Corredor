@@ -35,6 +35,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.weberson.corredor.Class.CadastroDeUsuarios;
+import com.weberson.corredor.Class.CadastroNoticias;
 import com.weberson.corredor.Class.DialogAlerta;
 import com.weberson.corredor.Class.DialogProgress;
 import com.weberson.corredor.Class.Funcionario;
@@ -55,7 +56,6 @@ public class MainActivityNoticias extends AppCompatActivity implements View.OnCl
 
 
     private LinearLayout linearLayout;
-    private ImageView imageView_LimparCampos;
 
     private EditText editText_Nome;
     private EditText editText_Idade;
@@ -75,7 +75,6 @@ public class MainActivityNoticias extends AppCompatActivity implements View.OnCl
 
     private String identificadorUsuario;
     private CadastroDeUsuarios cadastroDeUsuarios;
-    private Button button_Alterar;
     private Funcionario funcionarioSelecionado;
 
 
@@ -85,18 +84,14 @@ public class MainActivityNoticias extends AppCompatActivity implements View.OnCl
         setContentView(R.layout.activity_main_noticias);
 
         linearLayout = (LinearLayout)findViewById(R.id.linearLayout_Database_Funcionario);
-        imageView_LimparCampos = (ImageView)findViewById(R.id.imageView_Database_Funcionario_LimparCampos);
 
         editText_Nome = (EditText)findViewById(R.id.editText_Database_Funcionario_Nome);
         editText_Idade = (EditText)findViewById(R.id.editText_Database_Funcionario_Idade);
 
         button_Salvar = (Button)findViewById(R.id.button_Database_Funcionario_Salvar);
-        button_Alterar = (Button)findViewById(R.id.button_Database_Dados_Funconario_Alterar);
         imageView_Galeria = (ImageView)findViewById(R.id.imageView_Database_Funcionario_Imagem);
 
-        imageView_LimparCampos.setOnClickListener(this);
         button_Salvar.setOnClickListener(this);
-        button_Alterar.setOnClickListener(this);
         imageView_Galeria.setOnClickListener(this);
 
 
@@ -106,20 +101,6 @@ public class MainActivityNoticias extends AppCompatActivity implements View.OnCl
         identificadorUsuario = UsuarioFirebase.getIdentificadorUsuario();
         usuarioLogado = UsuarioFirebase.getDadosUsuarioLogado();
         FirebaseUser usuarioPerfil = UsuarioFirebase.getUsuarioAtual();
-        editText_Nome.setText( usuarioPerfil.getDisplayName().toUpperCase() );
-        editText_Idade.setText( usuarioPerfil.getEmail() );
-
-
-        Uri url = usuarioPerfil.getPhotoUrl();
-        if( url != null ){
-            Glide.with(MainActivityNoticias.this)
-                    .load( url )
-                    .into( imageView_Galeria );
-        }
-        else {
-            imageView_Galeria.setImageResource(R.drawable.avatar);
-        }
-
 
     }
 
@@ -128,11 +109,6 @@ public class MainActivityNoticias extends AppCompatActivity implements View.OnCl
 
         switch (v.getId()){
 
-            case R.id.imageView_Database_Funcionario_LimparCampos:
-
-                limparCampos();
-
-                break;
 
             case R.id.button_Database_Funcionario_Salvar:
 
@@ -151,7 +127,6 @@ public class MainActivityNoticias extends AppCompatActivity implements View.OnCl
             case R.id.button_Database_Dados_Funconario_Alterar:
 
 
-             //   buttonAlterar();
 
                 break;
 
@@ -301,240 +276,7 @@ public class MainActivityNoticias extends AppCompatActivity implements View.OnCl
     //----------------------------------------LIMPAR CAMPOS----------------------------------------------------------------
 
 
-    private void limparCampos(){
 
-
-        editText_Nome.setText("");
-        editText_Idade.setText("");
-        uri_imagem = null;
-        imagem_Selecionada = false;
-
-        imageView_Galeria.setImageResource(R.drawable.ic_galeria_24dp);
-
-
-
-    }
-/*
-    private void buttonAlterar(){
-
-
-
-        String nome = editText_Nome.getText().toString();
-        String email = editText_Idade.getText().toString();
-
-
-
-
-        if(Util3.verificarCampos1(getBaseContext(),nome,email)){
-
-
-            if(!nome.equals(funcionarioSelecionado.getNome()) || email != funcionarioSelecionado.getEmail() || imagem_Alterada ){
-
-
-
-                if( imagem_Alterada){
-
-                    removerImagem(nome,email);
-
-
-                }else{
-
-                    alterarDados(nome,email,funcionarioSelecionado.getCaminhoFoto());
-                }
-
-
-            }else{
-
-                DialogAlerta alerta = new DialogAlerta("Erro","Nenhuma informação foi alterada para poder salvar no Banco de Dados");
-                alerta.show(getSupportFragmentManager(),"2");
-
-            }
-
-
-
-        }
-
-    }
-
-    private void alterarDados(String nome, String email, String caminhoFoto){
-
-
-        final DialogProgress progress = new DialogProgress();
-        progress.show(getSupportFragmentManager(),"1");
-
-
-        DatabaseReference databaseReference = database.getReference().child("usuarios").child(identificadorUsuario);
-
-
-
-        Funcionario funcionario = new Funcionario(nome,email,caminhoFoto);
-
-
-        Map<String, Object> atualizacao = new HashMap<>();
-
-
-        atualizacao.put(funcionarioSelecionado.getIdUsuario(),funcionario);
-
-
-        databaseReference.updateChildren(atualizacao).addOnCompleteListener(new OnCompleteListener<Void>() {
-
-
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-
-                if(task.isSuccessful()){
-
-
-                    progress.dismiss();
-                    Toast.makeText(getBaseContext(),"Sucesso ao Alterar Dados",Toast.LENGTH_LONG).show();
-                    finish();
-
-                }else{
-
-                    progress.dismiss();
-                    Toast.makeText(getBaseContext(),"Erro ao Alterar Dados",Toast.LENGTH_LONG).show();
-
-                }
-
-
-            }
-        });
-
-
-    }
-
-
- */
-    private void removerImagem(final String nome, final String email){
-
-
-        final DialogProgress progress = new DialogProgress();
-        progress.show(getSupportFragmentManager(),"1");
-
-        String url = funcionarioSelecionado.getCaminhoFoto();
-
-        StorageReference reference = FirebaseStorage.getInstance().getReferenceFromUrl(url);
-
-
-
-        reference.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
-
-
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-
-
-                if(task.isSuccessful()){
-
-
-                    progress.dismiss();
-                    salvarDadoStorage(nome, email);
-
-                }else{
-
-
-                    progress.dismiss();
-                    Toast.makeText(getBaseContext(),"Erro ao Remover Imagem",Toast.LENGTH_LONG).show();
-
-                }
-
-            }
-        });
-
-
-
-    }
-
-    private void salvarDadoStorage(final String nome, final String email){
-
-        final DialogProgress progress = new DialogProgress();
-        progress.show(getSupportFragmentManager(),"1");
-
-
-        StorageReference reference = storage.getReference().child("imagens").child("perfil");
-
-        final StorageReference nome_imagem = reference.child(identificadorUsuario+".jpg");
-
-
-
-        Glide.with(getBaseContext()).asBitmap().load(uri_imagem).apply(new RequestOptions().override(1024,768))
-                .listener(new RequestListener<Bitmap>() {
-                    @Override
-                    public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Bitmap> target, boolean isFirstResource) {
-
-                        Toast.makeText(getBaseContext(),"Erro ao transformar imagem",Toast.LENGTH_LONG).show();
-
-                        progress.dismiss();
-                        return false;
-
-                    }
-
-                    @Override
-                    public boolean onResourceReady(Bitmap resource, Object model, Target<Bitmap> target, DataSource dataSource, boolean isFirstResource) {
-
-
-
-                        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-
-                        resource.compress(Bitmap.CompressFormat.JPEG,70, bytes);
-
-                        ByteArrayInputStream inputStream = new ByteArrayInputStream(bytes.toByteArray());
-
-
-                        try {
-                            bytes.close();
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-
-
-                        UploadTask uploadTask = nome_imagem.putStream(inputStream);
-
-
-
-                        uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>(){
-
-                            @Override
-                            public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
-
-
-                                return nome_imagem.getDownloadUrl();
-                            }
-
-
-                        }).addOnCompleteListener(new OnCompleteListener<Uri>() {
-
-
-                            @Override
-                            public void onComplete(@NonNull Task<Uri> task) {
-
-
-                                if(task.isSuccessful()){
-
-
-                                    progress.dismiss();
-                                    Uri uri = task.getResult();
-
-                                    String url_imagem = uri.toString();
-
-                                  //  alterarDados(nome, email, url_imagem);
-
-                                }else{
-
-                                    progress.dismiss();
-                                    Toast.makeText(getBaseContext(),"Erro ao realizar Upload - Storage",Toast.LENGTH_LONG).show();
-                                }
-
-                            }
-                        });
-
-
-
-                        return false;
-                    }
-                }).submit();
-
-    }
 
 
     //---------------------------------------- SALVAR DADOS----------------------------------------------------------------
@@ -552,9 +294,9 @@ public class MainActivityNoticias extends AppCompatActivity implements View.OnCl
 
 
 
-        StorageReference reference = storage.getReference().child("imagens").child("perfil");
+        StorageReference reference = storage.getReference().child("noticias").child(identificadorUsuario).child("imagens");
 
-        final StorageReference nome_imagem = reference.child(identificadorUsuario+".jpg");
+        final StorageReference nome_imagem = reference.child("imagemNoticias"+System.currentTimeMillis()+".jpg");
 
         Glide.with(getBaseContext()).asBitmap().load(uri_imagem).apply(new RequestOptions().override(1024,768))
                 .listener(new RequestListener<Bitmap>() {
@@ -620,7 +362,7 @@ public class MainActivityNoticias extends AppCompatActivity implements View.OnCl
                                     String url_imagem = uri.toString();
 
                                     salvarDadosDatabase(nome, email, url_imagem);
-                                    atualizarFotoUsuario( uri );
+
 
                                 }else{
 
@@ -642,7 +384,7 @@ public class MainActivityNoticias extends AppCompatActivity implements View.OnCl
 
 
 
-    private void salvarDadosDatabase(String nome, String email, String caminhoFoto){
+    private void salvarDadosDatabase(String titulo, String conteudo, String urlmagem){
 
 
 
@@ -650,14 +392,14 @@ public class MainActivityNoticias extends AppCompatActivity implements View.OnCl
         progress.show(getSupportFragmentManager(),"2");
 
 
-        CadastroDeUsuarios funcionario = new CadastroDeUsuarios(nome,email,caminhoFoto);
+        CadastroNoticias funcionario = new CadastroNoticias(titulo,conteudo,urlmagem);
 
 
-        DatabaseReference databaseReference = database.getReference().child("usuarios").child(identificadorUsuario);
+        DatabaseReference databaseReference = database.getReference().child("noticias").child(identificadorUsuario);
 
 
 
-        databaseReference.setValue(funcionario).addOnCompleteListener(new OnCompleteListener<Void>() {
+        databaseReference.push().setValue(funcionario).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
 

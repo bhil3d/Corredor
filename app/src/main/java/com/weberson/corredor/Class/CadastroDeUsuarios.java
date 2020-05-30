@@ -22,10 +22,6 @@ public class CadastroDeUsuarios implements Serializable {
 
     }
 
-   // public CadastroDeUsuarios(String nome, String idade, String url_imagem) {
-
-
-   // }
 
     public CadastroDeUsuarios(String nome, String email, String caminhoFoto) {
         this.nome = nome;
