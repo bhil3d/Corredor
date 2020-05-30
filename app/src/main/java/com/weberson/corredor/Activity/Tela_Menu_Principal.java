@@ -3,11 +3,8 @@ package com.weberson.corredor.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.TabLayout;
-import android.support.v4.view.ViewPager;
 import android.support.v4.view.GravityCompat;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.transition.TransitionManager;
 import android.view.MenuItem;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
@@ -18,10 +15,8 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.weberson.corredor.Adaptadores.adpitadorFraguimentos;
 import com.weberson.corredor.Class.UsuarioFirebase;
 import com.weberson.corredor.R;
 import com.facebook.login.LoginManager;
@@ -50,13 +45,6 @@ public class Tela_Menu_Principal extends AppCompatActivity implements Navigation
         autenticacao = FirebaseAuth.getInstance();
         currentUser = autenticacao.getCurrentUser();
 
-
-        TabLayout tabLayout =(TabLayout) findViewById(R.id.tab);
-        ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
-        adpitadorFraguimentos Tbb =new adpitadorFraguimentos(getSupportFragmentManager());
-
-        viewPager.setAdapter(Tbb);
-        tabLayout.setupWithViewPager(viewPager);
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
