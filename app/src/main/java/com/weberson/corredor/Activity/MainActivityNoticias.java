@@ -46,11 +46,6 @@ import com.weberson.corredor.R;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
-
-import static com.weberson.corredor.Class.UsuarioFirebase.atualizarFotoUsuario;
-
 
 public class MainActivityNoticias extends AppCompatActivity implements View.OnClickListener {
 

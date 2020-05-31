@@ -8,9 +8,11 @@ public class CadastroNoticias implements Serializable {
     private String conteudo;
 
 
+    public CadastroNoticias() {
 
+    }
 
-    public CadastroNoticias (String conteudo,String titulo,String urlimagem){
+    public CadastroNoticias (String conteudo, String titulo, String urlimagem){
         this.urlimagem = urlimagem;
         this.titulo = titulo;
         this.conteudo = conteudo;

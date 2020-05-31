@@ -23,11 +23,11 @@ public class Cadastro_Status_De_Ativos implements Serializable {
     }
 
     public Cadastro_Status_De_Ativos(String ativos, String spinerativo, String spinerparado, String spinermanutecao,String idstatus) {
-this.idStatus = idstatus;
-this.ativo=spinerativo;
-this.equipamento = ativos;
-this.status=spinerparado;
-this.StatusAtivo=spinermanutecao;
+    this.idStatus = idstatus;
+    this.ativo=spinerativo;
+    this.equipamento = ativos;
+    this.status=spinerparado;
+    this.StatusAtivo=spinermanutecao;
 
     }
 

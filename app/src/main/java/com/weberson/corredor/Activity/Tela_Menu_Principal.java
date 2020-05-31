@@ -5,6 +5,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.view.GravityCompat;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
@@ -17,7 +19,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.google.firebase.database.DatabaseReference;
+import com.weberson.corredor.Adaptadores.Adapter_lista_Status_equipamentos;
+import com.weberson.corredor.Adaptadores.Adapter_lista_de_Noticias;
+import com.weberson.corredor.Class.CadastroNoticias;
 import com.weberson.corredor.Class.UsuarioFirebase;
+import com.weberson.corredor.Configuraçoes.ConfiguracaoFirebase2;
 import com.weberson.corredor.R;
 import com.facebook.login.LoginManager;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -26,13 +33,19 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class Tela_Menu_Principal extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private FirebaseAuth autenticacao;
     FirebaseUser currentUser ;
     private GoogleSignInClient googleSignInClient;
-
+    private RecyclerView recyclerNoticia;
+    private Adapter_lista_de_Noticias adapter_lista_de_noticias;
+    private List<CadastroNoticias> listadenoticias = new ArrayList<>();
+    private DatabaseReference noticiasRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +57,10 @@ public class Tela_Menu_Principal extends AppCompatActivity implements Navigation
         //Configurações iniciais
         autenticacao = FirebaseAuth.getInstance();
         currentUser = autenticacao.getCurrentUser();
+        recyclerNoticia = findViewById(R.id.recyclerNoticias);
 
+        noticiasRef = ConfiguracaoFirebase2.getFirebase()
+                .child("noticias");
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
@@ -56,6 +72,12 @@ public class Tela_Menu_Principal extends AppCompatActivity implements Navigation
         navigationView.setNavigationItemSelectedListener(this);
 
         updateNavHeader();
+
+        //Configurar RecyclerView
+        recyclerNoticia.setLayoutManager(new LinearLayoutManager(this));
+        recyclerNoticia.setHasFixedSize(true);
+        adapter_lista_de_noticias = new Adapter_lista_de_Noticias(listadenoticias, this);
+        recyclerNoticia.setAdapter( adapter_lista_de_noticias );
 
     }
 
@@ -80,9 +102,7 @@ public class Tela_Menu_Principal extends AppCompatActivity implements Navigation
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
+
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
@@ -90,16 +110,12 @@ public class Tela_Menu_Principal extends AppCompatActivity implements Navigation
 
             Intent intent = new Intent(Tela_Menu_Principal.this, MainActivityNoticias.class);
             startActivity(intent);
-
-
         }
 
         if (id == R.id.editarPerfil) {
 
             Intent intent = new Intent(Tela_Menu_Principal.this,Editar_perfil_Activity.class);
             startActivity(intent);
-
-
 
         }
 
@@ -140,12 +156,8 @@ public class Tela_Menu_Principal extends AppCompatActivity implements Navigation
 
         } else if (id == R.id.idimagem_menu) {
 
-           // Intent intent = new Intent(Tela_Menu_Principal.this,DfActivity.class);
-           // startActivity(intent);
-
             Intent intent = new Intent(Tela_Menu_Principal.this,Perfil_Usuario_Detalhes_Activity.class);
             startActivity(intent);
-
         }
 
         else if (id == R.id.poiticasP) {
@@ -178,14 +190,9 @@ public class Tela_Menu_Principal extends AppCompatActivity implements Navigation
             finish();
         }
 
-
-
-
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
-
-
     }
 
     public void editarperfil (View view){
@@ -193,11 +200,7 @@ public class Tela_Menu_Principal extends AppCompatActivity implements Navigation
         Intent intent = new Intent(Tela_Menu_Principal.this,Perfil_Usuario_Detalhes_Activity.class);
         startActivity(intent);
 
-        //Toast.makeText(Tela_Menu_Principal.this, "foto", Toast.LENGTH_SHORT).show();
-
-
     }
-
 
     public void updateNavHeader() {
 
@@ -209,9 +212,6 @@ public class Tela_Menu_Principal extends AppCompatActivity implements Navigation
 
         navUserMail.setText(currentUser.getEmail());
         navUsername.setText(currentUser.getDisplayName());
-
-        // now we will use Glide to load user image
-        // first we need to import the library
 
         FirebaseUser usuarioPerfil = UsuarioFirebase.getUsuarioAtual();
 
@@ -226,28 +226,5 @@ public class Tela_Menu_Principal extends AppCompatActivity implements Navigation
     }
 
 
-public boolean deslougarUsuarios(){
-
-    /////////////////////////sair............Google..///////////////////////////////////////////////////
-    FirebaseAuth.getInstance().signOut();
-
-    LoginManager.getInstance().logOut();
-
-    GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken(getString(R.string.default_web_client_id))
-            .requestEmail()
-            .build();
-
-    googleSignInClient = GoogleSignIn.getClient(this, gso);
-    googleSignInClient.signOut();
-
-    /////////////sair///////////////////email///////////////////////////////////////
-    autenticacao.signOut();
-    startActivity(new Intent(getApplicationContext(), Tela_de_LougarActivity.class));
-    finish();
-    return true;
-
-
-}
 
 }
