@@ -1,6 +1,7 @@
 package com.weberson.corredor.Adaptadores;
 
 import android.content.Context;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -10,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.weberson.corredor.Class.CadastroNoticias;
 import com.weberson.corredor.Class.Cadastro_Status_De_Ativos;
 import com.weberson.corredor.R;
@@ -40,7 +42,18 @@ private Context context;
         CadastroNoticias paginadenoticias = listadenoticias.get(i);
         myViewHolder.Titulo.setText( paginadenoticias.getTitulo() );
         myViewHolder.Conteudo.setText( paginadenoticias.getConteudo() );
-       // myViewHolder.statusmanutencao.setText( paginadenoticias.getStatusAtivo() );
+
+        if (paginadenoticias.getUrlimagem() != null){
+
+            Uri uri = Uri.parse(paginadenoticias.getUrlimagem());
+            Glide.with(context).load(uri).into(myViewHolder.Urimagem);
+
+        }else {
+            myViewHolder.Urimagem.setImageResource(R.drawable.ic_menu_gallery);
+
+        }
+
+
 
     }
 

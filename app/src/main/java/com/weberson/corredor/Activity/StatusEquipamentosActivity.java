@@ -64,6 +64,8 @@ public class StatusEquipamentosActivity extends AppCompatActivity {
         adapter_lista_relatorios_publicos = new Adapter_lista_Status_equipamentos(listarelatorios, this);
         recyclerView.setAdapter( adapter_lista_relatorios_publicos );
 
+
+
         recuperaRelatoriosPublicos();
 
         //Aplicar evento de clique

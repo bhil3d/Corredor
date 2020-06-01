@@ -19,10 +19,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.ValueEventListener;
 import com.weberson.corredor.Adaptadores.Adapter_lista_Status_equipamentos;
 import com.weberson.corredor.Adaptadores.Adapter_lista_de_Noticias;
 import com.weberson.corredor.Class.CadastroNoticias;
+import com.weberson.corredor.Class.Cadastro_Status_De_Ativos;
+import com.weberson.corredor.Class.ClassDF;
 import com.weberson.corredor.Class.UsuarioFirebase;
 import com.weberson.corredor.Configuraçoes.ConfiguracaoFirebase2;
 import com.weberson.corredor.R;
@@ -34,6 +39,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 
@@ -44,8 +50,9 @@ public class Tela_Menu_Principal extends AppCompatActivity implements Navigation
     private GoogleSignInClient googleSignInClient;
     private RecyclerView recyclerNoticia;
     private Adapter_lista_de_Noticias adapter_lista_de_noticias;
-    private List<CadastroNoticias> listadenoticias = new ArrayList<>();
+    private List<CadastroNoticias> listadenoticias = new ArrayList<CadastroNoticias>();
     private DatabaseReference noticiasRef;
+    private String identificadorUsuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,10 +64,10 @@ public class Tela_Menu_Principal extends AppCompatActivity implements Navigation
         //Configurações iniciais
         autenticacao = FirebaseAuth.getInstance();
         currentUser = autenticacao.getCurrentUser();
+        identificadorUsuario = UsuarioFirebase.getIdentificadorUsuario();
         recyclerNoticia = findViewById(R.id.recyclerNoticias);
 
-        noticiasRef = ConfiguracaoFirebase2.getFirebase()
-                .child("noticias");
+
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
@@ -73,15 +80,49 @@ public class Tela_Menu_Principal extends AppCompatActivity implements Navigation
 
         updateNavHeader();
 
+
+        noticiasRef = ConfiguracaoFirebase2.getFirebase()
+                .child("noticias").child(identificadorUsuario);
         //Configurar RecyclerView
         recyclerNoticia.setLayoutManager(new LinearLayoutManager(this));
         recyclerNoticia.setHasFixedSize(true);
         adapter_lista_de_noticias = new Adapter_lista_de_Noticias(listadenoticias, this);
         recyclerNoticia.setAdapter( adapter_lista_de_noticias );
 
+        recuperapaginasdeNoticias();
+
     }
 
+    private void recuperapaginasdeNoticias() {
 
+
+        listadenoticias.clear();
+        noticiasRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                listadenoticias.clear();
+                for ( DataSnapshot ds : dataSnapshot.getChildren() ){
+                    listadenoticias.add( ds.getValue(CadastroNoticias.class) );
+                }
+
+                Collections.reverse( listadenoticias );
+                adapter_lista_de_noticias.notifyDataSetChanged();
+
+                //   dialog.dismiss();
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+
+
+
+    }
 
     @Override
     public void onBackPressed() {

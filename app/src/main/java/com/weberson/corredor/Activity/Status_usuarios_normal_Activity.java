@@ -67,6 +67,8 @@ public class Status_usuarios_normal_Activity extends AppCompatActivity {
         recyclerView.setAdapter( adapter_lista_relatorios_publicos );
 
 
+
+
         recuperaRelatoriosPublicos();
 
     }

@@ -52,7 +52,7 @@ dependencies {
     implementation 'com.google.android.gms:play-services-auth:11.8.0'
 
     //imagens
-    implementation 'com.squareup.picasso:picasso:2.5.2'
+    implementation 'com.squareup.picasso:picasso:2.71828'
     implementation 'com.github.bumptech.glide:glide:4.8.0'
 }
 
