@@ -23,7 +23,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activity.MainActivityNoticias"></activity>
+        <activity android:name=".Activity.ActivitypaginaNoticias"></activity>
+        <activity android:name=".Activity.MainActivityNoticias" />
         <activity
             android:name=".Activity.Tela_de_menu_app_liberado"
             android:label="@string/title_activity_tela_de_menu_app_liberado"

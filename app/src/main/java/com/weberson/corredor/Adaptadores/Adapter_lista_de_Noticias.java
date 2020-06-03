@@ -12,11 +12,17 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.google.firebase.auth.FirebaseUser;
+import com.weberson.corredor.Activity.Editar_perfil_Activity;
+import com.weberson.corredor.Activity.Tela_Menu_Principal;
 import com.weberson.corredor.Class.CadastroNoticias;
 import com.weberson.corredor.Class.Cadastro_Status_De_Ativos;
+import com.weberson.corredor.Class.UsuarioFirebase;
 import com.weberson.corredor.R;
 
 import java.util.List;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class Adapter_lista_de_Noticias extends RecyclerView.Adapter<Adapter_lista_de_Noticias.MyViewHolder> {
 
@@ -42,6 +48,7 @@ private Context context;
         CadastroNoticias paginadenoticias = listadenoticias.get(i);
         myViewHolder.Titulo.setText( paginadenoticias.getTitulo() );
         myViewHolder.Conteudo.setText( paginadenoticias.getConteudo() );
+        FirebaseUser usuarioPerfil = UsuarioFirebase.getUsuarioAtual();
 
         if (paginadenoticias.getUrlimagem() != null){
 
@@ -52,6 +59,16 @@ private Context context;
             myViewHolder.Urimagem.setImageResource(R.drawable.ic_menu_gallery);
 
         }
+
+
+        //Recuperar foto do usuário
+        Uri url = usuarioPerfil.getPhotoUrl();
+
+            Glide.with(context)
+                    .load( url )
+                    .into( myViewHolder.imagemcirculo );
+
+
 
 
 
@@ -67,8 +84,7 @@ private Context context;
         TextView Titulo;
         TextView Conteudo;
         ImageView Urimagem;
-        CardView cardViewnoticias;
-
+CircleImageView imagemcirculo;
 
 
         public MyViewHolder(@NonNull View itemView) {
@@ -77,7 +93,7 @@ private Context context;
             Titulo = itemView.findViewById(R.id.idtituloNoticias);
             Conteudo = itemView.findViewById(R.id.idconteudonoticias);
             Urimagem = itemView.findViewById(R.id.idimagemNoticias);
-            cardViewnoticias = itemView.findViewById(R.id.cadviunoticias);
+            imagemcirculo = itemView.findViewById(R.id.imagemperfilnoticias);
 
         }
     }

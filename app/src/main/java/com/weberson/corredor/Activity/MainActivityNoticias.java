@@ -293,7 +293,7 @@ public class MainActivityNoticias extends AppCompatActivity implements View.OnCl
 
         final StorageReference nome_imagem = reference.child("imagemNoticias"+System.currentTimeMillis()+".jpg");
 
-        Glide.with(getBaseContext()).asBitmap().load(uri_imagem).apply(new RequestOptions().override(1024,1024))
+        Glide.with(getBaseContext()).asBitmap().load(uri_imagem).apply(new RequestOptions().override(1024,1000))
                 .listener(new RequestListener<Bitmap>() {
                     @Override
                     public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Bitmap> target, boolean isFirstResource) {

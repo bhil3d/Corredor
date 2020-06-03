@@ -5,6 +5,7 @@ import java.io.Serializable;
 public class CadastroNoticias implements Serializable {
     private String urlimagem;
     private String titulo;
+    private String subtitulo;
     private String conteudo;
 
 
@@ -12,7 +13,7 @@ public class CadastroNoticias implements Serializable {
 
     }
 
-    public CadastroNoticias (String conteudo, String titulo, String urlimagem){
+    public CadastroNoticias ( String conteudo, String titulo, String urlimagem){
         this.urlimagem = urlimagem;
         this.titulo = titulo;
         this.conteudo = conteudo;
@@ -20,7 +21,13 @@ public class CadastroNoticias implements Serializable {
 
     }
 
+    public String getSubtitulo() {
+        return subtitulo;
+    }
 
+    public void setSubtitulo(String subtitulo) {
+        this.subtitulo = subtitulo;
+    }
 
     public String getUrlimagem() {
         return urlimagem;

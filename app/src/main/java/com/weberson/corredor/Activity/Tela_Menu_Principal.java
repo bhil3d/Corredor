@@ -15,6 +15,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -28,6 +29,7 @@ import com.weberson.corredor.Adaptadores.Adapter_lista_de_Noticias;
 import com.weberson.corredor.Class.CadastroNoticias;
 import com.weberson.corredor.Class.Cadastro_Status_De_Ativos;
 import com.weberson.corredor.Class.ClassDF;
+import com.weberson.corredor.Class.RecyclerItemClickListener;
 import com.weberson.corredor.Class.UsuarioFirebase;
 import com.weberson.corredor.Configuraçoes.ConfiguracaoFirebase2;
 import com.weberson.corredor.R;
@@ -41,6 +43,8 @@ import com.google.firebase.auth.FirebaseUser;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 
 public class Tela_Menu_Principal extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -68,7 +72,6 @@ public class Tela_Menu_Principal extends AppCompatActivity implements Navigation
         recyclerNoticia = findViewById(R.id.recyclerNoticias);
 
 
-
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
 
@@ -87,11 +90,39 @@ public class Tela_Menu_Principal extends AppCompatActivity implements Navigation
         recyclerNoticia.setLayoutManager(new LinearLayoutManager(this));
         recyclerNoticia.setHasFixedSize(true);
         adapter_lista_de_noticias = new Adapter_lista_de_Noticias(listadenoticias, this);
-        recyclerNoticia.setAdapter( adapter_lista_de_noticias );
+        recyclerNoticia.setAdapter(adapter_lista_de_noticias);
+
 
         recuperapaginasdeNoticias();
 
+        //Aplicar evento de clique
+        recyclerNoticia.addOnItemTouchListener(
+                new RecyclerItemClickListener(
+                        this,
+                        recyclerNoticia,
+                        new RecyclerItemClickListener.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(View view, int position) {
+                                CadastroNoticias anuncioSelecionado = listadenoticias.get(position);
+                                Intent i = new Intent(Tela_Menu_Principal.this, ActivitypaginaNoticias.class);
+                                i.putExtra("anuncioSelecionado", anuncioSelecionado);
+                                startActivity(i);
+                            }
+
+                            @Override
+                            public void onLongItemClick(View view, int position) {
+
+                            }
+
+                            @Override
+                            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                            }
+                        }
+                )
+        );
     }
+
 
     private void recuperapaginasdeNoticias() {
 
