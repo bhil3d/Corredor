@@ -3,7 +3,6 @@ package com.weberson.corredor.Adaptadores;
 import android.content.Context;
 import android.net.Uri;
 import android.support.annotation.NonNull;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,10 +12,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseUser;
-import com.weberson.corredor.Activity.Editar_perfil_Activity;
-import com.weberson.corredor.Activity.Tela_Menu_Principal;
 import com.weberson.corredor.Class.CadastroNoticias;
-import com.weberson.corredor.Class.Cadastro_Status_De_Ativos;
 import com.weberson.corredor.Class.UsuarioFirebase;
 import com.weberson.corredor.R;
 
@@ -38,7 +34,7 @@ private Context context;
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View item = LayoutInflater.from(viewGroup.getContext())
-                .inflate(R.layout.adaptadornoticias, viewGroup, false);
+                .inflate(R.layout.adaptadornoticia, viewGroup, false);
         return new MyViewHolder(item);
     }
 
