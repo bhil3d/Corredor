@@ -32,6 +32,7 @@ import com.weberson.corredor.Class.ClassDF;
 import com.weberson.corredor.Class.RecyclerItemClickListener;
 import com.weberson.corredor.Class.UsuarioFirebase;
 import com.weberson.corredor.Configuraçoes.ConfiguracaoFirebase2;
+import com.weberson.corredor.Fragmento.DfFragment;
 import com.weberson.corredor.R;
 import com.facebook.login.LoginManager;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -236,7 +237,18 @@ public class Tela_Menu_Principal extends AppCompatActivity implements Navigation
 
             startActivity(new Intent(Intent.ACTION_VIEW,
                     Uri.parse("https://corredor.web.app/politicas_de_privacidades.html")));
-        } else if (id == R.id.termosUs) {
+        }
+
+        else if (id == R.id.Df) {
+
+           /* Intent intent = new Intent(Tela_Menu_Principal.this, DfFragment.class);
+            startActivity(intent);
+
+            */
+        }
+
+
+        else if (id == R.id.termosUs) {
 
             startActivity(new Intent(Intent.ACTION_VIEW,
                     Uri.parse("https://corredor.web.app/termos_de_servicos.html")));
