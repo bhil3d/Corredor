@@ -32,17 +32,11 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 import com.weberson.corredor.Adaptadores.Adapter_lista_Relatorios_Publicos;
-import com.weberson.corredor.Adaptadores.Adapter_lista_Status_equipamentos;
-import com.weberson.corredor.Adaptadores.Adapter_lista_de_Noticias;
 import com.weberson.corredor.Class.CadastraRelatoriosTurno;
-import com.weberson.corredor.Class.CadastroNoticias;
-import com.weberson.corredor.Class.Cadastro_Status_De_Ativos;
-import com.weberson.corredor.Class.ClassDF;
 import com.weberson.corredor.Class.RecyclerItemClickListener;
 import com.weberson.corredor.Class.UsuarioFirebase;
 import com.weberson.corredor.Configuraçoes.ConfiguracaoFirebase;
 import com.weberson.corredor.Configuraçoes.ConfiguracaoFirebase2;
-import com.weberson.corredor.Fragmento.DfFragment;
 import com.weberson.corredor.R;
 import com.facebook.login.LoginManager;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -54,8 +48,6 @@ import com.google.firebase.auth.FirebaseUser;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
-import de.hdodenhof.circleimageview.CircleImageView;
 
 
 public class Tela_Menu_Principal extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
