@@ -1,5 +1,7 @@
 package com.weberson.corredor.Activity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -16,21 +18,29 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
+import com.weberson.corredor.Adaptadores.Adapter_lista_Relatorios_Publicos;
 import com.weberson.corredor.Adaptadores.Adapter_lista_Status_equipamentos;
 import com.weberson.corredor.Adaptadores.Adapter_lista_de_Noticias;
+import com.weberson.corredor.Class.CadastraRelatoriosTurno;
 import com.weberson.corredor.Class.CadastroNoticias;
 import com.weberson.corredor.Class.Cadastro_Status_De_Ativos;
 import com.weberson.corredor.Class.ClassDF;
 import com.weberson.corredor.Class.RecyclerItemClickListener;
 import com.weberson.corredor.Class.UsuarioFirebase;
+import com.weberson.corredor.Configuraçoes.ConfiguracaoFirebase;
 import com.weberson.corredor.Configuraçoes.ConfiguracaoFirebase2;
 import com.weberson.corredor.Fragmento.DfFragment;
 import com.weberson.corredor.R;
@@ -51,13 +61,18 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class Tela_Menu_Principal extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private FirebaseAuth autenticacao;
+    private Button butaomanutençao, butaoativo;
     FirebaseUser currentUser ;
     private GoogleSignInClient googleSignInClient;
-    private RecyclerView recyclerNoticia;
-    private Adapter_lista_de_Noticias adapter_lista_de_noticias;
-    private List<CadastroNoticias> listadenoticias = new ArrayList<CadastroNoticias>();
-    private DatabaseReference noticiasRef;
+    private RecyclerView recyclerView;
+    private Adapter_lista_Relatorios_Publicos adapter_lista_relatorios_publicos;
+    private List<CadastraRelatoriosTurno>listarelatorios = new ArrayList<>();
+    private DatabaseReference relatoriosPublicosRef;
     private String identificadorUsuario;
+    private ProgressBar progressBar;
+    private String filtraManutençao = "";
+    private String filtraAtivo = "";
+    private  boolean filtroPorManutençao = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,7 +85,12 @@ public class Tela_Menu_Principal extends AppCompatActivity implements Navigation
         autenticacao = FirebaseAuth.getInstance();
         currentUser = autenticacao.getCurrentUser();
         identificadorUsuario = UsuarioFirebase.getIdentificadorUsuario();
-        recyclerNoticia = findViewById(R.id.recyclerNoticias);
+        recyclerView = findViewById(R.id.recyclerRelatorios_Meusrelatorios);
+        progressBar = findViewById(R.id.progressBar_Relatorios);
+        //Configurações iniciais
+        autenticacao = ConfiguracaoFirebase.getFirebaseAutenticacao();
+        relatoriosPublicosRef = ConfiguracaoFirebase2.getFirebase()
+                .child("relatorios");
 
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -85,29 +105,28 @@ public class Tela_Menu_Principal extends AppCompatActivity implements Navigation
         updateNavHeader();
 
 
-        noticiasRef = ConfiguracaoFirebase2.getFirebase()
-                .child("noticias").child(identificadorUsuario);
         //Configurar RecyclerView
-        recyclerNoticia.setLayoutManager(new LinearLayoutManager(this));
-        recyclerNoticia.setHasFixedSize(true);
-        adapter_lista_de_noticias = new Adapter_lista_de_Noticias(listadenoticias, this);
-        recyclerNoticia.setAdapter(adapter_lista_de_noticias);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setHasFixedSize(true);
+        adapter_lista_relatorios_publicos = new Adapter_lista_Relatorios_Publicos(listarelatorios, this);
+        recyclerView.setAdapter( adapter_lista_relatorios_publicos );
 
-
-        recuperapaginasdeNoticias();
+        recuperaRelatoriosPublicos();
 
         //Aplicar evento de clique
-        recyclerNoticia.addOnItemTouchListener(
+        recyclerView.addOnItemTouchListener(
                 new RecyclerItemClickListener(
                         this,
-                        recyclerNoticia,
+                        recyclerView,
                         new RecyclerItemClickListener.OnItemClickListener() {
                             @Override
                             public void onItemClick(View view, int position) {
-                                CadastroNoticias anuncioSelecionado = listadenoticias.get(position);
-                                Intent i = new Intent(Tela_Menu_Principal.this, ActivitypaginaNoticias.class);
-                                i.putExtra("anuncioSelecionado", anuncioSelecionado);
-                                startActivity(i);
+
+
+                                CadastraRelatoriosTurno anuncioSelecionado = listarelatorios.get( position );
+                                Intent i = new Intent(Tela_Menu_Principal.this, Tela_Detalhes_Relatorios_Publicos.class);
+                                i.putExtra("anuncioSelecionado", anuncioSelecionado );
+                                startActivity( i );
                             }
 
                             @Override
@@ -125,24 +144,119 @@ public class Tela_Menu_Principal extends AppCompatActivity implements Navigation
     }
 
 
-    private void recuperapaginasdeNoticias() {
+    public void filtrarPorManutençao(View view){
 
+        AlertDialog.Builder dialogEstado = new AlertDialog.Builder(this);
+        dialogEstado.setTitle("Selecione o tipo de manutençao");
 
-        listadenoticias.clear();
-        noticiasRef.addValueEventListener(new ValueEventListener() {
+        //Configurar spinner
+        View viewSpinner = getLayoutInflater().inflate(R.layout.dialog_spinner, null);
+
+        //Configura spinner de estados
+        final Spinner spinnerEstado = viewSpinner.findViewById(R.id.spinnerFiltro);
+        String[] estados = getResources().getStringArray(R.array.Manuteçao);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+                this, android.R.layout.simple_spinner_item,
+                estados
+        );
+        adapter.setDropDownViewResource( android.R.layout.simple_spinner_dropdown_item );
+        spinnerEstado.setAdapter( adapter );
+
+        dialogEstado.setView( viewSpinner );
+
+        dialogEstado.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                filtraManutençao = spinnerEstado.getSelectedItem().toString();
+                recuperarAnunciosPorEstado();
+                filtroPorManutençao = true;
+            }
+        });
+
+        dialogEstado.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+
+        AlertDialog dialog = dialogEstado.create();
+        dialog.show();
+
+    }
+
+    public void filtrarPorAtivo(View view){
+
+        if( filtroPorManutençao == true ){
+
+            AlertDialog.Builder dialogEstado = new AlertDialog.Builder(this);
+            dialogEstado.setTitle("Selecione o ativo desejada");
+
+            //Configurar spinner
+            View viewSpinner = getLayoutInflater().inflate(R.layout.dialog_spinner, null);
+
+            //Configura spinner de categorias
+            final Spinner spinnerCategoria = viewSpinner.findViewById(R.id.spinnerFiltro);
+            String[] estados = getResources().getStringArray(R.array.Ativo);
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+                    this, android.R.layout.simple_spinner_item,
+                    estados
+            );
+            adapter.setDropDownViewResource( android.R.layout.simple_spinner_dropdown_item );
+            spinnerCategoria.setAdapter( adapter );
+
+            dialogEstado.setView( viewSpinner );
+
+            dialogEstado.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    filtraAtivo = spinnerCategoria.getSelectedItem().toString();
+                    recuperarAnunciosPorCategoria();
+                }
+            });
+
+            dialogEstado.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+
+                }
+            });
+
+            AlertDialog dialog = dialogEstado.create();
+            dialog.show();
+
+        }else {
+            Toast.makeText(this, "Escolha primeiro a manutençao!",
+                    Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
+    public void recuperarAnunciosPorCategoria(){
+
+        progressBar.setVisibility(View.VISIBLE);
+
+        //Configura nó por categoria
+        relatoriosPublicosRef = ConfiguracaoFirebase.getFirebase()
+                .child("relatorios")
+                .child(filtraManutençao)
+                .child( filtraAtivo );
+
+        relatoriosPublicosRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                listarelatorios.clear();
+                for(DataSnapshot anuncios: dataSnapshot.getChildren() ){
 
-                listadenoticias.clear();
-                for ( DataSnapshot ds : dataSnapshot.getChildren() ){
-                    listadenoticias.add( ds.getValue(CadastroNoticias.class) );
+                    CadastraRelatoriosTurno anuncio = anuncios.getValue(CadastraRelatoriosTurno.class);
+                    listarelatorios.add( anuncio );
+
                 }
 
-                Collections.reverse( listadenoticias );
-                adapter_lista_de_noticias.notifyDataSetChanged();
+                Collections.reverse( listarelatorios );
+                adapter_lista_relatorios_publicos.notifyDataSetChanged();
 
-                //   dialog.dismiss();
-
+                progressBar.setVisibility(View.GONE);
             }
 
             @Override
@@ -151,6 +265,81 @@ public class Tela_Menu_Principal extends AppCompatActivity implements Navigation
             }
         });
 
+    }
+
+    public void recuperarAnunciosPorEstado(){
+
+        progressBar.setVisibility(View.VISIBLE);
+
+        //Configura nó por estado
+        relatoriosPublicosRef = ConfiguracaoFirebase.getFirebase()
+                .child("relatorios")
+                .child(filtraManutençao);
+
+        relatoriosPublicosRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                listarelatorios.clear();
+                for (DataSnapshot categorias: dataSnapshot.getChildren() ){
+                    for(DataSnapshot anuncios: categorias.getChildren() ){
+
+                        CadastraRelatoriosTurno anuncio = anuncios.getValue(CadastraRelatoriosTurno.class);
+                        listarelatorios.add( anuncio );
+
+                    }
+                }
+
+                Collections.reverse( listarelatorios );
+                adapter_lista_relatorios_publicos.notifyDataSetChanged();
+                progressBar.setVisibility(View.GONE);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+    }
+
+
+
+    private void recuperaRelatoriosPublicos() {
+
+
+        listarelatorios.clear();
+        relatoriosPublicosRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+
+
+
+                for(DataSnapshot manutecao: dataSnapshot.getChildren()){
+                    for (DataSnapshot categorias: manutecao.getChildren() ){
+                        for(DataSnapshot anuncios: categorias.getChildren() ){
+
+                            CadastraRelatoriosTurno anuncio = anuncios.getValue(CadastraRelatoriosTurno.class);
+                            listarelatorios.add( anuncio );
+
+
+
+                        }
+                    }
+                }
+                Collections.reverse( listarelatorios );
+                adapter_lista_relatorios_publicos.notifyDataSetChanged();
+                progressBar.setVisibility(View.GONE);
+
+
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
 
 
 
@@ -181,8 +370,7 @@ public class Tela_Menu_Principal extends AppCompatActivity implements Navigation
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
 
-            Intent intent = new Intent(Tela_Menu_Principal.this, MainActivityNoticias.class);
-            startActivity(intent);
+
         }
 
         if (id == R.id.editarPerfil) {
@@ -212,13 +400,11 @@ public class Tela_Menu_Principal extends AppCompatActivity implements Navigation
             startActivity(intent);
 
         } else if (id == R.id.statusequipamentos) {
-            Intent intent = new Intent(Tela_Menu_Principal.this, Status_usuarios_normal_Activity.class);
-            startActivity(intent);
+
 
         } else if (id == R.id.telefones) {
 
-            Intent intent = new Intent(Tela_Menu_Principal.this,Detalhes_telefones_Activity.class);
-            startActivity(intent);
+
 
         } else if (id == R.id.contracheques) {
 

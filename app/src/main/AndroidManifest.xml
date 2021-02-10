@@ -23,15 +23,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activity.ActivitypaginaNoticias"></activity>
-        <activity android:name=".Activity.MainActivityNoticias" />
-        <activity
-            android:name=".Activity.Tela_de_menu_app_liberado"
-            android:label="@string/title_activity_tela_de_menu_app_liberado"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Activity.DfActivity" />
-        <activity android:name=".Activity.Status_usuarios_normal_Activity" />
-        <activity android:name=".Activity.Detalhes_telefones_Activity" />
         <activity
             android:name=".Activity.Perfil_Usuario_Detalhes_Activity"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -47,22 +38,6 @@
         <activity
             android:name=".Activity.Editar_perfil_Activity"
             android:parentActivityName=".Activity.Perfil_Usuario_Detalhes_Activity" />
-        <activity
-            android:name=".Activity.AtualizardadosDF"
-            android:parentActivityName=".Activity.Tela_df_resultados" />
-        <activity
-            android:name=".Activity.Tela_df_resultados"
-            android:parentActivityName=".Activity.Tela_Menu_Principal" />
-        <activity
-            android:name=".Activity.AtualisarStatusEquipamentosActivity"
-            android:parentActivityName=".Activity.StatusEquipamentosActivity" />
-        <activity
-            android:name=".Activity.StatusEquipamento_Cadastro_AtivosActivity"
-            android:parentActivityName=".Activity.StatusEquipamentosActivity" />
-        <activity
-            android:name=".Activity.StatusEquipamentosActivity"
-            android:parentActivityName=".Activity.Tela_Menu_Principal"
-            android:screenOrientation="portrait" />
         <activity android:name=".Activity.Tela_para_teste" />
         <activity
             android:name=".Activity.Tela_detalhe_meus_Relatorios"
