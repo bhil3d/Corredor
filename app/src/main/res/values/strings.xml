@@ -26,11 +26,11 @@
     <string name="menu_paratest">Novo</string>
     <string name="menu_sair">Sair</string>
 
-    <string name="facebook_app_id">924662031239831</string>
-    <string name="fb_login_protocol_scheme">fb924662031239831</string>
+    <string name="facebook_app_id">1299380340447810</string>
+    <string name="fb_login_protocol_scheme">fb1299380340447810</string>
 
-    <string name="facebook_application_id" translatable="false">924662031239831</string>
-    <string name="facebook_login_protocol_scheme" translatable="false">fb924662031239831</string>
+    <string name="facebook_application_id" translatable="false">1299380340447810</string>
+    <string name="facebook_login_protocol_scheme" translatable="false">fb1299380340447810</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

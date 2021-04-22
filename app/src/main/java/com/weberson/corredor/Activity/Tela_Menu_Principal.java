@@ -44,6 +44,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.weberson.corredor.Tabeladetorqued11;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -419,10 +420,12 @@ public class Tela_Menu_Principal extends AppCompatActivity implements Navigation
 
         else if (id == R.id.Df) {
 
-           /* Intent intent = new Intent(Tela_Menu_Principal.this, DfFragment.class);
+            Intent intent = new Intent(Tela_Menu_Principal.this, Tabeladetorqued11.class);
             startActivity(intent);
 
-            */
+
+
+
         }
 
 
