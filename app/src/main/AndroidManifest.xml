@@ -38,7 +38,6 @@
         <activity
             android:name=".Activity.Editar_perfil_Activity"
             android:parentActivityName=".Activity.Perfil_Usuario_Detalhes_Activity" />
-        <activity android:name=".Activity.Tela_para_teste" />
         <activity
             android:name=".Activity.Tela_detalhe_meus_Relatorios"
             android:parentActivityName=".Activity.Tela_lista_meus_Relatorios" />
